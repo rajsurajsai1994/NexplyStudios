@@ -84,7 +84,7 @@ export default function PortfolioPage() {
         key={active.slug}
         seedPrefix={active.slug}
         works={activeServicePage?.clientWorks}
-        featured={activeServicePage?.featuredWork}
+        featured={activeServicePage?.featuredWorks}
       />
 
       <FAQSection />

@@ -52,7 +52,7 @@ const PLACEHOLDER_WORKS: WorkItem[] = [
 interface ClientWorksGridSectionProps {
   seedPrefix?: string;
   works?: WorkItem[];
-  featured?: FeaturedClientCase;
+  featured?: FeaturedClientCase[];
 }
 
 export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, featured }: ClientWorksGridSectionProps) {
@@ -77,8 +77,9 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
           </p>
         </div>
 
-        {featured && (
+        {featured?.map((fw) => (
           <div
+            key={fw.title}
             className="relative rounded-[28px] overflow-hidden backdrop-blur-md w-full max-w-[1200px] mb-8"
             style={{
               border: '1px solid rgba(255,255,255,0.16)',
@@ -107,10 +108,10 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
                   >
                     Featured Result
                   </span>
-                  <h3 className="text-white font-medium text-xl">{featured.title}</h3>
-                  {featured.branchNote && (
+                  <h3 className="text-white font-medium text-xl">{fw.title}</h3>
+                  {fw.branchNote && (
                     <p className="text-sm mt-0.5" style={{ color: 'rgb(169, 151, 206)' }}>
-                      {featured.branchNote}
+                      {fw.branchNote}
                     </p>
                   )}
                 </div>
@@ -122,13 +123,13 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
                     color: 'rgba(255,255,255,0.7)',
                   }}
                 >
-                  {featured.industry}
+                  {fw.industry}
                 </span>
               </div>
 
               {/* Screenshots, side by side */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                {featured.images.map((image) => (
+                {fw.images.map((image) => (
                   <div key={image.src} className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.14)' }}>
                     <img src={image.src} alt={image.label} loading="lazy" decoding="async" className="w-full h-auto block" />
                     <div className="px-3 py-2" style={{ background: 'rgba(0,0,0,0.25)' }}>
@@ -141,12 +142,12 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
               {/* Caption */}
               <div className="flex items-center gap-2 mb-6">
                 <TrendingUp size={16} color="#A78BFA" className="shrink-0" />
-                <p className="text-sm font-medium text-white">{featured.caption}</p>
+                <p className="text-sm font-medium text-white">{fw.caption}</p>
               </div>
 
               {/* Stats */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {featured.stats.map((stat) => (
+                {fw.stats.map((stat) => (
                   <div
                     key={stat.label}
                     className="rounded-2xl p-4"
@@ -168,14 +169,14 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
                 ))}
               </div>
 
-              {featured.disclaimer && (
+              {fw.disclaimer && (
                 <p className="text-xs italic mt-5" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                  {featured.disclaimer}
+                  {fw.disclaimer}
                 </p>
               )}
             </div>
           </div>
-        )}
+        ))}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[1200px]">
           {items.map((work, i) => (

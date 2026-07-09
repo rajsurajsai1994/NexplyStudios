@@ -50,8 +50,10 @@ const CAMPAIGNS: CarouselCampaign[] = [
   },
 ];
 
+const DEFAULT_CAMPAIGN_INDEX = 3; // EnlitEDU
+
 export default function InstagramCarouselShowcase() {
-  const [campaignIndex, setCampaignIndex] = useState(0);
+  const [campaignIndex, setCampaignIndex] = useState(DEFAULT_CAMPAIGN_INDEX);
   const [slideIndex, setSlideIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const campaign = CAMPAIGNS[campaignIndex];
@@ -94,14 +96,14 @@ export default function InstagramCarouselShowcase() {
           >
             Swipe through it <span style={gradientTextStyle}>like they did.</span>
           </h2>
-          <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)', maxWidth: 720 }}>
+          <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)', maxWidth: 780 }}>
             These are real Instagram carousel posts we designed - browse them the same way a
             follower would, slide by slide.
           </p>
         </div>
 
-        {/* Phone (left) + campaign selector (right) */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 w-full" style={{ maxWidth: 1000 }}>
+        {/* Phone (left) + campaign selector grid (right) */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 w-full" style={{ maxWidth: 980 }}>
           {/* Phone mockup */}
           <div
             className="relative shrink-0"
@@ -230,44 +232,52 @@ export default function InstagramCarouselShowcase() {
             </div>
           </div>
 
-          {/* Campaign selector + description */}
-          <div className="flex flex-col gap-4 w-full" style={{ maxWidth: 380 }}>
+          {/* Campaign selector - 2x2 chip grid, titles only */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full" style={{ maxWidth: 480 }}>
             {CAMPAIGNS.map((c, i) => {
               const isActive = i === campaignIndex;
               return (
                 <button
                   key={c.id}
                   onClick={() => selectCampaign(i)}
-                  className="text-left rounded-2xl px-5 py-4 transition-all duration-300"
+                  className="text-left rounded-2xl px-5 py-5 transition-all duration-300 flex items-center"
                   style={
                     isActive
-                      ? { background: gradientA, color: 'white' }
+                      ? { background: gradientA, color: 'white', minHeight: 84 }
                       : {
                           border: '1px solid rgba(255,255,255,0.14)',
                           background: 'rgba(255,255,255,0.03)',
                           color: 'rgba(255,255,255,0.85)',
+                          minHeight: 84,
                         }
                   }
                 >
-                  <p className="text-sm font-semibold">{c.caption}</p>
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.p
-                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                        animate={{ opacity: 1, height: 'auto', marginTop: 6 }}
-                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
-                        className="text-xs overflow-hidden"
-                        style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}
-                      >
-                        {c.description}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+                  <p className="text-sm font-semibold leading-snug">{c.caption}</p>
                 </button>
               );
             })}
           </div>
+        </div>
+
+        {/* Shared description for whichever campaign is selected - lives
+            below the whole phone + chip-grid row, not inside each chip. */}
+        <div className="w-full mt-10 text-center" style={{ maxWidth: 620 }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={campaign.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+            >
+              <h3 className="text-white font-medium mb-2" style={{ fontSize: 'clamp(17px, 1.6vw, 21px)' }}>
+                {campaign.caption}
+              </h3>
+              <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: 1.6 }}>
+                {campaign.description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

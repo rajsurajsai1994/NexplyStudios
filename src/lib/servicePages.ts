@@ -58,7 +58,7 @@ export interface ServicePageConfig {
   // One highlighted, larger case-study card shown above the regular grid -
   // for a result impressive enough to lead with (real before/after numbers,
   // not just a logo image).
-  featuredWork?: ServicePageFeaturedWork;
+  featuredWorks?: ServicePageFeaturedWork[];
 }
 
 export const SERVICE_PAGES: ServicePageConfig[] = [
@@ -436,21 +436,38 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         a: "Yes - as part of review management, we help draft professional responses to negative reviews as well, since how a business responds publicly matters to potential customers reading them.",
       },
     ],
-    featuredWork: {
-      title: 'PAL Physiotherapy & Sports Rehab',
-      industry: 'Healthcare',
-      branchNote: 'Madhapur & Kondapur - 2 branches',
-      images: [
-        { src: '/casestudy-pal-madhapur.png', label: 'Madhapur - "best physiotherapist in Madhapur"' },
-        { src: '/casestudy-pal-kondapur.png', label: 'Kondapur - "best sports rehab in Kondapur"' },
-      ],
-      caption: 'Always ranks in the top 3 for many local search keywords.',
-      stats: [
-        { label: 'Business profile interactions / month', before: 'Before: 50-70', after: 'Now: 350-400' },
-        { label: 'Calls / month', before: 'Before: 20-30', after: 'Now: 130-150' },
-      ],
-      disclaimer: 'No paid ads - organic growth from GMB optimization alone.',
-    },
+    featuredWorks: [
+      {
+        title: 'PAL Physiotherapy & Sports Rehab',
+        industry: 'Healthcare',
+        branchNote: 'Madhapur & Kondapur - 2 branches',
+        images: [
+          { src: '/casestudy-pal-madhapur.png', label: 'Madhapur - "best physiotherapist in Madhapur"' },
+          { src: '/casestudy-pal-kondapur.png', label: 'Kondapur - "best sports rehab in Kondapur"' },
+        ],
+        caption: 'Always ranks in the top 3 for many local search keywords.',
+        stats: [
+          { label: 'Business profile interactions / month', before: 'Before: 50-70', after: 'Now: 350-400' },
+          { label: 'Calls / month', before: 'Before: 20-30', after: 'Now: 130-150' },
+        ],
+        disclaimer: 'No paid ads - organic growth from GMB optimization alone.',
+      },
+      {
+        title: 'Square Designs',
+        industry: 'Printing Industry',
+        branchNote: 'Madhapur, Hyderabad',
+        images: [
+          { src: '/casestudy-squaredesigns-search.png', label: 'Search Ranking - "printing shop in madhapur"' },
+          { src: '/casestudy-squaredesigns-performance.png', label: 'Business Profile Performance - Last 30 Days' },
+        ],
+        caption: 'Ranks in the top 3 for local printing searches in Madhapur.',
+        stats: [
+          { label: 'Business profile views (30 days)', before: '4,193 views', after: '+17.7% vs last month' },
+          { label: 'Search impressions (30 days)', before: '563 searches', after: '+33.7% vs last month' },
+        ],
+        disclaimer: 'Organic growth from GMB optimization - no paid ads.',
+      },
+    ],
   },
   {
     slug: 'brand-guidelines-identity',
@@ -540,6 +557,15 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         q: 'How long does a packaging design project take?',
         a: 'A single product label or box design typically takes 2-3 weeks including 3D mockup revisions. Multi-SKU packaging systems can take 4-6 weeks.',
       },
+    ],
+    clientWorks: [
+      { title: 'Apple Cider Vinegar Gummies', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-acv-gummies.png' },
+      { title: 'Omega 3 Fish Oil', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-omega3.jpg' },
+      { title: 'Vitamin K2 + D3', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-vitamink2d3.png' },
+      { title: 'African Mango Drops', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-mangodrops.png' },
+      { title: 'Pre-Workout Watermelon', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-preworkout.png' },
+      { title: 'Whey Isolate Protein', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-wheyprotein.png' },
+      { title: 'Collagen Peptides - Label Detail', industry: 'Supplements', img: '/clientwork-collagen-peptides.png' },
     ],
   },
   {

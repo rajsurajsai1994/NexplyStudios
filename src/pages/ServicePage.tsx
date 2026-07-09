@@ -66,7 +66,7 @@ export default function ServicePage() {
       ) : service.layout === 'stacking' ? (
         <JackProjectsSection />
       ) : (
-        <ClientWorksGridSection seedPrefix={service.slug} works={service.clientWorks} featured={service.featuredWork} />
+        <ClientWorksGridSection seedPrefix={service.slug} works={service.clientWorks} featured={service.featuredWorks} />
       )}
 
       <ServiceBodySection body={service.body} />
