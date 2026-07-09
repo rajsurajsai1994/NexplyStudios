@@ -38,12 +38,12 @@ export default function Footer() {
           {/* Brand column */}
           <div className="flex flex-col items-start gap-4">
             <img
-              src="/nexply-logo.svg"
+              src="/nexply-logo-white.svg"
               alt="Nexply Studios"
               loading="lazy"
               decoding="async"
               className="block"
-              style={{ height: 44, width: 'auto', filter: 'brightness(0) invert(1)' }}
+              style={{ height: 44, width: 'auto' }}
             />
             <p className="text-sm max-w-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
               Design, development, and marketing - under one roof, moving at startup speed.

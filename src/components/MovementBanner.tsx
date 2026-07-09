@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { useInView } from '../hooks/useInView';
 
@@ -133,7 +134,8 @@ export default function MovementBanner() {
             light faster.
           </p>
 
-          <button
+          <Link
+            to="/contact"
             className="mt-7 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0px_6px_32px_8px_rgba(39,243,169,0.22)] active:scale-[0.98]"
             style={{
               padding: '12px 28px',
@@ -151,7 +153,7 @@ export default function MovementBanner() {
             }}
           >
             <span style={{ color: '#fff', fontSize: 14, fontWeight: 400 }}>Find Your Spotlight</span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { useInView } from '../hooks/useInView';
 import { gradientA, gradientTextStyle, DARK_BG_FLAT } from '../lib/brand';
@@ -54,8 +55,8 @@ export default function FinalCTABanner() {
         </p>
 
         <div className="mt-9">
-          <a
-            href="#"
+          <Link
+            to="/contact"
             className="group relative inline-flex items-center gap-2 rounded-full px-8 py-4 overflow-hidden"
             style={{ background: 'rgb(28,78,255)' }}
           >
@@ -70,7 +71,7 @@ export default function FinalCTABanner() {
               size={18}
               className="relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

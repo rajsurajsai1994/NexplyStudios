@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useTypewriter } from '../hooks/useTypewriter';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { useInView } from '../hooks/useInView';
@@ -61,7 +62,8 @@ export default function Hero() {
 
           <div className="mt-8 flex justify-center lg:justify-start">
             <div className="hero-cta-border-wrap">
-              <button
+              <Link
+                to="/contact"
                 className="group relative inline-flex items-center gap-2 rounded-full px-7 py-3.5 overflow-hidden"
                 style={{ background: '#0b0a1f' }}
               >
@@ -76,7 +78,7 @@ export default function Hero() {
                   size={18}
                   className="relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

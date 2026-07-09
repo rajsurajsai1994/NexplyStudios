@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { useInView } from '../hooks/useInView';
 import { gradientA, DARK_BG_GRADIENT } from '../lib/brand';
@@ -61,8 +62,8 @@ export default function AboutHero() {
         </h1>
 
         <div className="hero-cta-border-wrap mt-10 inline-block">
-          <a
-            href="./contact/"
+          <Link
+            to="/contact"
             className="group relative inline-flex items-center gap-2 rounded-full px-7 py-3.5 overflow-hidden"
             style={{ background: '#0b0a1f' }}
           >
@@ -75,7 +76,7 @@ export default function AboutHero() {
               size={18}
               className="relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

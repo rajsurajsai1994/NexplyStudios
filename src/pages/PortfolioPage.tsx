@@ -8,6 +8,7 @@ import { FAQS } from '../lib/faqs';
 import FinalCTABanner from '../components/FinalCTABanner';
 import Footer from '../components/Footer';
 import { NEXPLY_SERVICES } from '../lib/services';
+import { getServicePageBySlug } from '../lib/servicePages';
 import { DARK_BG_FLAT } from '../lib/brand';
 import { useSEO } from '../hooks/useSEO';
 import { ORGANIZATION_SCHEMA, breadcrumbSchema, faqSchema } from '../lib/seo';
@@ -15,6 +16,10 @@ import { ORGANIZATION_SCHEMA, breadcrumbSchema, faqSchema } from '../lib/seo';
 export default function PortfolioPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = NEXPLY_SERVICES[activeIndex];
+  // Reuse the exact same client work data (and featured case study, if any)
+  // that the individual service page shows - so "Logo Design & Brand
+  // Identity" here is never out of sync with its own page.
+  const activeServicePage = getServicePageBySlug(active.slug);
 
   useSEO({
     title: 'Portfolio',
@@ -75,7 +80,12 @@ export default function PortfolioPage() {
 
       {/* Grid re-mounts (via key) so the crossfade-free swap still feels
           intentional when switching between service filters. */}
-      <ClientWorksGridSection key={active.slug} seedPrefix={active.slug} />
+      <ClientWorksGridSection
+        key={active.slug}
+        seedPrefix={active.slug}
+        works={activeServicePage?.clientWorks}
+        featured={activeServicePage?.featuredWork}
+      />
 
       <FAQSection />
       <FinalCTABanner />
