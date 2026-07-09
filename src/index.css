@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #000201;
+}
+
+/* Hero orbit visualization */
+@keyframes orbit-spin-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-spin-ccw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* Rotating conic-gradient border on the hero CTA */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+.hero-cta-border-wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: 9999px;
+}
+.hero-cta-border-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--border-angle), #7C6CFF, #0b0a1f 35%, #FF9D3C 65%, #0b0a1f 90%, #7C6CFF);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-rotate 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Typewriter caret */
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.hero-caret {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  margin-left: 4px;
+  background: #7C6CFF;
+  animation: blink-caret 0.9s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* Process section - traveling beam + synced node glows.
+   A single shared 5s loop: the dot travels left(0%->100%) while each node's
+   glow briefly fires at the moment the dot reaches its position, so they
+   stay perfectly in sync without any JS timing/measurement. */
+@keyframes process-beam-travel {
+  0% { left: 0%; opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  2% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  25% { left: 25%; }
+  50% { left: 50%; }
+  75% { left: 75%; }
+  98% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { left: 100%; opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+@keyframes process-node-glow-0 {
+  0%, 100% { box-shadow: var(--node-shadow-base); }
+  3% { box-shadow: var(--node-shadow-base), 0 0 22px 6px rgba(124,108,255,0.55); }
+  9% { box-shadow: var(--node-shadow-base); }
+}
+@keyframes process-node-glow-1 {
+  0%, 19%, 100% { box-shadow: var(--node-shadow-base); }
+  25% { box-shadow: var(--node-shadow-base), 0 0 22px 6px rgba(124,108,255,0.55); }
+  31% { box-shadow: var(--node-shadow-base); }
+}
+@keyframes process-node-glow-2 {
+  0%, 44%, 100% { box-shadow: var(--node-shadow-base); }
+  50% { box-shadow: var(--node-shadow-base), 0 0 22px 6px rgba(124,108,255,0.55); }
+  56% { box-shadow: var(--node-shadow-base); }
+}
+@keyframes process-node-glow-3 {
+  0%, 69%, 100% { box-shadow: var(--node-shadow-base); }
+  75% { box-shadow: var(--node-shadow-base), 0 0 22px 6px rgba(124,108,255,0.55); }
+  81% { box-shadow: var(--node-shadow-base); }
+}
+@keyframes process-node-glow-4 {
+  0%, 91%, 100% { box-shadow: var(--node-shadow-base); }
+  97% { box-shadow: var(--node-shadow-base), 0 0 22px 6px rgba(124,108,255,0.55); }
+}
+.process-node {
+  --node-shadow-base: 6px 6px 12px rgba(0,0,0,0.4), -4px -4px 10px rgba(255,255,255,0.03),
+    inset 1px 1px 1px rgba(255,255,255,0.06), inset 4px 4px 8px rgba(0,0,0,0.4);
+  box-shadow: var(--node-shadow-base);
+}
+.process-node::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 9999px;
+  border: 1px dotted rgba(255,255,255,0.15);
+  pointer-events: none;
+}
+
+/* Logo ticker - pure CSS infinite marquee, no JS recalculation per cycle */
+@keyframes logos-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.logos-marquee-track {
+  animation: logos-marquee-scroll 30s linear infinite;
+}
+
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Footer top divider - thin line with a gradient shine sweeping across it,
+   signaling "this is the end of the page" before the footer content. */
+@keyframes footer-line-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.footer-divider-line {
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(124, 108, 255, 0.7) 45%,
+    rgba(255, 157, 60, 0.7) 55%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: footer-line-sweep 6s linear infinite;
+}
+
+/* Contact page - reverted to the shared ServicesHeroSection (video-based),
+   so the liquid-glass/Spline-specific CSS that used to live here has been
+   removed along with the components that used it. */

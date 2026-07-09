@@ -1,0 +1,1 @@
+import{P as e,d as t}from"./useSEO-DTN7KIiJ.js";var n=e();function r({children:e,as:r=`div`,delay:i=0,duration:a=.7,x:o=0,y:s=30,className:c}){return(0,n.jsx)(t.create(r),{className:c,initial:{opacity:0,x:o,y:s},whileInView:{opacity:1,x:0,y:0},viewport:{once:!0,margin:`50px`,amount:0},transition:{delay:i,duration:a,ease:[.25,.1,.25,1]},children:e})}export{r as t};
