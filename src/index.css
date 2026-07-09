@@ -164,3 +164,15 @@ body {
 /* Contact page - reverted to the shared ServicesHeroSection (video-based),
    so the liquid-glass/Spline-specific CSS that used to live here has been
    removed along with the components that used it. */
+
+/* Mobile browsers (Chrome/WebKit) can render a thin bright seam along the
+   edge of rounded, backdrop-blurred cards during scroll - a known
+   compositing quirk where the blur's sampling region doesn't quite match
+   the element's rounded clip path on repaint. Forcing each blurred element
+   onto its own stable GPU layer avoids the artifact. */
+[class*='backdrop-blur'] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

@@ -108,14 +108,14 @@ function ProjectCard({ project, index, total }: { project: Project; index: numbe
         </div>
 
         <div className="relative flex gap-3 sm:gap-4 flex-1">
-          <div className="flex flex-col gap-3 sm:gap-4" style={{ width: '40%' }}>
+          <div className="flex flex-col gap-3 sm:gap-4 h-full" style={{ width: '40%' }}>
             <img
               src={project.col1[0]}
               alt=""
               loading="lazy"
               decoding="async"
               className="w-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[36px]"
-              style={{ height: 'clamp(130px, 16vw, 230px)' }}
+              style={{ flex: '0 1 40%', minHeight: 0 }}
             />
             <img
               src={project.col1[1]}
@@ -123,7 +123,7 @@ function ProjectCard({ project, index, total }: { project: Project; index: numbe
               loading="lazy"
               decoding="async"
               className="w-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[36px]"
-              style={{ height: 'clamp(160px, 22vw, 340px)' }}
+              style={{ flex: '1 1 58%', minHeight: 0 }}
             />
           </div>
           <div style={{ width: '60%' }}>

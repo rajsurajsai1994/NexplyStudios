@@ -136,7 +136,13 @@ export default function ToonhubSection() {
         fontFamily: "'Inter', sans-serif",
       }}
     >
-      <div className="relative w-full" style={{ height: '85vh', overflow: 'hidden' }}>
+      <div
+        className="relative w-full"
+        style={{
+          height: isMobile ? (view === 'grid' ? 'auto' : 780) : '85vh',
+          overflow: isMobile && view === 'grid' ? 'visible' : 'hidden',
+        }}
+      >
         <AnimatePresence mode="wait">
           {view === 'carousel' ? (
             <motion.div
@@ -212,8 +218,8 @@ export default function ToonhubSection() {
                 <div
                   className="relative rounded-2xl overflow-hidden backdrop-blur-xl flex flex-col"
                   style={{
-                    width: 290,
-                    height: 340,
+                    width: isMobile ? 190 : 290,
+                    height: isMobile ? 235 : 340,
                     border: '1px solid rgba(255,255,255,0.4)',
                     background: 'rgba(255,255,255,0.1)',
                     boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.3), 0 12px 32px rgba(0,0,0,0.22)',
@@ -238,7 +244,7 @@ export default function ToonhubSection() {
                         style={{ objectFit: 'cover', objectPosition: 'center top' }}
                       />
                     ) : (
-                      <ImagePlus size={30} color="rgba(255,255,255,0.7)" strokeWidth={1.5} />
+                      <ImagePlus size={isMobile ? 22 : 30} color="rgba(255,255,255,0.7)" strokeWidth={1.5} />
                     )}
                   </div>
 
@@ -247,17 +253,17 @@ export default function ToonhubSection() {
                     style={{ borderTop: '1px solid rgba(255,255,255,0.22)' }}
                   >
                     <p
-                      className="text-lg font-bold uppercase tracking-wide truncate"
+                      className={isMobile ? 'text-sm font-bold uppercase tracking-wide truncate' : 'text-lg font-bold uppercase tracking-wide truncate'}
                       style={{ color: '#fff', opacity: 0.95, letterSpacing: '0.02em' }}
                     >
                       {TEAM_BY_COLOR[activeIndex].name}
                     </p>
-                    <p className="text-base mt-1.5" style={{ color: '#fff', opacity: 0.8, lineHeight: 1.4 }}>
+                    <p className={isMobile ? 'text-xs mt-1' : 'text-base mt-1.5'} style={{ color: '#fff', opacity: 0.8, lineHeight: 1.4 }}>
                       {TEAM_BY_COLOR[activeIndex].role}
                     </p>
                     <div className="flex items-center gap-1.5 mt-2.5">
-                      <Clock size={16} color="rgba(255,255,255,0.6)" />
-                      <span className="text-base" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                      <Clock size={isMobile ? 13 : 16} color="rgba(255,255,255,0.6)" />
+                      <span className={isMobile ? 'text-xs' : 'text-base'} style={{ color: 'rgba(255,255,255,0.65)' }}>
                         {TEAM_BY_COLOR[activeIndex].experience || 'Nexply Studios'}
                       </span>
                     </div>
@@ -319,12 +325,12 @@ export default function ToonhubSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="absolute inset-0 overflow-y-auto"
+              className={isMobile ? 'relative w-full' : 'absolute inset-0 overflow-y-auto'}
             >
               <div className="absolute inset-0 pointer-events-none" style={glassDifferentiation('rgba(124,108,255,0.06)')} />
 
               <div
-                className="relative z-10 h-full flex flex-col items-center justify-center"
+                className={`relative z-10 flex flex-col items-center justify-center ${isMobile ? '' : 'h-full'}`}
                 style={{ padding: 'clamp(32px, 5vw, 56px) clamp(16px, 4vw, 40px)' }}
               >
                 <div className="flex flex-col items-center text-center gap-3 mb-10">
@@ -345,7 +351,7 @@ export default function ToonhubSection() {
                       style={{
                         width: '100%',
                         maxWidth: 260,
-                        height: 300,
+                        height: isMobile ? 250 : 300,
                         border: '1px solid rgba(255,255,255,0.16)',
                         background: 'rgba(255,255,255,0.05)',
                         boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 12px 28px rgba(0,0,0,0.25)',

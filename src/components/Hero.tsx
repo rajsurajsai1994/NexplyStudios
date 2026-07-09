@@ -20,8 +20,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[100dvh] flex flex-col px-4 md:px-16 overflow-hidden"
-      style={{ paddingTop: 'clamp(120px, 20vh, 240px)', paddingBottom: 'clamp(48px, 6vh, 96px)' }}
+      className="relative min-h-[100dvh] flex flex-col px-4 md:px-16 overflow-hidden pt-[clamp(72px,11vh,140px)] sm:pt-[clamp(120px,20vh,240px)] pb-[clamp(40px,5vh,72px)] sm:pb-[clamp(48px,6vh,96px)]"
     >
       <video
         autoPlay={!reduceMotion}
