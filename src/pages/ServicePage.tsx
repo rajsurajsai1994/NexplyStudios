@@ -4,6 +4,8 @@ import ServicesHeroSection from '../components/jack/ServicesHeroSection';
 import JackMarqueeSection from '../components/jack/JackMarqueeSection';
 import JackProjectsSection from '../components/jack/JackProjectsSection';
 import ClientWorksGridSection from '../components/jack/ClientWorksGridSection';
+import InstagramCarouselShowcase from '../components/jack/InstagramCarouselShowcase';
+import SocialMediaShowcaseGrid from '../components/jack/SocialMediaShowcaseGrid';
 import ServiceBodySection from '../components/jack/ServiceBodySection';
 import FAQSection from '../components/FAQSection';
 import FinalCTABanner from '../components/FinalCTABanner';
@@ -54,9 +56,14 @@ export default function ServicePage() {
         line2={service.heroLine2}
         subtext={service.heroSubtext}
       />
-      <JackMarqueeSection />
+      <JackMarqueeSection images={service.clientWorks?.map((w) => w.img)} />
 
-      {service.layout === 'stacking' ? (
+      {service.slug === 'social-media-marketing' ? (
+        <>
+          <InstagramCarouselShowcase />
+          <SocialMediaShowcaseGrid />
+        </>
+      ) : service.layout === 'stacking' ? (
         <JackProjectsSection />
       ) : (
         <ClientWorksGridSection seedPrefix={service.slug} works={service.clientWorks} featured={service.featuredWork} />

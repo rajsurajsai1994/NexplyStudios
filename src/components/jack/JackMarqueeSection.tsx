@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const IMAGES = [
+const PLACEHOLDER_IMAGES = [
   'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
   'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
   'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
@@ -24,14 +24,23 @@ const IMAGES = [
   'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
 ];
 
-const ROW1 = IMAGES.slice(0, 11);
-const ROW2 = IMAGES.slice(11);
-const ROW1_TRIPLED = [...ROW1, ...ROW1, ...ROW1];
-const ROW2_TRIPLED = [...ROW2, ...ROW2, ...ROW2];
+interface JackMarqueeSectionProps {
+  // Real images to show instead of the generic placeholder previews - e.g.
+  // actual client logos on the Logo Design page. Split evenly across the
+  // two scrolling rows and each row is tripled for a seamless loop.
+  images?: string[];
+}
 
-export default function JackMarqueeSection() {
+export default function JackMarqueeSection({ images }: JackMarqueeSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
+
+  const source = images && images.length > 0 ? images : PLACEHOLDER_IMAGES;
+  const midpoint = Math.ceil(source.length / 2);
+  const row1 = source.slice(0, midpoint);
+  const row2 = source.slice(midpoint);
+  const row1Tripled = [...row1, ...row1, ...row1];
+  const row2Tripled = [...row2, ...row2, ...row2];
 
   useEffect(() => {
     const onScroll = () => {
@@ -52,14 +61,14 @@ export default function JackMarqueeSection() {
         className="flex gap-3 mb-3"
         style={{ transform: `translateX(${offset - 200}px)`, willChange: 'transform' }}
       >
-        {ROW1_TRIPLED.map((src, i) => (
+        {row1Tripled.map((src, i) => (
           <img
             key={i}
             src={src}
             alt=""
             loading="lazy"
             className="rounded-2xl object-cover shrink-0"
-            style={{ width: 420, height: 270 }}
+            style={{ width: 420, height: 270, background: images ? '#161726' : undefined }}
           />
         ))}
       </div>
@@ -67,14 +76,14 @@ export default function JackMarqueeSection() {
         className="flex gap-3"
         style={{ transform: `translateX(${-(offset - 200)}px)`, willChange: 'transform' }}
       >
-        {ROW2_TRIPLED.map((src, i) => (
+        {row2Tripled.map((src, i) => (
           <img
             key={i}
             src={src}
             alt=""
             loading="lazy"
             className="rounded-2xl object-cover shrink-0"
-            style={{ width: 420, height: 270 }}
+            style={{ width: 420, height: 270, background: images ? '#161726' : undefined }}
           />
         ))}
       </div>
