@@ -65,7 +65,6 @@ export default function LogosSection() {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  loading="lazy"
                   decoding="async"
                   className="relative max-w-full max-h-full object-contain"
                 />

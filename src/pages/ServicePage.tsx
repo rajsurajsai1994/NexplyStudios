@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ServicesHeroSection from '../components/jack/ServicesHeroSection';
-import JackMarqueeSection from '../components/jack/JackMarqueeSection';
 import JackProjectsSection from '../components/jack/JackProjectsSection';
 import ClientWorksGridSection from '../components/jack/ClientWorksGridSection';
 import InstagramCarouselShowcase from '../components/jack/InstagramCarouselShowcase';
+import PublicationFlipbookSection from '../components/jack/PublicationFlipbookSection';
 import MasonryWorksSection from '../components/jack/MasonryWorksSection';
 import ServiceBodySection from '../components/jack/ServiceBodySection';
 import FAQSection from '../components/FAQSection';
@@ -56,9 +56,6 @@ export default function ServicePage() {
         line2={service.heroLine2}
         subtext={service.heroSubtext}
       />
-      {!service.hideMarquee && (
-        <JackMarqueeSection images={service.marqueeImages ?? service.clientWorks?.map((w) => w.img)} />
-      )}
 
       {service.slug === 'social-media-marketing' ? (
         <>
@@ -68,6 +65,11 @@ export default function ServicePage() {
             subtext={service.clientWorksSubtext ?? "A few of the projects we've brought to life."}
             items={service.clientWorks ?? []}
           />
+        </>
+      ) : service.slug === 'print-publication-design' ? (
+        <>
+          <PublicationFlipbookSection />
+          <ClientWorksGridSection seedPrefix={service.slug} works={service.clientWorks} featured={service.featuredWorks} />
         </>
       ) : service.clientWorksLayout === 'masonry' ? (
         <MasonryWorksSection
