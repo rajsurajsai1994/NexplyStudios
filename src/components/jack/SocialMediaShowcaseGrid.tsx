@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { DARK_BG_FLAT } from '../../lib/brand';
 
 interface FlyerItem {
@@ -31,7 +32,26 @@ const FLYERS: FlyerItem[] = [
   { img: '/social/ad-creative-4.jpg', client: 'Ad Creative', caption: 'Social Campaign' },
 ];
 
+// Fisher-Yates shuffle - randomizes display order so the grouping doesn't
+// always show the same client/topic in the same spot.
+function shuffle<T>(arr: T[]): T[] {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 export default function SocialMediaShowcaseGrid() {
+  // Starts as the static order (matches what the server rendered, so
+  // hydration doesn't mismatch), then shuffles once on the client right
+  // after mount.
+  const [items, setItems] = useState(FLYERS);
+  useEffect(() => {
+    setItems(shuffle(FLYERS));
+  }, []);
+
   return (
     <section className="relative" style={{ background: DARK_BG_FLAT }}>
       <div
@@ -63,9 +83,9 @@ export default function SocialMediaShowcaseGrid() {
             @media (min-width: 1024px) { .flyer-masonry { column-count: 3 !important; } }
           `}</style>
           <div className="flyer-masonry" style={{ columnCount: 1, columnGap: 20 }}>
-            {FLYERS.map((flyer, i) => (
+            {items.map((flyer) => (
               <div
-                key={i}
+                key={flyer.img}
                 className="relative rounded-2xl overflow-hidden group"
                 style={{
                   breakInside: 'avoid',
