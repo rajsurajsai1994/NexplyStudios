@@ -232,52 +232,55 @@ export default function InstagramCarouselShowcase() {
             </div>
           </div>
 
-          {/* Campaign selector - 2x2 chip grid, titles only */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full" style={{ maxWidth: 480 }}>
-            {CAMPAIGNS.map((c, i) => {
-              const isActive = i === campaignIndex;
-              return (
-                <button
-                  key={c.id}
-                  onClick={() => selectCampaign(i)}
-                  className="text-left rounded-2xl px-5 py-5 transition-all duration-300 flex items-center"
-                  style={
-                    isActive
-                      ? { background: gradientA, color: 'white', minHeight: 84 }
-                      : {
-                          border: '1px solid rgba(255,255,255,0.14)',
-                          background: 'rgba(255,255,255,0.03)',
-                          color: 'rgba(255,255,255,0.85)',
-                          minHeight: 84,
-                        }
-                  }
-                >
-                  <p className="text-sm font-semibold leading-snug">{c.caption}</p>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+          {/* Campaign selector - 2x2 chip grid, plus the description for
+              whichever campaign is active, directly underneath it. */}
+          <div className="flex flex-col gap-6 w-full" style={{ maxWidth: 480 }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+              {CAMPAIGNS.map((c, i) => {
+                const isActive = i === campaignIndex;
+                return (
+                  <button
+                    key={c.id}
+                    onClick={() => selectCampaign(i)}
+                    className="text-left rounded-2xl px-5 py-5 transition-all duration-300 flex items-center"
+                    style={
+                      isActive
+                        ? { background: gradientA, color: 'white', minHeight: 84 }
+                        : {
+                            border: '1px solid rgba(255,255,255,0.14)',
+                            background: 'rgba(255,255,255,0.03)',
+                            color: 'rgba(255,255,255,0.85)',
+                            minHeight: 84,
+                          }
+                    }
+                  >
+                    <p className="text-sm font-semibold leading-snug">{c.caption}</p>
+                  </button>
+                );
+              })}
+            </div>
 
-        {/* Shared description for whichever campaign is selected - lives
-            below the whole phone + chip-grid row, not inside each chip. */}
-        <div className="w-full mt-10 text-center" style={{ maxWidth: 620 }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={campaign.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-            >
-              <h3 className="text-white font-medium mb-2" style={{ fontSize: 'clamp(17px, 1.6vw, 21px)' }}>
-                {campaign.caption}
-              </h3>
-              <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: 1.6 }}>
-                {campaign.description}
-              </p>
-            </motion.div>
-          </AnimatePresence>
+            {/* Description for the active campaign - left-aligned, sits
+                directly under the chip grid it belongs to. */}
+            <div className="w-full text-left">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={campaign.id}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                >
+                  <h3 className="text-white font-medium mb-2" style={{ fontSize: 'clamp(17px, 1.6vw, 21px)' }}>
+                    {campaign.caption}
+                  </h3>
+                  <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: 1.6 }}>
+                    {campaign.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,71 +1,60 @@
 import { DARK_BG_GRADIENT } from '../../lib/brand';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import LiveProjectButton from './LiveProjectButton';
+import VisitWebsiteButton from './VisitWebsiteButton';
 
-interface Project {
+export interface StackingProject {
   num: string;
   name: string;
-  category: string;
+  industry: string;
+  url?: string;
+  note?: string;
   col1: [string, string];
   col2: string;
 }
 
-const PROJECTS: Project[] = [
+// Placeholder projects - swap in real client names/industries/images when
+// available. Used as the default for stacking-layout service pages that
+// don't yet have their own real project set wired up via servicePages.ts.
+const PLACEHOLDER_PROJECTS: StackingProject[] = [
   {
     num: '01',
-    name: 'Nextlevel Studio',
-    category: 'Client',
-    col1: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-    ],
-    col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
+    name: 'Project Name Here',
+    industry: 'Industry',
+    col1: ['https://picsum.photos/seed/nexply-svc-01a/600/400', 'https://picsum.photos/seed/nexply-svc-01b/600/500'],
+    col2: 'https://picsum.photos/seed/nexply-svc-01c/700/900',
   },
   {
     num: '02',
-    name: 'Aura Brand Identity',
-    category: 'Personal',
-    col1: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-    ],
-    col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
+    name: 'Project Name Here',
+    industry: 'Industry',
+    col1: ['https://picsum.photos/seed/nexply-svc-02a/600/400', 'https://picsum.photos/seed/nexply-svc-02b/600/500'],
+    col2: 'https://picsum.photos/seed/nexply-svc-02c/700/900',
   },
   {
     num: '03',
-    name: 'Solaris Digital',
-    category: 'Client',
-    col1: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-    ],
-    col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
+    name: 'Project Name Here',
+    industry: 'Industry',
+    col1: ['https://picsum.photos/seed/nexply-svc-03a/600/400', 'https://picsum.photos/seed/nexply-svc-03b/600/500'],
+    col2: 'https://picsum.photos/seed/nexply-svc-03c/700/900',
   },
-  // Placeholder entries - swap in real project names/images when available.
   {
     num: '04',
     name: 'Project Name Here',
-    category: 'Client',
-    col1: [
-      'https://picsum.photos/seed/nexply-svc-04a/600/400',
-      'https://picsum.photos/seed/nexply-svc-04b/600/500',
-    ],
+    industry: 'Industry',
+    col1: ['https://picsum.photos/seed/nexply-svc-04a/600/400', 'https://picsum.photos/seed/nexply-svc-04b/600/500'],
     col2: 'https://picsum.photos/seed/nexply-svc-04c/700/900',
   },
   {
     num: '05',
     name: 'Project Name Here',
-    category: 'Client',
-    col1: [
-      'https://picsum.photos/seed/nexply-svc-05a/600/400',
-      'https://picsum.photos/seed/nexply-svc-05b/600/500',
-    ],
+    industry: 'Industry',
+    col1: ['https://picsum.photos/seed/nexply-svc-05a/600/400', 'https://picsum.photos/seed/nexply-svc-05b/600/500'],
     col2: 'https://picsum.photos/seed/nexply-svc-05c/700/900',
   },
 ];
 
-function ProjectCard({ project, index, total }: { project: Project; index: number; total: number }) {
+function ProjectCard({ project, index, total }: { project: StackingProject; index: number; total: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] });
   const targetScale = 1 - (total - 1 - index) * 0.03;
@@ -97,14 +86,22 @@ function ProjectCard({ project, index, total }: { project: Project; index: numbe
             </span>
             <div className="flex flex-col gap-1">
               <span className="uppercase tracking-widest text-xs sm:text-sm" style={{ color: 'rgba(215,226,234,0.6)' }}>
-                {project.category}
+                {project.industry}
               </span>
               <span className="uppercase font-medium" style={{ color: '#D7E2EA', fontSize: 'clamp(1.1rem, 2.4vw, 2rem)' }}>
                 {project.name}
               </span>
+              {project.note && (
+                <span
+                  className="inline-flex items-center gap-1.5 mt-1 rounded-full px-3 py-1 text-[11px] sm:text-xs font-medium w-fit"
+                  style={{ background: 'rgba(124,108,255,0.18)', color: '#D7E2EA', border: '1px solid rgba(124,108,255,0.35)' }}
+                >
+                  {project.note}
+                </span>
+              )}
             </div>
           </div>
-          <LiveProjectButton className="shrink-0" />
+          <VisitWebsiteButton url={project.url} className="shrink-0" />
         </div>
 
         <div className="relative flex gap-3 sm:gap-4 flex-1">
@@ -141,7 +138,13 @@ function ProjectCard({ project, index, total }: { project: Project; index: numbe
   );
 }
 
-export default function JackProjectsSection() {
+interface JackProjectsSectionProps {
+  projects?: StackingProject[];
+}
+
+export default function JackProjectsSection({ projects }: JackProjectsSectionProps) {
+  const items = projects ?? PLACEHOLDER_PROJECTS;
+
   return (
     <section
       id="client-works"
@@ -152,8 +155,8 @@ export default function JackProjectsSection() {
         Our Client Works
       </h2>
       <div className="max-w-[1400px] mx-auto">
-        {PROJECTS.map((p, i) => (
-          <ProjectCard key={p.num} project={p} index={i} total={PROJECTS.length} />
+        {items.map((p, i) => (
+          <ProjectCard key={p.num} project={p} index={i} total={items.length} />
         ))}
       </div>
     </section>

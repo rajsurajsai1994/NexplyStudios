@@ -5,7 +5,7 @@ import JackMarqueeSection from '../components/jack/JackMarqueeSection';
 import JackProjectsSection from '../components/jack/JackProjectsSection';
 import ClientWorksGridSection from '../components/jack/ClientWorksGridSection';
 import InstagramCarouselShowcase from '../components/jack/InstagramCarouselShowcase';
-import SocialMediaShowcaseGrid from '../components/jack/SocialMediaShowcaseGrid';
+import MasonryWorksSection from '../components/jack/MasonryWorksSection';
 import ServiceBodySection from '../components/jack/ServiceBodySection';
 import FAQSection from '../components/FAQSection';
 import FinalCTABanner from '../components/FinalCTABanner';
@@ -56,15 +56,27 @@ export default function ServicePage() {
         line2={service.heroLine2}
         subtext={service.heroSubtext}
       />
-      <JackMarqueeSection images={service.clientWorks?.map((w) => w.img)} />
+      {!service.hideMarquee && (
+        <JackMarqueeSection images={service.marqueeImages ?? service.clientWorks?.map((w) => w.img)} />
+      )}
 
       {service.slug === 'social-media-marketing' ? (
         <>
           <InstagramCarouselShowcase />
-          <SocialMediaShowcaseGrid />
+          <MasonryWorksSection
+            heading={service.clientWorksHeading ?? 'Our Client Works'}
+            subtext={service.clientWorksSubtext ?? "A few of the projects we've brought to life."}
+            items={service.clientWorks ?? []}
+          />
         </>
+      ) : service.clientWorksLayout === 'masonry' ? (
+        <MasonryWorksSection
+          heading={service.clientWorksHeading ?? 'Our Client Works'}
+          subtext={service.clientWorksSubtext ?? "A few of the projects we've brought to life."}
+          items={service.clientWorks ?? []}
+        />
       ) : service.layout === 'stacking' ? (
-        <JackProjectsSection />
+        <JackProjectsSection projects={service.stackingProjects} />
       ) : (
         <ClientWorksGridSection seedPrefix={service.slug} works={service.clientWorks} featured={service.featuredWorks} />
       )}

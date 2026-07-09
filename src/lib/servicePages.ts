@@ -42,6 +42,16 @@ export interface ServicePageFeaturedWork {
   disclaimer?: string;
 }
 
+export interface ServicePageStackingProject {
+  num: string;
+  name: string;
+  industry: string;
+  url?: string;
+  note?: string;
+  col1: [string, string];
+  col2: string;
+}
+
 export interface ServicePageConfig {
   slug: string;
   title: string;
@@ -55,6 +65,26 @@ export interface ServicePageConfig {
   // services that don't have real photos lined up yet - ClientWorksGridSection
   // falls back to its own placeholder set in that case.
   clientWorks?: ServicePageClientWork[];
+  // 'masonry' swaps the uniform grid for MasonryWorksSection, for pages
+  // where the real deliverables come in genuinely different sizes/aspect
+  // ratios (social posts, product labels) that shouldn't be cropped to fit
+  // a uniform card.
+  clientWorksLayout?: 'grid' | 'masonry';
+  clientWorksHeading?: string;
+  clientWorksSubtext?: string;
+  // Real images for the scrolling marquee row under the hero. Falls back to
+  // clientWorks images, then to the generic placeholder GIFs, when omitted -
+  // separate from clientWorks since a page may want a different image set
+  // scrolling up top vs. shown in the grid below (e.g. label designs in the
+  // marquee, product photography in the grid).
+  marqueeImages?: string[];
+  // Set true to skip the scrolling marquee entirely on this page (e.g. when
+  // the "Our Client Works" section below already carries the real proof
+  // and the marquee would otherwise fall back to generic placeholders).
+  hideMarquee?: boolean;
+  // Real project data for 'stacking' layout pages (JackProjectsSection).
+  // Falls back to the component's own placeholder set when omitted.
+  stackingProjects?: ServicePageStackingProject[];
   // One highlighted, larger case-study card shown above the regular grid -
   // for a result impressive enough to lead with (real before/after numbers,
   // not just a logo image).
@@ -79,8 +109,8 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
           text: 'Every layout is designed around your brand and content - not adapted from a stock WordPress or Wix theme.',
         },
         {
-          title: 'Built for speed & SEO',
-          text: 'Clean code, optimized images, and proper page structure so your site loads quickly and ranks on search from day one.',
+          title: 'Built for speed, SEO, GEO and AEO',
+          text: 'Clean code, optimized images, and proper page structure so your site loads quickly and ranks on search - plus the structured data and clear content AI answer engines need to cite you directly.',
         },
         {
           title: 'You can actually update it',
@@ -104,6 +134,50 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       {
         q: 'Do you also handle hosting and domain setup?',
         a: "We can guide you through hosting and domain setup, or handle it end-to-end if you'd rather not deal with it. Either way, you retain full ownership of your domain and hosting account.",
+      },
+    ],
+    hideMarquee: true,
+    stackingProjects: [
+      {
+        num: '01',
+        name: 'PAL Physiotherapy & Sports Rehab',
+        industry: 'Healthcare - Physiotherapy Clinic',
+        url: 'https://palphysiotherapy.co.in/',
+        note: 'Fully SEO, GEO & AEO optimized',
+        col1: ['/stacking/pal-locations.png', '/stacking/pal-about.png'],
+        col2: '/stacking/pal-hero.png',
+      },
+      {
+        num: '02',
+        name: 'Pixla AI',
+        industry: 'AI Content Studio',
+        url: 'https://pixla.ai/',
+        col1: ['/stacking/pixla-steps.png', '/stacking/pixla-gallery.png'],
+        col2: '/stacking/pixla-hero.png',
+      },
+      {
+        num: '03',
+        name: 'Zesti Fusion',
+        industry: 'Food & Beverage - Frozen Fusion Snacks',
+        url: 'https://zestifusion.com/products/',
+        col1: ['/stacking/zesti-whoweserve.png', '/stacking/zesti-distributor.png'],
+        col2: '/stacking/zesti-hero.png',
+      },
+      {
+        num: '04',
+        name: 'PrintX Design & Printing',
+        industry: 'Printing & Design Studio',
+        url: 'https://printxdesign.com/',
+        col1: ['/stacking/printx-finish.png', '/stacking/printx-process.png'],
+        col2: '/stacking/printx-hero.png',
+      },
+      {
+        num: '05',
+        name: 'Ardent Clinical Research Services',
+        industry: 'Clinical Research (CRO)',
+        url: 'https://www.ardent-cro.com/',
+        col1: ['/stacking/ardent-collab.png', '/stacking/ardent-family.png'],
+        col2: '/stacking/ardent-extra.png',
       },
     ],
   },
@@ -391,6 +465,31 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         a: "Organic growth (followers, engagement) builds over 2-3 months of consistent posting. Paid ad leads can start coming in within the first 1-2 weeks of a campaign, though optimization improves results over the following month.",
       },
     ],
+    clientWorksLayout: 'masonry',
+    clientWorksHeading: 'Every post, sized for where it runs',
+    clientWorksSubtext:
+      'Square for the feed, portrait for stories, landscape for link previews - no one-size-fits-all template.',
+    clientWorks: [
+      { img: '/social/pal-arthritis.jpg', title: 'Arthritis Care', industry: 'PAL Physiotherapy' },
+      { img: '/social/beyondbajji-why-us.png', title: 'Why Beyond Bajji', industry: 'Beyond Bajji' },
+      { img: '/social/campaign-may19-flyer.jpg', title: 'May Flyer', industry: 'Seasonal Campaign' },
+      { img: '/social/pal-chiropractic.jpg', title: 'Chiropractic Sessions', industry: 'PAL Physiotherapy' },
+      { img: '/social/ad-creative-1.jpg', title: 'Social Campaign', industry: 'Ad Creative' },
+      { img: '/social/beyondbajji-mirchi-bajji.png', title: 'New Trend: Mirchi Bajji', industry: 'Beyond Bajji' },
+      { img: '/social/pal-posture.jpg', title: 'Posture Correction', industry: 'PAL Physiotherapy' },
+      { img: '/social/campaign-stayhome.jpg', title: 'Stay Home', industry: 'Awareness Campaign' },
+      { img: '/social/pal-testimonial.jpg', title: 'Client Testimonial', industry: 'PAL Physiotherapy' },
+      { img: '/social/ad-creative-2.jpg', title: 'Social Campaign', industry: 'Ad Creative' },
+      { img: '/social/beyondbajji-just-fried.png', title: 'Food Is Just Fried', industry: 'Beyond Bajji' },
+      { img: '/social/pal-cupping.jpg', title: 'Cupping Therapy', industry: 'PAL Physiotherapy' },
+      { img: '/social/campaign-workfromhome.jpg', title: 'Work From Home', industry: 'Awareness Campaign' },
+      { img: '/social/pal-pain-into-gains.jpg', title: 'Turn Pain Into Gains', industry: 'PAL Physiotherapy' },
+      { img: '/social/ad-creative-3.jpg', title: 'Social Campaign', industry: 'Ad Creative' },
+      { img: '/social/beyondbajji-fried-icecream.png', title: 'Fried Ice Cream', industry: 'Beyond Bajji' },
+      { img: '/social/pal-true-cost.jpg', title: 'The True Cost', industry: 'PAL Physiotherapy' },
+      { img: '/social/campaign-insurance.jpg', title: 'Insurance Awareness', industry: 'Awareness Campaign' },
+      { img: '/social/ad-creative-4.jpg', title: 'Social Campaign', industry: 'Ad Creative' },
+    ],
   },
   {
     slug: 'google-my-business',
@@ -558,6 +657,10 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         a: 'A single product label or box design typically takes 2-3 weeks including 3D mockup revisions. Multi-SKU packaging systems can take 4-6 weeks.',
       },
     ],
+    clientWorksLayout: 'masonry',
+    clientWorksHeading: 'Every label, its own shelf story',
+    clientWorksSubtext:
+      'Bottle mockups for the product page, flat label art for print - each shown at the size it actually ships at.',
     clientWorks: [
       { title: 'Apple Cider Vinegar Gummies', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-acv-gummies.png' },
       { title: 'Omega 3 Fish Oil', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-omega3.jpg' },
@@ -566,6 +669,20 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       { title: 'Pre-Workout Watermelon', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-preworkout.png' },
       { title: 'Whey Isolate Protein', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-wheyprotein.png' },
       { title: 'Collagen Peptides - Label Detail', industry: 'Supplements', img: '/clientwork-collagen-peptides.png' },
+    ],
+    marqueeImages: [
+      '/marquee/ayurgum-acv-gummies-label.jpg',
+      '/marquee/ayurgum-whey-label.jpg',
+      '/marquee/ayurgum-vitamink2d3-label.jpg',
+      '/marquee/ayurgum-sleepwell-label.jpg',
+      '/marquee/ayurgum-preworkout-watermelon-label.jpg',
+      '/marquee/ayurgum-preworkout-fruitpunch-label.jpg',
+      '/marquee/ayurgum-omega3-label.jpg',
+      '/marquee/ayurgum-multivitamin-label.jpg',
+      '/marquee/ayurgum-multivitamin-women-label.jpg',
+      '/marquee/ayurgum-magnesium-label.jpg',
+      '/marquee/ayurgum-hairvitamin-label.jpg',
+      '/marquee/ayurgum-brainsupport-label.jpg',
     ],
   },
   {

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import ServicesHeroSection from '../components/jack/ServicesHeroSection';
 import JackMarqueeSection from '../components/jack/JackMarqueeSection';
 import ClientWorksGridSection from '../components/jack/ClientWorksGridSection';
+import MasonryWorksSection from '../components/jack/MasonryWorksSection';
 import FAQSection from '../components/FAQSection';
 import { FAQS } from '../lib/faqs';
 import FinalCTABanner from '../components/FinalCTABanner';
@@ -80,12 +81,21 @@ export default function PortfolioPage() {
 
       {/* Grid re-mounts (via key) so the crossfade-free swap still feels
           intentional when switching between service filters. */}
-      <ClientWorksGridSection
-        key={active.slug}
-        seedPrefix={active.slug}
-        works={activeServicePage?.clientWorks}
-        featured={activeServicePage?.featuredWorks}
-      />
+      {activeServicePage?.clientWorksLayout === 'masonry' ? (
+        <MasonryWorksSection
+          key={active.slug}
+          heading={activeServicePage.clientWorksHeading ?? 'Our Client Works'}
+          subtext={activeServicePage.clientWorksSubtext ?? "A few of the projects we've brought to life."}
+          items={activeServicePage.clientWorks ?? []}
+        />
+      ) : (
+        <ClientWorksGridSection
+          key={active.slug}
+          seedPrefix={active.slug}
+          works={activeServicePage?.clientWorks}
+          featured={activeServicePage?.featuredWorks}
+        />
+      )}
 
       <FAQSection />
       <FinalCTABanner />
