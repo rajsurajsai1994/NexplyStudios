@@ -48,7 +48,7 @@ export default function LargeDeckShowcase({
         className="flex flex-col items-center"
         style={{ padding: 'clamp(64px, 8vw, 100px) clamp(16px, 4vw, 40px) clamp(56px, 7vw, 80px)' }}
       >
-        <div className="flex flex-col items-center text-center gap-3 mb-14" style={{ maxWidth: 900 }}>
+        <div className="flex flex-col items-center text-center gap-3 mb-14" style={{ maxWidth: 1100 }}>
           <span
             className="text-xs font-semibold uppercase tracking-wider"
             style={{ color: 'rgba(200,190,230,0.75)' }}
@@ -66,7 +66,7 @@ export default function LargeDeckShowcase({
             )}
           </h2>
           {subtext && (
-            <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)', maxWidth: 780 }}>
+            <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)' }}>
               {subtext}
             </p>
           )}

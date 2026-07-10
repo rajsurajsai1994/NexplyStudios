@@ -18,7 +18,7 @@ export default function ServiceBodySection({ body }: ServiceBodySectionProps) {
         style={{ padding: 'clamp(56px, 7vw, 90px) clamp(16px, 4vw, 40px)' }}
       >
         <FadeIn className="flex flex-col items-center text-center gap-4 mb-14" y={16}>
-          <div style={{ maxWidth: 760 }} className="flex flex-col items-center gap-4">
+          <div style={{ maxWidth: 1100 }} className="flex flex-col items-center gap-4">
             <h2
               className="text-white font-medium"
               style={{ fontSize: 'clamp(26px, 3.2vw, 38px)', lineHeight: 1.25 }}

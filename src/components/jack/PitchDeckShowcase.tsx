@@ -27,13 +27,6 @@ const FEATURED_DECK: Deck = {
 // the newer decks lead.
 const DECKS: Deck[] = [
   {
-    id: 'enlitedu',
-    name: 'EnlitEDU',
-    industry: 'USA Higher Education - Company Profile',
-    description: 'A 15-slide company overview deck introducing EnlitEDU and LioraAI to prospective university partners.',
-    slides: Array.from({ length: 15 }, (_, i) => `/decks/enlitedu-slide-${i + 1}.jpg`),
-  },
-  {
     id: 'pal-physio',
     name: 'PAL Physiotherapy',
     industry: 'Healthcare - Networking Presentation',
@@ -216,7 +209,7 @@ export default function PitchDeckShowcase() {
         className="flex flex-col items-center"
         style={{ padding: 'clamp(64px, 8vw, 100px) clamp(16px, 4vw, 40px) clamp(56px, 7vw, 80px)' }}
       >
-        <div className="flex flex-col items-center text-center gap-3 mb-14" style={{ maxWidth: 900 }}>
+        <div className="flex flex-col items-center text-center gap-3 mb-14" style={{ maxWidth: 1100 }}>
           <span
             className="text-xs font-semibold uppercase tracking-wider"
             style={{ color: 'rgba(200,190,230,0.75)' }}
@@ -229,7 +222,7 @@ export default function PitchDeckShowcase() {
           >
             Click through it <span style={gradientTextStyle}>slide by slide.</span>
           </h2>
-          <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)', maxWidth: 780 }}>
+          <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)' }}>
             Real presentation decks we designed - browse them the same way a client would in the
             room.
           </p>

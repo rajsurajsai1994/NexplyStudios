@@ -35,22 +35,9 @@ const CAMPAIGNS: CarouselCampaign[] = [
     description: 'A public health awareness carousel promoting proper hand-washing technique.',
     slides: ['/social/carousel-handwash-1.jpg', '/social/carousel-handwash-2.jpg'],
   },
-  {
-    id: 'enlitedu',
-    handle: 'enlitedu',
-    caption: 'EnlitEDU - Enrollment Campaign',
-    description: 'A 5-slide campaign walking institutions through the coming enrollment cliff and what it means for them.',
-    slides: [
-      '/social/carousel-enlitedu-1.jpg',
-      '/social/carousel-enlitedu-2.jpg',
-      '/social/carousel-enlitedu-3.jpg',
-      '/social/carousel-enlitedu-4.jpg',
-      '/social/carousel-enlitedu-5.jpg',
-    ],
-  },
 ];
 
-const DEFAULT_CAMPAIGN_INDEX = 3; // EnlitEDU
+const DEFAULT_CAMPAIGN_INDEX = 0;
 
 export default function InstagramCarouselShowcase() {
   const [campaignIndex, setCampaignIndex] = useState(DEFAULT_CAMPAIGN_INDEX);

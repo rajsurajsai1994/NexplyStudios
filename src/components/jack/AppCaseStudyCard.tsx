@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { gradientA, gradientTextStyle } from '../../lib/brand';
 
@@ -30,6 +30,18 @@ export interface AppCaseStudy {
 export default function AppCaseStudyCard({ study }: { study: AppCaseStudy }) {
   const [active, setActive] = useState(0);
   const activeScreen = study.screens[active] ?? study.screens[0];
+  const mainImageRef = useRef<HTMLDivElement>(null);
+
+  // Swapping the main screen can change its height (different screenshots,
+  // different natural aspect ratios), which can shift it out from under
+  // where the person was looking. Nudge the page back up to the top of the
+  // image whenever a thumbnail is picked.
+  const selectScreen = (i: number) => {
+    setActive(i);
+    requestAnimationFrame(() => {
+      mainImageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  };
 
   return (
     <div
@@ -99,12 +111,20 @@ export default function AppCaseStudyCard({ study }: { study: AppCaseStudy }) {
           {study.description}
         </p>
 
-        {/* Main screen, centered, sized to its own natural aspect ratio -
-            no forced box, so nothing gets cropped or letterboxed */}
+        {/* Main screen, centered - sized to fill the card width. Capped at
+            a max height so a tall/portrait screenshot crops at the bottom
+            rather than stretching the frame absurdly tall; landscape
+            screenshots never hit that cap so they're unaffected. */}
         <div className="flex justify-center">
           <div
+            ref={mainImageRef}
             className="rounded-2xl overflow-hidden w-full"
-            style={{ maxWidth: 880, border: '1px solid rgba(255,255,255,0.14)', background: '#eef2fb' }}
+            style={{
+              maxHeight: 640,
+              border: '1px solid rgba(255,255,255,0.14)',
+              background: '#eef2fb',
+              scrollMarginTop: 110,
+            }}
           >
             <img
               key={activeScreen.src}
@@ -126,7 +146,7 @@ export default function AppCaseStudyCard({ study }: { study: AppCaseStudy }) {
             return (
               <button
                 key={screen.src}
-                onClick={() => setActive(i)}
+                onClick={() => selectScreen(i)}
                 className="relative rounded-xl overflow-hidden text-left group shrink-0"
                 style={{
                   height: 96,

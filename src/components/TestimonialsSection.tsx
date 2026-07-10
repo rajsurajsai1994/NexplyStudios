@@ -21,14 +21,6 @@ const TESTIMONIALS: Testimonial[] = [
     industry: 'B2C - Food, Franchise',
   },
   {
-    name: 'Chaitanya Saripalli',
-    role: 'CEO & Founder, EnlitEDU',
-    quote:
-      "They built our website with SEO baked in from day one. Between the site traffic and our email campaigns, the leads have been consistent and real.",
-    logo: '/logo-enlitedu.png',
-    industry: 'USA Higher Education',
-  },
-  {
     name: 'Poosani Chowdary',
     role: 'Founder, Spudato',
     quote:

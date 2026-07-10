@@ -41,13 +41,6 @@ const PROJECTS = [
     preSized: true,
   },
   {
-    title: 'EnlitEDU',
-    category: 'Social Media Marketing',
-    industry: 'Ed-Tech',
-    img: '/portfolio-enlitedu-v2.jpg',
-    preSized: true,
-  },
-  {
     title: 'Beyond Bajji',
     category: 'Print & Publication Design',
     industry: 'Food & Beverage',

@@ -46,11 +46,11 @@ export default function MasonryWorksSection({ heading, subtext, items: initialIt
         className="flex flex-col items-center"
         style={{ padding: '0 clamp(16px, 4vw, 40px) clamp(80px, 10vw, 120px)' }}
       >
-        <div className="flex flex-col items-center text-center gap-3 mb-14" style={{ maxWidth: 900 }}>
+        <div className="flex flex-col items-center text-center gap-3 mb-14" style={{ maxWidth: 1100 }}>
           <h2 className="text-white font-medium" style={{ fontSize: 'clamp(26px, 3.2vw, 38px)' }}>
             {heading}
           </h2>
-          <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)', maxWidth: 780 }}>
+          <p style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)' }}>
             {subtext}
           </p>
         </div>

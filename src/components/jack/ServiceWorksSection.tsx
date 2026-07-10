@@ -111,20 +111,6 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
         subtext="Real websites we've designed and built end-to-end, browsed the same way a visitor would."
         studies={[
           {
-            id: 'pal-website',
-            title: 'Clinic Website',
-            client: 'PAL Physiotherapy & Sports Rehab',
-            industry: 'Healthcare - Physiotherapy Clinic',
-            description:
-              'A fully SEO, GEO, and AEO optimized clinic website built to turn local searches into booked appointments, with dedicated location and about pages for each branch.',
-            url: 'https://palphysiotherapy.co.in/',
-            screens: [
-              { src: '/stacking/pal-hero.png', label: 'Homepage' },
-              { src: '/stacking/pal-locations.png', label: 'Locations' },
-              { src: '/stacking/pal-about.png', label: 'About' },
-            ],
-          },
-          {
             id: 'pixla-website',
             title: 'Product Marketing Site',
             client: 'Pixla AI',
@@ -136,6 +122,20 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
               { src: '/stacking/pixla-hero.png', label: 'Homepage' },
               { src: '/stacking/pixla-steps.png', label: 'How It Works' },
               { src: '/stacking/pixla-gallery.png', label: 'Gallery' },
+            ],
+          },
+          {
+            id: 'pal-website',
+            title: 'Clinic Website',
+            client: 'PAL Physiotherapy & Sports Rehab',
+            industry: 'Healthcare - Physiotherapy Clinic',
+            description:
+              'A fully SEO, GEO, and AEO optimized clinic website built to turn local searches into booked appointments, with dedicated location and about pages for each branch.',
+            url: 'https://palphysiotherapy.co.in/',
+            screens: [
+              { src: '/stacking/pal-hero.png', label: 'Homepage' },
+              { src: '/stacking/pal-locations.png', label: 'Locations' },
+              { src: '/stacking/pal-about.png', label: 'About' },
             ],
           },
           {
@@ -172,12 +172,12 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
             client: 'Ardent Clinical Research Services',
             industry: 'Clinical Research (CRO)',
             description:
-              'A credibility-first website for a clinical research organization, built around partner collaboration and the team behind the work.',
+              'A credibility-first website for a clinical research organization, built around core values and a growing footprint of international CRO partnerships.',
             url: 'https://www.ardent-cro.com/',
             screens: [
-              { src: '/stacking/ardent-extra.png', label: 'Homepage' },
-              { src: '/stacking/ardent-collab.png', label: 'Collaboration' },
-              { src: '/stacking/ardent-family.png', label: 'Our Team' },
+              { src: '/stacking/ardent-homepage-new.png', label: 'Homepage' },
+              { src: '/stacking/ardent-values.png', label: 'Our Core Values' },
+              { src: '/stacking/ardent-global-partners.png', label: 'Global Partnerships' },
             ],
           },
         ]}
@@ -239,6 +239,7 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
             screens: [
               { src: '/stacking/springml-hero-crop.png', label: 'Homepage' },
               { src: '/stacking/springml-approach-crop.png', label: 'Our Approach' },
+              { src: '/stacking/springml-solutions-crop.png', label: 'Industry Solutions' },
             ],
           },
         ]}

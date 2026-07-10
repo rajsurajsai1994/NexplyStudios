@@ -5,7 +5,6 @@ const CLIENT_LOGOS = [
   { src: '/logo-ticker-beyondbajji.png', name: 'Beyond Bajji', padding: '12px 20px' },
   { src: '/logo-ticker-pal.png', name: 'PAL Physiotherapy & Sports Rehab', padding: '12px 20px' },
   { src: '/logo-ticker-zestifusion.png', name: 'Zesti Fusion', padding: '12px 20px' },
-  { src: '/logo-ticker-enlitedu.png', name: 'EnlitEDU', padding: '12px 20px' },
   { src: '/logo-ticker-anatta.png', name: 'Anatta IT Solutions', padding: '12px 20px' },
   { src: '/logo-ticker-rebreath.png', name: 'ReBreath', padding: '12px 20px' },
   { src: '/logo-ticker-sadhshishya.png', name: 'Sadh Shishya Solutions', padding: '4px 10px' },
