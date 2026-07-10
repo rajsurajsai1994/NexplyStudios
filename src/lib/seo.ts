@@ -8,7 +8,7 @@ export const ORGANIZATION_SCHEMA = {
   '@id': `${SITE_URL}/#organization`,
   name: 'Nexply Studios',
   url: SITE_URL,
-  logo: `${SITE_URL}/nexply-logo.svg`,
+  logo: `${SITE_URL}/nexply-logo-color.svg`,
   image: `${SITE_URL}/og-default.png`,
   description:
     'Nexply Studios is a Hyderabad-based creative agency offering website design & development, app design & development, product design (UI/UX), branding, and marketing services.',

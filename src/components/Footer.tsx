@@ -43,7 +43,7 @@ export default function Footer() {
               loading="lazy"
               decoding="async"
               className="block"
-              style={{ height: 68, width: 'auto' }}
+              style={{ height: 96, width: 'auto' }}
             />
             <p className="text-sm max-w-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
               Design, development, and marketing - under one roof, moving at startup speed.

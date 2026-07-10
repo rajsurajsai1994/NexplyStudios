@@ -73,9 +73,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center shrink-0">
             <img
-              src="/nexply-logo.svg"
+              src="/nexply-logo-color.svg"
               alt="Nexply Studios"
-              style={{ height: 34, width: 'auto' }}
+              style={{ height: 52, width: 'auto' }}
             />
           </Link>
 
