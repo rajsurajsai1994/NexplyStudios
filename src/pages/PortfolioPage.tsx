@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import ServicesHeroSection from '../components/jack/ServicesHeroSection';
-import JackMarqueeSection from '../components/jack/JackMarqueeSection';
-import ClientWorksGridSection from '../components/jack/ClientWorksGridSection';
-import MasonryWorksSection from '../components/jack/MasonryWorksSection';
+import ServiceWorksSection from '../components/jack/ServiceWorksSection';
 import FAQSection from '../components/FAQSection';
 import { FAQS } from '../lib/faqs';
 import FinalCTABanner from '../components/FinalCTABanner';
@@ -47,7 +45,6 @@ export default function PortfolioPage() {
         line2="Across Every Service"
         subtext="A closer look at what we've built - filter by whichever service you're curious about."
       />
-      <JackMarqueeSection />
 
       {/* Service filter chips */}
       <section className="relative" style={{ background: DARK_BG_FLAT }}>
@@ -79,23 +76,10 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Grid re-mounts (via key) so the crossfade-free swap still feels
-          intentional when switching between service filters. */}
-      {activeServicePage?.clientWorksLayout === 'masonry' ? (
-        <MasonryWorksSection
-          key={active.slug}
-          heading={activeServicePage.clientWorksHeading ?? 'Our Client Works'}
-          subtext={activeServicePage.clientWorksSubtext ?? "A few of the projects we've brought to life."}
-          items={activeServicePage.clientWorks ?? []}
-        />
-      ) : (
-        <ClientWorksGridSection
-          key={active.slug}
-          seedPrefix={active.slug}
-          works={activeServicePage?.clientWorks}
-          featured={activeServicePage?.featuredWorks}
-        />
-      )}
+      {/* Re-mounts (via key) on chip change - same exact UI the service's
+          own page uses, driven by the same shared component, so this view
+          can never drift out of sync with what's on that page. */}
+      {activeServicePage && <ServiceWorksSection key={active.slug} service={activeServicePage} />}
 
       <FAQSection />
       <FinalCTABanner />
