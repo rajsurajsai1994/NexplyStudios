@@ -10,6 +10,7 @@ import {
   Package,
   Printer,
   Smartphone,
+  Presentation,
 } from 'lucide-react';
 import { createElement } from 'react';
 
@@ -44,7 +45,7 @@ export const NEXPLY_SERVICES = [
     gradient: SERVICE_ACCENT,
   },
   {
-    title: 'Logo Design & Brand Identity',
+    title: 'Logo Designs',
     slug: 'logo-design-brand-identity',
     description:
       'A distinct mark and brand identity that makes your business instantly recognizable, everywhere it shows up.',
@@ -105,6 +106,14 @@ export const NEXPLY_SERVICES = [
     description:
       'Cards, brochures, and catalogs crafted with the same precision as your digital presence.',
     icon: createElement(Printer, iconProps),
+    gradient: SERVICE_ACCENT,
+  },
+  {
+    title: 'Presentation Design',
+    slug: 'presentation-design',
+    description:
+      'Pitch decks and company presentations designed to actually hold a room, not just fill slides.',
+    icon: createElement(Presentation, iconProps),
     gradient: SERVICE_ACCENT,
   },
 ];

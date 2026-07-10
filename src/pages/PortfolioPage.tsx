@@ -18,8 +18,8 @@ export default function PortfolioPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = NEXPLY_SERVICES[activeIndex];
   // Reuse the exact same client work data (and featured case study, if any)
-  // that the individual service page shows - so "Logo Design & Brand
-  // Identity" here is never out of sync with its own page.
+  // that the individual service page shows - so "Logo Designs" here is
+  // never out of sync with its own page.
   const activeServicePage = getServicePageBySlug(active.slug);
 
   useSEO({

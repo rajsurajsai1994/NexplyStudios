@@ -50,6 +50,14 @@ export default function Navbar() {
     closeTimeout.current = setTimeout(() => setServicesOpen(false), 150);
   };
 
+  // Closes both the mobile menu and its Services submenu - called whenever
+  // a link inside the mobile menu is tapped, so the panel doesn't stay
+  // open covering the page it just navigated to.
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setMobileServicesOpen(false);
+  };
+
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center pl-4 pr-1.5">
       <nav
@@ -67,7 +75,7 @@ export default function Navbar() {
             <img
               src="/nexply-logo.svg"
               alt="Nexply Studios"
-              style={{ height: 28, width: 'auto' }}
+              style={{ height: 34, width: 'auto' }}
             />
           </Link>
 
@@ -198,6 +206,7 @@ export default function Navbar() {
           <div className="md:hidden flex flex-col items-stretch gap-1 px-4 pb-4 pt-1">
             <Link
               to={NAV_LINKS[0].href}
+              onClick={closeMobileMenu}
               className="text-sm rounded-xl hover:bg-gray-100 px-4 py-2 w-full text-center"
               style={navLinkStyle(isActive(NAV_LINKS[0].href))}
             >
@@ -205,6 +214,7 @@ export default function Navbar() {
             </Link>
             <Link
               to={NAV_LINKS[1].href}
+              onClick={closeMobileMenu}
               className="text-sm rounded-xl hover:bg-gray-100 px-4 py-2 w-full text-center"
               style={navLinkStyle(isActive(NAV_LINKS[1].href))}
             >
@@ -233,6 +243,7 @@ export default function Navbar() {
                     <Link
                       key={service.title}
                       to={`/services/${service.slug}`}
+                      onClick={closeMobileMenu}
                       className="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors duration-200 hover:bg-white/[0.06]"
                     >
                       <span
@@ -250,6 +261,7 @@ export default function Navbar() {
 
             <Link
               to={NAV_LINKS[2].href}
+              onClick={closeMobileMenu}
               className="text-sm rounded-xl hover:bg-gray-100 px-4 py-2 w-full text-center"
               style={navLinkStyle(isActive(NAV_LINKS[2].href))}
             >
@@ -258,6 +270,7 @@ export default function Navbar() {
 
             <Link
               to={NAV_LINKS[3].href}
+              onClick={closeMobileMenu}
               className="text-sm rounded-xl hover:bg-gray-100 px-4 py-2 w-full text-center"
               style={navLinkStyle(isActive(NAV_LINKS[3].href))}
             >
@@ -265,7 +278,7 @@ export default function Navbar() {
             </Link>
 
             <div className="flex items-center gap-2 w-full mt-2">
-              <ContactButton label="Let's Talk" href="/contact" className="flex-1" />
+              <ContactButton label="Let's Talk" href="/contact" className="flex-1" onClick={closeMobileMenu} />
             </div>
           </div>
         )}

@@ -12,6 +12,16 @@ export interface WorkItem {
   // Optional small caption above the title - for projects with a process
   // story worth a one-line callout (e.g. "From sketch to final logo").
   note?: string;
+  // 'contain' for logo files on a plain background - shows the whole mark
+  // with no cropping, using bgColor (or white) as the tile's own
+  // background so a small logo doesn't float awkwardly on empty space.
+  // Default 'cover' fills the tile edge-to-edge, for real photography.
+  fit?: 'cover' | 'contain';
+  bgColor?: string;
+  // 'large' spans 2 grid columns and gets extra height - for a piece that
+  // deserves more room than the uniform grid gives it (e.g. a logo mark
+  // that reads too small at the standard tile size). Default 'normal'.
+  size?: 'normal' | 'large';
 }
 
 export interface FeaturedCaseImage {
@@ -31,8 +41,12 @@ export interface FeaturedClientCase {
   branchNote?: string;
   images: FeaturedCaseImage[];
   caption: string;
-  stats: FeaturedCaseStat[];
+  stats?: FeaturedCaseStat[];
   disclaimer?: string;
+  // Controls the "Featured Result" pill + glow highlight. Defaults to true
+  // when omitted, so existing entries keep their current look; set to
+  // false for case studies that should render like a normal result.
+  badge?: boolean;
 }
 
 // Placeholder work items - swap in real project photos/names/industries
@@ -77,7 +91,9 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
           </p>
         </div>
 
-        {featured?.map((fw) => (
+        {featured?.map((fw) => {
+          const showBadge = fw.badge !== false;
+          return (
           <div
             key={fw.title}
             className="relative rounded-[28px] overflow-hidden backdrop-blur-md w-full max-w-[1200px] mb-8"
@@ -93,21 +109,25 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
             />
             {/* Soft brand-gradient glow behind the card - signals this one
                 is a highlight, not just another grid item */}
-            <div
-              className="pointer-events-none absolute -top-24 -left-16 rounded-full"
-              style={{ width: 320, height: 320, background: 'rgba(124,108,255,0.18)', filter: 'blur(90px)' }}
-            />
+            {showBadge && (
+              <div
+                className="pointer-events-none absolute -top-24 -left-16 rounded-full"
+                style={{ width: 320, height: 320, background: 'rgba(124,108,255,0.18)', filter: 'blur(90px)' }}
+              />
+            )}
 
             <div className="relative" style={{ padding: 'clamp(20px, 3vw, 36px)' }}>
               {/* Header row */}
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                 <div>
-                  <span
-                    className="inline-block rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider mb-2"
-                    style={{ background: gradientA, color: 'white' }}
-                  >
-                    Featured Result
-                  </span>
+                  {showBadge && (
+                    <span
+                      className="inline-block rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider mb-2"
+                      style={{ background: gradientA, color: 'white' }}
+                    >
+                      Featured Result
+                    </span>
+                  )}
                   <h3 className="text-white font-medium text-xl">{fw.title}</h3>
                   {fw.branchNote && (
                     <p className="text-sm mt-0.5" style={{ color: 'rgb(169, 151, 206)' }}>
@@ -146,28 +166,30 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {fw.stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-2xl p-4"
-                    style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.03)' }}
-                  >
-                    <p className="text-xs uppercase tracking-wide mb-2" style={{ color: 'rgba(200,190,230,0.75)' }}>
-                      {stat.label}
-                    </p>
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                        {stat.before}
-                      </span>
-                      <span style={{ color: 'rgba(255,255,255,0.35)' }}>&rarr;</span>
-                      <span className="text-lg font-medium" style={gradientTextStyle}>
-                        {stat.after}
-                      </span>
+              {fw.stats && fw.stats.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {fw.stats.map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="rounded-2xl p-4"
+                      style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.03)' }}
+                    >
+                      <p className="text-xs uppercase tracking-wide mb-2" style={{ color: 'rgba(200,190,230,0.75)' }}>
+                        {stat.label}
+                      </p>
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                          {stat.before}
+                        </span>
+                        <span style={{ color: 'rgba(255,255,255,0.35)' }}>&rarr;</span>
+                        <span className="text-lg font-medium" style={gradientTextStyle}>
+                          {stat.after}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
 
               {fw.disclaimer && (
                 <p className="text-xs italic mt-5" style={{ color: 'rgba(255,255,255,0.4)' }}>
@@ -176,17 +198,20 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
               )}
             </div>
           </div>
-        ))}
+          );
+        })}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[1200px]">
           {items.map((work, i) => (
             <div
               key={i}
-              className="relative rounded-2xl overflow-hidden backdrop-blur-md flex flex-col"
+              className={`relative rounded-2xl overflow-hidden backdrop-blur-md flex flex-col ${
+                work.size === 'large' ? 'sm:col-span-2' : ''
+              }`}
               style={{
                 border: '1px solid rgba(255,255,255,0.12)',
                 background: 'rgba(255,255,255,0.03)',
-                height: 320,
+                height: work.size === 'large' ? 440 : 320,
               }}
             >
               <div
@@ -194,18 +219,23 @@ export default function ClientWorksGridSection({ seedPrefix = 'nexply', works, f
                 style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 30%)' }}
               />
 
-              <div className="relative" style={{ height: '68%' }}>
+              <div
+                className="relative"
+                style={{ height: '68%', background: work.fit === 'contain' ? work.bgColor ?? '#ffffff' : undefined }}
+              >
                 <img
                   src={work.img ?? `https://picsum.photos/seed/${seedPrefix}-${work.seed ?? work.title}-${i}/560/460`}
                   alt={work.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${work.fit === 'contain' ? 'object-contain p-6' : 'object-cover'}`}
                 />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: 'linear-gradient(180deg, transparent 55%, rgba(13,14,31,0.85) 100%)' }}
-                />
+                {work.fit !== 'contain' && (
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(180deg, transparent 55%, rgba(13,14,31,0.85) 100%)' }}
+                  />
+                )}
               </div>
 
               <div className="relative flex-1 flex items-center justify-between gap-3 px-5">

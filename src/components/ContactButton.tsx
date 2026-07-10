@@ -4,12 +4,14 @@ interface ContactButtonProps {
   className?: string;
   label?: string;
   href?: string;
+  onClick?: () => void;
 }
 
-export default function ContactButton({ className = '', label = 'Contact', href = '#contact' }: ContactButtonProps) {
+export default function ContactButton({ className = '', label = 'Contact', href = '#contact', onClick }: ContactButtonProps) {
   return (
     <a
       href={href}
+      onClick={onClick}
       className={`group relative inline-flex items-center justify-center rounded-xl p-px ${className}`}
       style={{ background: gradientA }}
     >

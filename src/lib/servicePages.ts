@@ -19,6 +19,9 @@ export interface ServicePageClientWork {
   industry: string;
   img: string;
   note?: string;
+  fit?: 'cover' | 'contain';
+  bgColor?: string;
+  size?: 'normal' | 'large';
 }
 
 export interface ServicePageFeaturedImage {
@@ -38,8 +41,9 @@ export interface ServicePageFeaturedWork {
   branchNote?: string;
   images: ServicePageFeaturedImage[];
   caption: string;
-  stats: ServicePageFeaturedStat[];
+  stats?: ServicePageFeaturedStat[];
   disclaimer?: string;
+  badge?: boolean;
 }
 
 export interface ServicePageStackingProject {
@@ -270,16 +274,39 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         a: 'We can do either. Some clients take our design system and hand it to their in-house developers; others want us to build the front-end too, which we can do through our App/Website Development service.',
       },
     ],
+    stackingProjects: [
+      {
+        num: '01',
+        name: 'Appify',
+        industry: 'SaaS - No-Code Mobile App Builder',
+        col1: ['/stacking/appify-enterprise.jpg', '/stacking/appify-features.jpg'],
+        col2: '/stacking/appify-homepage.jpg',
+      },
+      {
+        num: '02',
+        name: 'Prem Talks',
+        industry: 'Grocery & Organic Foods - E-commerce',
+        col1: ['/stacking/premtalks-product-details.jpg', '/stacking/premtalks-checkout.jpg'],
+        col2: '/stacking/premtalks-home.jpg',
+      },
+      {
+        num: '03',
+        name: 'Telangana Spicy Pickles',
+        industry: 'Food & Beverage - D2C E-commerce',
+        col1: ['/stacking/telangana-hero-crop.jpg', '/stacking/telangana-featured-crop.jpg'],
+        col2: '/stacking/telangana-product-details.jpg',
+      },
+    ],
   },
   {
     slug: 'logo-design-brand-identity',
-    title: 'Logo Design & Brand Identity',
+    title: 'Logo Designs',
     heroLine1: 'A Mark Worth',
     heroLine2: 'Remembering',
     heroSubtext: 'A distinct visual identity that makes your business instantly recognizable, everywhere it shows up.',
     layout: 'grid',
     body: {
-      heading: 'What our logo design & brand identity work covers',
+      heading: 'What our logo designs work covers',
       intro:
         "A logo alone isn't a brand identity - it's one piece of it. We design the mark itself alongside the colors, typography, and visual language that surround it, so your business looks like the same brand whether someone sees it on a signboard, an Instagram post, or a business card.",
       points: [
@@ -321,13 +348,16 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       { title: 'PrintX', industry: 'Design & Printing', img: '/clientwork-printx.jpg' },
       { title: 'Spudato', industry: 'Restaurant & F&B', img: '/clientwork-spudato-v2.jpg' },
       { title: 'Vivaha Veduka', industry: 'Wedding Planning', img: '/clientwork-vivahaveduka-v2.jpg' },
+      { title: 'Art Lab', industry: 'Resin Art Studio', img: '/clientwork-artlab.png', fit: 'contain', bgColor: '#ffffff', size: 'large' },
       { title: 'Life Lush Health Care LLP', industry: 'Healthcare', img: '/clientwork-llhc.png' },
       { title: 'Plan Nest', industry: 'Architecture & Interior', img: '/clientwork-plannest.png' },
       { title: "Happy'ness Reloaded", industry: 'Restaurant & F&B', img: '/clientwork-happyness.png' },
+      { title: 'The Osin Studio', industry: 'Resin Art Studio', img: '/clientwork-osinstudio.png', fit: 'contain', bgColor: '#f6f2cf', size: 'large' },
       { title: 'Beyond Bajji', industry: 'Food & Beverage', img: '/clientwork-beyondbajji.png' },
       { title: 'Tasty Bar', industry: 'Restaurant', img: '/clientwork-tastybar-v2.jpg' },
       { title: 'Seven At Sagar', industry: 'Cafe & Coffee', img: '/clientwork-sevenatsagar-v2.jpg' },
       { title: 'KKR Developers', industry: 'Real Estate & Construction', img: '/clientwork-kkrdevelopers.png' },
+      { title: 'Tinted - The Nail Studio', industry: 'Beauty & Nail Salon', img: '/clientwork-tinted.png', fit: 'contain', bgColor: '#ffffff', size: 'large' },
       { title: 'Healthigo', industry: 'Health & Wellness', img: '/clientwork-healthigo.png' },
     ],
   },
@@ -565,8 +595,33 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
           { label: 'Search impressions (30 days)', before: '563 searches', after: '+33.7% vs last month' },
         ],
         disclaimer: 'Organic growth from GMB optimization - no paid ads.',
+        badge: false,
+      },
+      {
+        title: 'PrintX Design & Printing',
+        industry: 'Printing & Design',
+        branchNote: 'Gachibowli, Hyderabad',
+        images: [
+          { src: '/casestudy-printx-search.png', label: 'Search Ranking - "flex design & print gachibowli"' },
+          { src: '/casestudy-printx-performance.png', label: 'Business Profile Performance - Direction Requests' },
+        ],
+        caption: 'Shows up in the top 3 for many local print & design search keywords in Gachibowli.',
+        stats: [
+          { label: 'Direction requests (Apr - Jul 2026)', before: 'Apr 2026: ~25/month', after: '214 total, still climbing' },
+        ],
+        disclaimer: 'Organic growth from GMB optimization - no paid ads.',
+        badge: false,
+      },
+      {
+        title: 'Evania',
+        industry: 'Beauty & Wellness',
+        branchNote: 'Multiple Hyderabad locations',
+        images: [{ src: '/casestudy-evania-search.png', label: 'Search Ranking - "evania"' }],
+        caption: 'Ranks #1 for the branded search "evania," across multiple Hyderabad locations under the brand.',
+        badge: false,
       },
     ],
+    clientWorks: [],
   },
   {
     slug: 'brand-guidelines-identity',
@@ -663,10 +718,18 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       'Bottle mockups for the product page, flat label art for print - each shown at the size it actually ships at.',
     clientWorks: [
       { title: 'Apple Cider Vinegar Gummies', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-acv-gummies.png' },
+      { title: 'Caramel Fox Nuts', industry: "Oh So Poppin' - Snacks", img: '/clientwork-ohsopoppin-caramel.jpg' },
+      { title: 'Honey Jars', industry: 'Nature Keen - Honey', img: '/clientwork-naturekeen-honey-jars.jpg' },
       { title: 'Omega 3 Fish Oil', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-omega3.jpg' },
+      { title: 'Chocolate Fox Nuts', industry: "Oh So Poppin' - Snacks", img: '/clientwork-ohsopoppin-chocolate.jpg' },
+      { title: 'Peri Peri Fox Nuts', industry: "Oh So Poppin' - Snacks", img: '/clientwork-ohsopoppin-periperi.jpg' },
       { title: 'Vitamin K2 + D3', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-vitamink2d3.png' },
+      { title: 'Cream & Onion Fox Nuts', industry: "Oh So Poppin' - Snacks", img: '/clientwork-ohsopoppin-creamonion.jpg' },
+      { title: 'Honey Splash', industry: 'Nature Keen - Honey', img: '/clientwork-naturekeen-honey-splash.jpg' },
       { title: 'African Mango Drops', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-mangodrops.png' },
+      { title: 'Himalayan Salt Fox Nuts', industry: "Oh So Poppin' - Snacks", img: '/clientwork-ohsopoppin-himalayansalt.jpg' },
       { title: 'Pre-Workout Watermelon', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-preworkout.png' },
+      { title: 'Salt & Pepper Fox Nuts', industry: "Oh So Poppin' - Snacks", img: '/clientwork-ohsopoppin-saltpepper.jpg' },
       { title: 'Whey Isolate Protein', industry: 'Ayur Gum - Supplements', img: '/clientwork-ayurgum-wheyprotein.png' },
       { title: 'Collagen Peptides - Label Detail', industry: 'Supplements', img: '/clientwork-collagen-peptides.png' },
     ],
@@ -727,6 +790,58 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       {
         q: 'How long does a print design project take?',
         a: 'Simple items like business cards typically take under a week. Multi-page brochures or catalogs take 2-3 weeks depending on page count and content readiness.',
+      },
+    ],
+    clientWorks: [
+      { title: 'Board Design', industry: 'Kanchukota - Restaurant Signage', img: '/clientwork-kanchukota-board.jpg' },
+    ],
+  },
+  {
+    slug: 'presentation-design',
+    title: 'Presentation Design',
+    heroLine1: 'Decks That',
+    heroLine2: 'Hold The Room',
+    heroSubtext: 'Pitch decks and company presentations designed to actually get read, not just clicked through.',
+    layout: 'grid',
+    body: {
+      heading: 'What our presentation design covers',
+      intro:
+        "This is deck design for the moments that actually matter - investor pitches, sales decks, company overviews, board updates. We take your raw content (or build it with you from scratch) and turn it into a deck with a clear narrative arc, one consistent visual system, and slides that don't rely on you talking over them to make sense.",
+      points: [
+        {
+          title: 'Story before slides',
+          text: 'We map the narrative - what you\'re arguing and in what order - before opening PowerPoint, so the deck has a spine instead of just a stack of topics.',
+        },
+        {
+          title: 'One visual system, no patchwork',
+          text: 'A defined palette, type scale, and layout language applied consistently, so it never looks like slides were pasted together from different decks.',
+        },
+        {
+          title: 'Delivered editable',
+          text: 'You get real, editable PowerPoint or Google Slides files - not a locked PDF - so your team can update numbers and content long after we hand it off.',
+        },
+      ],
+    },
+    faqs: [
+      {
+        q: 'Do you write the content, or do I provide it?',
+        a: "Either way works. If you have raw content (notes, an old deck, a Word doc), we'll restructure and design around it. If you're starting from nothing, we can help shape the narrative and messaging too, not just the visual design.",
+      },
+      {
+        q: 'What software do you deliver the deck in?',
+        a: "PowerPoint or Google Slides, editable, not a flattened PDF - so you can update numbers, swap slides, and present it however you need to afterward.",
+      },
+      {
+        q: 'Can you redesign a deck we already have?',
+        a: "Yes - a lot of our presentation work is exactly this: taking an existing deck that's grown messy over time and rebuilding it with a consistent system, without losing the content that already works.",
+      },
+      {
+        q: 'How many slides does a typical deck run?',
+        a: "Varies a lot by purpose - a lean investor pitch might be 10-12 slides, while a full company overview deck can run 15-20+. We'll scope the right length for what the deck needs to do.",
+      },
+      {
+        q: 'How long does a deck project take?',
+        a: 'A focused pitch deck (10-15 slides) typically takes 1-2 weeks. Larger company overview or sales decks with more content can take 2-3 weeks.',
       },
     ],
   },

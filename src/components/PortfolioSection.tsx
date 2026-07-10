@@ -7,14 +7,14 @@ import { DARK_BG_FLAT, glassDifferentiation } from '../lib/brand';
 const PROJECTS = [
   {
     title: 'Vivaha Veduka',
-    category: 'Logo Design & Brand Identity',
+    category: 'Logo Designs',
     industry: 'Wedding Planning',
     img: '/portfolio-vivaha-veduka-v2.jpg',
     preSized: true,
   },
   {
     title: 'Spudato',
-    category: 'Logo Design & Brand Identity',
+    category: 'Logo Designs',
     industry: 'Restaurant & F&B',
     img: '/portfolio-spudato-v2.jpg',
     preSized: true,
@@ -56,7 +56,7 @@ const PROJECTS = [
   },
   {
     title: 'Plan Nest',
-    category: 'Logo Design & Brand Identity',
+    category: 'Logo Designs',
     industry: 'Architecture & Interior',
     img: '/portfolio-plan-nest-v2.jpg',
     preSized: true,
