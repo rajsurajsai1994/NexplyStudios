@@ -12,7 +12,7 @@ import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from '../lib/seo';
 
 export default function HomePage() {
   useSEO({
-    title: 'Nexply Studios - Website, App & Brand Design Agency in Hyderabad',
+    title: 'Nexply Studios - Web, App & Brand Design, Hyderabad',
     description:
       'Nexply Studios is a Hyderabad-based creative agency offering website design & development, app design, branding, UI/UX, and marketing - built to actually convert.',
     path: '/',

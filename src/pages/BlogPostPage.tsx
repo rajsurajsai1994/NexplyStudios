@@ -30,7 +30,7 @@ export default function BlogPostPage() {
   // Hooks must run unconditionally, so this is called before the early
   // return below - falls back to generic (noindex) values for a bad slug.
   useSEO({
-    title: post ? post.title : 'Nexply Studios Blog',
+    title: post ? (post.seoTitle ?? post.title) : 'Nexply Studios Blog',
     description: post ? post.excerpt : 'Nexply Studios blog.',
     path: `/blog/${slug ?? ''}`,
     noindex: !post,

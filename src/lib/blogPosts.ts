@@ -3,6 +3,10 @@ export type BlogCategory = 'designers' | 'brands' | 'developers';
 export interface BlogPost {
   slug: string;
   title: string;
+  // Shorter title for the <title> tag / search results (<=60 chars incl.
+  // the " | Nexply Studios" suffix) - the on-page H1 stays the punchier,
+  // longer `title` above; falls back to it when a post doesn't need one.
+  seoTitle?: string;
   excerpt: string;
   category: BlogCategory;
   readTime: string;
@@ -42,6 +46,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'website-that-looks-good-vs-one-that-works',
     title: 'The difference between a website that looks good and one that works',
+    seoTitle: 'A Good-Looking Website vs. One That Works',
     excerpt:
       "There's a particular kind of website that wins design awards and loses customers. Looking good and working well are not the same skill.",
     category: 'designers',
@@ -60,6 +65,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'nobody-cares-about-google-business-until-they-do',
     title: "Nobody cares about your Google Business listing (until they do)",
+    seoTitle: 'Why Your Google Business Listing Matters',
     excerpt:
       "Almost no business owner thinks about their Google listing until the day someone can't find them on maps. By then it's already cost you a customer.",
     category: 'brands',
@@ -79,6 +85,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'why-most-rebrands-fail-before-launch',
     title: 'Why most rebrands fail before they even launch',
+    seoTitle: 'Why Most Rebrands Fail Before Launch',
     excerpt:
       "Rebrands usually die in the same place, and it's not the design - it's the week after launch when half your materials still use the old logo.",
     category: 'brands',
@@ -97,6 +104,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'what-fast-website-actually-means',
     title: "What \"fast website\" actually means (it's not just page speed)",
+    seoTitle: "What 'Fast Website' Actually Means",
     excerpt:
       "Everyone says they want a fast website, and almost everyone means something slightly different by it. The version that matters isn't the one a speed test measures.",
     category: 'developers',
@@ -115,6 +123,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'app-nobody-asked-for-vs-one-people-need',
     title: 'Building an app nobody asked for vs one people actually need',
+    seoTitle: 'An App Nobody Asked For vs One People Need',
     excerpt:
       "A lot of app ideas start the same way - \"wouldn't it be cool if we had an app.\" The apps that actually get used start from a much less exciting place.",
     category: 'developers',

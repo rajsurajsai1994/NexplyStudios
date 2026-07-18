@@ -108,7 +108,7 @@ function ProjectCard({ project, index, total }: { project: StackingProject; inde
           <div className="flex flex-col gap-3 sm:gap-4 h-full" style={{ width: '40%' }}>
             <img
               src={project.col1[0]}
-              alt=""
+              alt={`${project.name} - screenshot 1`}
               loading="lazy"
               decoding="async"
               className="w-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[36px]"
@@ -116,7 +116,7 @@ function ProjectCard({ project, index, total }: { project: StackingProject; inde
             />
             <img
               src={project.col1[1]}
-              alt=""
+              alt={`${project.name} - screenshot 2`}
               loading="lazy"
               decoding="async"
               className="w-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[36px]"
@@ -126,7 +126,7 @@ function ProjectCard({ project, index, total }: { project: StackingProject; inde
           <div style={{ width: '60%' }}>
             <img
               src={project.col2}
-              alt=""
+              alt={`${project.name} - main screenshot`}
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[36px]"

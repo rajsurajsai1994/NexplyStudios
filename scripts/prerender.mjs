@@ -11,7 +11,7 @@ const root = path.resolve(__dirname, '..');
 const distDir = path.join(root, 'dist');
 const ssrEntry = path.join(root, 'dist-server', 'entry-server.js');
 
-const SITE_URL = 'https://www.nexply.in';
+const SITE_URL = 'https://www.nexplystudio.com';
 const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 const { render, PRERENDER_ROUTES } = await import(`file://${ssrEntry.replace(/\\/g, '/')}`);
 

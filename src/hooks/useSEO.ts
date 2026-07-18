@@ -10,7 +10,7 @@ interface SEOConfig {
   noindex?: boolean;
 }
 
-const SITE_URL = 'https://www.nexply.in';
+const SITE_URL = 'https://www.nexplystudio.com';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`;
 
 function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
