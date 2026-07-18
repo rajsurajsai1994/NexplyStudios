@@ -9,7 +9,7 @@ export default function ContactPage() {
   useSEO({
     title: 'Contact Us',
     description:
-      'Get in touch with Nexply Studios - Hyderabad-based creative agency. Call +91 78422 03319 or email next@nexply.in to start your project.',
+      'Get in touch with Nexply Studios - Hyderabad-based creative agency. Call +91 78422 03319 or email next@nexplystudio.com to start your project.',
     path: '/contact',
     jsonLd: [
       ORGANIZATION_SCHEMA,

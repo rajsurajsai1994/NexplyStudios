@@ -38,7 +38,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="flex flex-col items-start gap-4">
             <img
-              src="/nexply-studio-logo-footer.svg"
+              src="/nexply-studio-logo-footer.png"
               alt="Nexply Studios"
               loading="lazy"
               decoding="async"
@@ -59,12 +59,20 @@ export default function Footer() {
                 +91 78422 03319
               </a>
               <a
-                href="mailto:next@nexply.in"
+                href="tel:+918790941280"
+                className="flex items-center gap-2.5 text-sm transition-colors duration-300 hover:text-white"
+                style={{ color: 'rgba(255,255,255,0.6)' }}
+              >
+                <Phone size={14} />
+                +91 87909 41280
+              </a>
+              <a
+                href="mailto:next@nexplystudio.com"
                 className="flex items-center gap-2.5 text-sm transition-colors duration-300 hover:text-white"
                 style={{ color: 'rgba(255,255,255,0.6)' }}
               >
                 <Mail size={14} />
-                next@nexply.in
+                next@nexplystudio.com
               </a>
               <span
                 className="flex items-start gap-2.5 text-sm leading-relaxed"

@@ -54,6 +54,14 @@ const TESTIMONIALS: Testimonial[] = [
     industry: 'Clinical Research',
     logoPadding: 12,
   },
+  {
+    name: 'Nani',
+    role: 'Founder, PrintX Design & Printing',
+    quote:
+      "They built our website and set up and maintained our Google Business profile - between the two, we're getting real leads and calls now, not just people wandering past the shop.",
+    logo: '/logo-ticker-printx.png',
+    industry: 'Printing & Design',
+  },
 ];
 
 export default function TestimonialsSection() {

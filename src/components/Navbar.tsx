@@ -62,7 +62,7 @@ export default function Navbar() {
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center pl-4 pr-1.5">
       <nav
         className={`relative w-full bg-white rounded-2xl shadow-lg transition-all duration-500 ease-in-out ${
-          scrolled ? 'max-w-2xl' : 'max-w-4xl'
+          scrolled ? 'max-w-3xl' : 'max-w-4xl'
         }`}
       >
         <div
@@ -75,7 +75,7 @@ export default function Navbar() {
             <img
               src="/nexply-studio-logo-nav.svg"
               alt="Nexply Studios"
-              style={{ height: 44, width: 'auto' }}
+              style={{ height: 26, width: 'auto' }}
             />
           </Link>
 

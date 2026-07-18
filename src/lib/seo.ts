@@ -13,7 +13,7 @@ export const ORGANIZATION_SCHEMA = {
   description:
     'Nexply Studios is a Hyderabad-based creative agency offering website design & development, app design & development, product design (UI/UX), branding, and marketing services.',
   telephone: '+91-78422-03319',
-  email: 'next@nexply.in',
+  email: 'next@nexplystudio.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '8th Floor, Suite 30, Jayabheri Silicon Towers, Hitech City Rd, Kothaguda',

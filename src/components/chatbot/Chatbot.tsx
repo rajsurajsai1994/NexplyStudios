@@ -10,7 +10,7 @@ interface Message {
 
 const INITIAL_MESSAGE: Message = {
   sender: 'bot',
-  text: "Hi! I'm the Nexply assistant. Ask me about our services, pricing, or how to get started - or call us on +91 78422 03319 / +91 89790 41280 anytime.",
+  text: "Hi! I'm the Nexply assistant. Ask me about our services, pricing, or how to get started - or call us on +91 78422 03319 / +91 87909 41280 anytime.",
 };
 
 export default function Chatbot() {

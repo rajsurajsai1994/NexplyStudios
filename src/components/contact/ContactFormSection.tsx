@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Send, Check } from 'lucide-react';
 import { DARK_BG_GRADIENT, gradientA, gradientTextStyle } from '../../lib/brand';
 
 // Confirmed email address.
-const CONTACT_EMAIL = 'next@nexply.in';
+const CONTACT_EMAIL = 'next@nexplystudio.com';
 
 const inputStyle = {
   border: '1px solid rgba(255,255,255,0.15)',
@@ -83,7 +83,7 @@ export default function ContactFormSection() {
                 <Phone size={16} />
               </span>
               <span className="text-sm group-hover:text-white transition-colors">
-                +91 78422 03319 · +91 89790 41280
+                +91 78422 03319 · +91 87909 41280
               </span>
             </a>
 

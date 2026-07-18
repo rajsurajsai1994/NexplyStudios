@@ -8,7 +8,7 @@ export default function MissionVisionSection() {
         className="relative z-10 flex flex-col items-center"
         style={{ padding: 'clamp(64px, 8vw, 100px) clamp(16px, 4vw, 40px)' }}
       >
-        <div className="flex flex-col items-center text-center gap-4 mb-16" style={{ maxWidth: 720 }}>
+        <div className="flex flex-col items-center text-center gap-4 mb-16" style={{ maxWidth: 1100 }}>
           <h2
             className="text-white font-medium"
             style={{ fontSize: 'clamp(28px, 3.6vw, 44px)', lineHeight: 1.2 }}

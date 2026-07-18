@@ -3,7 +3,7 @@ export interface ChatEntry {
   answer: string;
 }
 
-const PHONE_LINE = 'You can also just call us on +91 78422 03319 or +91 89790 41280 - happy to talk it through.';
+const PHONE_LINE = 'You can also just call us on +91 78422 03319 or +91 87909 41280 - happy to talk it through.';
 
 // Matching order matters: getBotReply returns the FIRST entry whose
 // keywords match. Rules of thumb followed below:
@@ -154,16 +154,16 @@ export const CHAT_KNOWLEDGE: ChatEntry[] = [
   {
     keywords: ['whatsapp', 'message you', 'text you', 'dm you'],
     answer:
-      "Yep, WhatsApp works - message us on +91 78422 03319 or +91 89790 41280 and we'll get back to you as soon as we can.",
+      "Yep, WhatsApp works - message us on +91 78422 03319 or +91 87909 41280 and we'll get back to you as soon as we can.",
   },
   {
     keywords: ['contact', 'phone number', 'reach you', 'talk to someone', 'speak to someone'],
     answer:
-      "Of course - " + PHONE_LINE + " Or drop us an email at next@nexply.in.",
+      "Of course - " + PHONE_LINE + " Or drop us an email at next@nexplystudio.com.",
   },
   {
     keywords: ['email', 'mail id', 'e-mail'],
-    answer: "Our email is next@nexply.in. " + PHONE_LINE,
+    answer: "Our email is next@nexplystudio.com. " + PHONE_LINE,
   },
   {
     keywords: ['working hours', 'office hours', 'when are you open', 'available today', 'business hours'],
@@ -350,16 +350,16 @@ export const CHAT_KNOWLEDGE: ChatEntry[] = [
   {
     keywords: ['career', 'careers', 'hiring', 'internship', 'job opening', 'vacancy', 'work for you', 'job openings'],
     answer:
-      "We don't have a public careers page right now, but feel free to email your portfolio/resume to next@nexply.in and we'll keep it on file for when something opens up.",
+      "We don't have a public careers page right now, but feel free to email your portfolio/resume to next@nexplystudio.com and we'll keep it on file for when something opens up.",
   },
   {
     keywords: ['partnership', 'partner with you', 'collaborate with you', 'vendor partnership', 'agency partnership', 'referral partner'],
     answer:
-      "We're open to partnerships and referral arrangements - drop us an email at next@nexply.in with what you have in mind and we'll take it from there.",
+      "We're open to partnerships and referral arrangements - drop us an email at next@nexplystudio.com with what you have in mind and we'll take it from there.",
   },
   {
     keywords: ['press inquiry', 'media inquiry', 'journalist', 'interview request'],
-    answer: "For press or media inquiries, email us at next@nexply.in and we'll get back to you.",
+    answer: "For press or media inquiries, email us at next@nexplystudio.com and we'll get back to you.",
   },
 
   // ---- Broad "what do you offer" catch-all - kept last among topic
