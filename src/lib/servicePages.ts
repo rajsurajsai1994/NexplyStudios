@@ -798,7 +798,6 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       },
     ],
     clientWorks: [
-      { title: 'Board Design', industry: 'Kanchukota - Restaurant Signage', img: '/clientwork-kanchukota-board.jpg' },
       { title: 'Letterhead', industry: 'PAL Physiotherapy & Sports Rehab', img: '/clientwork-pal-letterhead.jpg', fit: 'contain', bgColor: '#ffffff' },
       {
         title: 'Visiting Card - Front',

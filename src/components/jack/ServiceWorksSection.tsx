@@ -32,7 +32,12 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
   }
 
   if (service.slug === 'print-publication-design') {
-    return <PublicationFlipbookSection />;
+    return (
+      <>
+        <PublicationFlipbookSection />
+        <ClientWorksGridSection seedPrefix={service.slug} works={service.clientWorks} featured={service.featuredWorks} />
+      </>
+    );
   }
 
   if (service.slug === 'presentation-design') {
