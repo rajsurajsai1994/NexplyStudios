@@ -799,6 +799,38 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
     ],
     clientWorks: [
       { title: 'Board Design', industry: 'Kanchukota - Restaurant Signage', img: '/clientwork-kanchukota-board.jpg' },
+      { title: 'Letterhead', industry: 'PAL Physiotherapy & Sports Rehab', img: '/clientwork-pal-letterhead.jpg', fit: 'contain', bgColor: '#ffffff' },
+      {
+        title: 'Visiting Card - Front',
+        industry: 'PAL Physiotherapy & Sports Rehab',
+        img: '/clientwork-pal-card-front.jpg',
+        note: "The curved white line is a shoulder, worked into the layout as a quiet nod to physiotherapy - a human body, not just a logo.",
+        fit: 'contain',
+        bgColor: '#1c2b7a',
+      },
+      {
+        title: 'Visiting Card - Back',
+        industry: 'PAL Physiotherapy & Sports Rehab',
+        img: '/clientwork-pal-card-back.jpg',
+        note: 'Left blank on purpose - room for the doctor or patient to jot down a note, a follow-up date, anything worth remembering.',
+        fit: 'contain',
+        bgColor: '#ffffff',
+      },
+      {
+        title: 'Visiting Card - Front',
+        industry: 'EnlitEDU',
+        img: '/clientwork-enlitedu-card-front.jpg',
+        fit: 'contain',
+        bgColor: '#ffffff',
+      },
+      {
+        title: 'Visiting Card - Back',
+        industry: 'EnlitEDU',
+        img: '/clientwork-enlitedu-card-back.jpg',
+        fit: 'contain',
+        bgColor: '#1428c8',
+      },
+      { title: 'Employee ID Card', industry: 'Anatta IT Solutions', img: '/clientwork-anatta-idcard.png', fit: 'contain', bgColor: '#2438a8' },
     ],
   },
   {
