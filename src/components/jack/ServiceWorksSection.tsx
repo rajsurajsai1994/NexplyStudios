@@ -3,7 +3,6 @@ import AppShowcaseSection from './AppShowcaseSection';
 import LargeDeckShowcase from './LargeDeckShowcase';
 import ClientWorksGridSection from './ClientWorksGridSection';
 import InstagramCarouselShowcase from './InstagramCarouselShowcase';
-import PublicationFlipbookSection from './PublicationFlipbookSection';
 import PitchDeckShowcase from './PitchDeckShowcase';
 import MasonryWorksSection from './MasonryWorksSection';
 import type { ServicePageConfig } from '../../lib/servicePages';
@@ -33,10 +32,11 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
 
   if (service.slug === 'print-publication-design') {
     return (
-      <>
-        <PublicationFlipbookSection />
-        <ClientWorksGridSection seedPrefix={service.slug} works={service.clientWorks} featured={service.featuredWorks} />
-      </>
+      <MasonryWorksSection
+        heading={service.clientWorksHeading ?? 'Our Client Works'}
+        subtext={service.clientWorksSubtext ?? "A few of the projects we've brought to life."}
+        items={service.clientWorks ?? []}
+      />
     );
   }
 

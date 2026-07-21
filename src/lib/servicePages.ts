@@ -760,6 +760,8 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
     heroLine2: 'With Precision',
     heroSubtext: 'Cards, brochures, and catalogs crafted with the same care as your digital presence.',
     layout: 'grid',
+    clientWorksHeading: 'Signage built to be seen.',
+    clientWorksSubtext: 'Real print work we produced - business cards, letterheads, ID cards, and signage, shown at their actual size and shape.',
     body: {
       heading: 'What our print & publication design covers',
       intro:
@@ -798,6 +800,7 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       },
     ],
     clientWorks: [
+      { title: 'Board Design', industry: 'Kanchukota - Restaurant Signage', img: '/clientwork-kanchukota-board.jpg' },
       { title: 'Letterhead', industry: 'PAL Physiotherapy & Sports Rehab', img: '/clientwork-pal-letterhead.jpg', fit: 'contain', bgColor: '#ffffff' },
       {
         title: 'Visiting Card - Front',

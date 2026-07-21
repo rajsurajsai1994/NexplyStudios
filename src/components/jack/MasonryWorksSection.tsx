@@ -5,6 +5,10 @@ export interface MasonryWorkItem {
   img: string;
   title: string;
   industry: string;
+  // Short context line for a piece that needs a sentence of explanation
+  // (e.g. why part of a card was left blank on purpose) - optional, most
+  // items don't need one.
+  note?: string;
 }
 
 interface MasonryWorksSectionProps {
@@ -89,6 +93,11 @@ export default function MasonryWorksSection({ heading, subtext, items: initialIt
                   <p className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>
                     {item.industry}
                   </p>
+                  {item.note && (
+                    <p className="text-xs italic mt-1" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                      {item.note}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
