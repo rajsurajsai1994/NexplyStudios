@@ -760,8 +760,8 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
     heroLine2: 'With Precision',
     heroSubtext: 'Cards, brochures, and catalogs crafted with the same care as your digital presence.',
     layout: 'grid',
-    clientWorksHeading: 'Signage built to be seen.',
-    clientWorksSubtext: 'Real print work we produced - business cards, letterheads, ID cards, and signage, shown at their actual size and shape.',
+    clientWorksHeading: 'Real print work we produced',
+    clientWorksSubtext: 'business cards, letterheads, ID cards, and signage, shown at their actual size and shape.',
     body: {
       heading: 'What our print & publication design covers',
       intro:
@@ -833,6 +833,12 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         bgColor: '#1428c8',
       },
       { title: 'Employee ID Card', industry: 'Anatta IT Solutions', img: '/clientwork-anatta-idcard.png', fit: 'contain', bgColor: '#2438a8' },
+      { title: 'Table Top Review Scanner', industry: 'Healthigo - Healthcare', img: '/clientwork-healthigo-review-scanner.jpg' },
+      { title: 'Visiting Card - Front', industry: 'KKR Developers', img: '/clientwork-kkrdevelopers-card-front.jpg', fit: 'contain', bgColor: '#ffffff' },
+      { title: 'Visiting Card - Back', industry: 'KKR Developers', img: '/clientwork-kkrdevelopers-card-back.jpg', fit: 'contain', bgColor: '#ffffff' },
+      { title: 'Pamphlet / Flyer', industry: 'Beyond Bajji - Food & Beverage', img: '/clientwork-beyondbajji-pamphlet.jpeg' },
+      { title: 'Labels for Beds', industry: 'Sleepo Mattresses', img: '/clientwork-sleepo-label.jpeg' },
+      { title: 'Menu Card Artboard', industry: 'Tasty Bar - Restaurant', img: '/clientwork-tastybar-menu.jpg' },
     ],
   },
   {
