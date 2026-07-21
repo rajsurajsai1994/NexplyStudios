@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { DARK_BG_FLAT } from '../../lib/brand';
 
 export interface MasonryWorkItem {
@@ -17,33 +16,17 @@ interface MasonryWorksSectionProps {
   items: MasonryWorkItem[];
 }
 
-// Fisher-Yates shuffle - randomizes display order so the grouping doesn't
-// always show the same client/topic in the same spot.
-function shuffle<T>(arr: T[]): T[] {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
-
 // Reusable masonry-style "Our Client Works" alternative - for pages where
 // the real deliverables come in genuinely different sizes/aspect ratios
 // (social posts, product labels) and forcing them into a uniform grid
 // would mean cropping. Each item keeps its native aspect ratio.
-export default function MasonryWorksSection({ heading, subtext, items: initialItems }: MasonryWorksSectionProps) {
-  // Starts as the static order (matches what the server rendered, so
-  // hydration doesn't mismatch), then shuffles once on the client right
-  // after mount.
-  const [items, setItems] = useState(initialItems);
-  useEffect(() => {
-    setItems(shuffle(initialItems));
-    // Only re-shuffle if the underlying item set actually changes (e.g.
-    // navigating between service pages that both use this component).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialItems]);
-
+//
+// Items render in the exact order given, not shuffled - related pieces
+// (e.g. a card's front and back) are defined next to each other in the
+// data on purpose, and with CSS-columns masonry that keeps them visually
+// close together (same column or the next one over) rather than scattered
+// across the grid.
+export default function MasonryWorksSection({ heading, subtext, items }: MasonryWorksSectionProps) {
   return (
     <section className="relative" style={{ background: DARK_BG_FLAT }}>
       <div
@@ -70,7 +53,7 @@ export default function MasonryWorksSection({ heading, subtext, items: initialIt
             {items.map((item) => (
               <div
                 key={item.img}
-                className="relative rounded-2xl overflow-hidden group"
+                className="rounded-2xl overflow-hidden"
                 style={{
                   breakInside: 'avoid',
                   marginBottom: 20,
@@ -85,10 +68,7 @@ export default function MasonryWorksSection({ heading, subtext, items: initialIt
                   decoding="async"
                   className="w-full h-auto block"
                 />
-                <div
-                  className="absolute inset-x-0 bottom-0 px-4 py-3"
-                  style={{ background: 'linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 100%)' }}
-                >
+                <div className="px-4 py-3">
                   <p className="text-white text-sm font-medium">{item.title}</p>
                   <p className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>
                     {item.industry}
