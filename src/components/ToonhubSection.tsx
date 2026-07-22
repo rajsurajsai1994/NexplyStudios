@@ -33,10 +33,10 @@ type Role = 'center' | 'left' | 'right' | 'back';
 
 // Mapped to IMAGES by index/color: 0=orange, 1=green, 2=pink, 3=blue.
 const TEAM_BY_COLOR = [
-  { name: 'Sri Sai Paluri', role: 'Business Development Head', experience: '30+ years experience', photo: '/photo-srisai.png' },
-  { name: 'Sai Priya Bandi', role: 'Marketing, Lead Designer', experience: '', photo: '/photo-saipriya.png' },
-  { name: 'Hanish Sara', role: 'Development Lead', experience: '5+ years experience', photo: '/photo-hanish.png' },
-  { name: 'Suraj Sai Paluri', role: 'Product Design/Strategist & Creative Head', experience: '12+ years experience', photo: '/photo-suraj.png' },
+  { name: 'Sri Sai Paluri', role: 'Business Development Head', experience: '30+ years experience', photo: '/photo-srisai.png', focus: 'center 40%' },
+  { name: 'Sai Priya Bandi', role: 'Marketing, Lead Designer', experience: '', photo: '/photo-saipriya.png', focus: 'center top' },
+  { name: 'Hanish Sara', role: 'Development Lead', experience: '5+ years experience', photo: '/photo-hanish.png', focus: 'center 40%' },
+  { name: 'Suraj Sai Paluri', role: 'Product Design/Strategist & Creative Head', experience: '12+ years experience', photo: '/photo-suraj.png', focus: 'center 40%' },
 ];
 
 const GRAIN_BG =
@@ -241,7 +241,7 @@ export default function ToonhubSection() {
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full"
-                        style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                        style={{ objectFit: 'cover', objectPosition: TEAM_BY_COLOR[activeIndex].focus || 'center top' }}
                       />
                     ) : (
                       <ImagePlus size={isMobile ? 22 : 30} color="rgba(255,255,255,0.7)" strokeWidth={1.5} />
@@ -372,7 +372,7 @@ export default function ToonhubSection() {
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full"
-                            style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                            style={{ objectFit: 'cover', objectPosition: member.focus || 'center top' }}
                           />
                         ) : (
                           <Users size={26} color="rgba(255,255,255,0.5)" strokeWidth={1.5} />
