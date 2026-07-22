@@ -32,7 +32,7 @@ export default function TrustedSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 lg:gap-6 w-full max-w-[1240px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-5 lg:gap-6 w-full max-w-[1240px] mx-auto">
           {NEXPLY_SERVICES.map((service, i) => (
             <FeatureCard
               key={service.title}

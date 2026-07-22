@@ -27,7 +27,7 @@ export default function FeatureCard({
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut', delay }}
-      className={`relative flex flex-col justify-start items-start w-full max-w-[260px] md:max-w-[300px] group mx-auto ${className}`}
+      className={`relative flex flex-col justify-start items-start w-full sm:max-w-[260px] md:max-w-[300px] group sm:mx-auto ${className}`}
     >
       {/* Minimal, near-flat glass panel - subtle border, no color bloom.
           min-height (not a fixed height) so the card grows to fit whatever
