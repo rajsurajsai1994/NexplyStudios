@@ -108,7 +108,12 @@
         A few details and we'll be in touch to set it up.
       </p>
 
-      <form id="claim-form">
+     <form id="claim-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_KEY_HERE">
+  <input type="hidden" name="subject" value="New Rakhi Gift Claim — Nexply Studio">
+  <input type="hidden" name="from_name" value="Nexply Studio Rakhi Campaign">
+  <input type="hidden" name="redirect" value="https://web3forms.com/success">
+  <input type="checkbox" name="botcheck" style="display: none;">
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required autocomplete="name" />
