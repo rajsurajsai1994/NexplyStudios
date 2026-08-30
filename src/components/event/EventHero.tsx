@@ -1,4 +1,5 @@
 import { ArrowRight, TrendingUp, CalendarCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import FadeIn from '../jack/FadeIn';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import { useInView } from '../../hooks/useInView';
@@ -79,14 +80,14 @@ export default function EventHero() {
 
         <FadeIn y={16} delay={0.3}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-medium transition-transform duration-300 hover:scale-[1.03]"
               style={{ background: EVENT_GRADIENT, color: '#1a0b10', boxShadow: '0 10px 30px rgba(244,63,126,0.25)' }}
             >
               Book a Call
               <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </Link>
             <a
               href="#event-audience"
               className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 hover:bg-white/[0.06]"

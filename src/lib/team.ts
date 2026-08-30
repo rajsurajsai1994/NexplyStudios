@@ -23,6 +23,18 @@ export const TEAM: Record<string, TeamMember> = {
     role: 'Development Lead at Nexply Studios',
     linkedin: 'https://www.linkedin.com/in/hanishsara/',
   },
+  srisai: {
+    key: 'srisai',
+    name: 'Sri Sai Paluri',
+    role: 'Business Development Head at Nexply Studios',
+    linkedin: 'https://www.linkedin.com/in/sri-sai-paluri/',
+  },
+  saipriya: {
+    key: 'saipriya',
+    name: 'Sai Priya Bandi',
+    role: 'Marketing & Lead Designer at Nexply Studios',
+    linkedin: 'https://www.linkedin.com/in/bandi-sai-priya-090421256/',
+  },
 };
 
 export type AuthorKey = keyof typeof TEAM;

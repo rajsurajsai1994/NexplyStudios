@@ -17,7 +17,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: 'Founder & CEO, Beyond Bajji',
     quote:
       'Nexply handled our franchise branding across Hyderabad and ran our social media - the difference in how the brand looks and feels today is night and day.',
-    logo: '/logo-ticker-beyondbajji.png',
+    logo: '/logo-ticker-beyondbajji.jpg',
     industry: 'B2C - Food, Franchise',
   },
   {

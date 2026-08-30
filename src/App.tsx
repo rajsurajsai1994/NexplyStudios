@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Chatbot from './components/chatbot/Chatbot';
 import HomePage from './pages/HomePage';
+import { PRIVACY_POLICY, TERMS_OF_SERVICE } from './lib/legal';
 
 const AboutPage = lazy(() => import('./pages/AboutPage'));
+const LegalPage = lazy(() => import('./pages/LegalPage'));
 const ServicePage = lazy(() => import('./pages/ServicePage'));
 const CareNextPage = lazy(() => import('./pages/CareNextPage'));
 const EventManagementPage = lazy(() => import('./pages/EventManagementPage'));
@@ -30,6 +32,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogListPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/privacy" element={<LegalPage doc={PRIVACY_POLICY} />} />
+          <Route path="/terms" element={<LegalPage doc={TERMS_OF_SERVICE} />} />
           {/* Reserved for pages we've intentionally announced but not built
               yet - wire a specific route here when that's the case. Also
               doubles as a stable URL to preview the Coming Soon design. */}

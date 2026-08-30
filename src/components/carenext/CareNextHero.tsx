@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight, Stethoscope, Sparkles } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
 import CareNextSchedulingMock from './CareNextSchedulingMock';
@@ -85,14 +86,14 @@ export default function CareNextHero() {
 
           <FadeIn y={16} delay={0.36}>
             <div className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-white text-[15px] font-medium transition-transform duration-300 hover:scale-[1.03]"
                 style={{ background: CARENEXT_GRADIENT, boxShadow: '0 10px 30px rgba(45,212,191,0.28)' }}
               >
                 Book a Demo
                 <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+              </Link>
               <a
                 href="#carenext-platform"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 hover:bg-white/[0.06]"

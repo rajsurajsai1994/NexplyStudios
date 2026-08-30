@@ -57,10 +57,10 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
             description:
               'A full clinic management CRM covering patient and doctor appointment scheduling, reports and analytics, leave management, doctor management, and expense and income tracking, all from one dashboard.',
             screens: [
-              { src: '/app-pal-reports.png', label: 'Reports & Analytics' },
-              { src: '/app-pal-appointments.png', label: 'Appointments' },
-              { src: '/app-pal-doctors.png', label: 'Doctor Management' },
-              { src: '/app-pal-login.png', label: 'Sign In' },
+              { src: '/app-pal-reports.jpg', label: 'Reports & Analytics' },
+              { src: '/app-pal-appointments.jpg', label: 'Appointments' },
+              { src: '/app-pal-doctors.jpg', label: 'Doctor Management' },
+              { src: '/app-pal-login.jpg', label: 'Sign In' },
             ],
           },
           {
@@ -124,9 +124,9 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
               'A product site for an AI content generation studio, walking visitors through the creation process with a visual step-by-step flow and results gallery.',
             url: 'https://pixla.ai/',
             screens: [
-              { src: '/stacking/pixla-hero.png', label: 'Homepage' },
-              { src: '/stacking/pixla-steps.png', label: 'How It Works' },
-              { src: '/stacking/pixla-gallery.png', label: 'Gallery' },
+              { src: '/stacking/pixla-hero.jpg', label: 'Homepage' },
+              { src: '/stacking/pixla-steps.jpg', label: 'How It Works' },
+              { src: '/stacking/pixla-gallery.jpg', label: 'Gallery' },
             ],
           },
           {
@@ -138,9 +138,9 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
               'A fully SEO, GEO, and AEO optimized clinic website built to turn local searches into booked appointments, with dedicated location and about pages for each branch.',
             url: 'https://palphysiotherapy.co.in/',
             screens: [
-              { src: '/stacking/pal-hero.png', label: 'Homepage' },
-              { src: '/stacking/pal-locations.png', label: 'Locations' },
-              { src: '/stacking/pal-about.png', label: 'About' },
+              { src: '/stacking/pal-hero.jpg', label: 'Homepage' },
+              { src: '/stacking/pal-locations.jpg', label: 'Locations' },
+              { src: '/stacking/pal-about.jpg', label: 'About' },
             ],
           },
           {
@@ -152,9 +152,9 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
               'A product-led site for a frozen snacks brand, built to introduce the brand story and connect both distributors and end consumers.',
             url: 'https://zestifusion.com/products/',
             screens: [
-              { src: '/stacking/zesti-hero.png', label: 'Homepage' },
-              { src: '/stacking/zesti-whoweserve.png', label: 'Who We Serve' },
-              { src: '/stacking/zesti-distributor.png', label: 'Distributors' },
+              { src: '/stacking/zesti-hero.jpg', label: 'Homepage' },
+              { src: '/stacking/zesti-whoweserve.jpg', label: 'Who We Serve' },
+              { src: '/stacking/zesti-distributor.jpg', label: 'Distributors' },
             ],
           },
           {
@@ -166,9 +166,9 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
               "A studio website showcasing PrintX's process and finished work, built to turn local searches into walk-in and online print orders.",
             url: 'https://printxdesign.com/',
             screens: [
-              { src: '/stacking/printx-hero.png', label: 'Homepage' },
-              { src: '/stacking/printx-process.png', label: 'Process' },
-              { src: '/stacking/printx-finish.png', label: 'Finished Work' },
+              { src: '/stacking/printx-hero.jpg', label: 'Homepage' },
+              { src: '/stacking/printx-process.jpg', label: 'Process' },
+              { src: '/stacking/printx-finish.jpg', label: 'Finished Work' },
             ],
           },
           {
@@ -180,9 +180,9 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
               'A credibility-first website for a clinical research organization, built around core values and a growing footprint of international CRO partnerships.',
             url: 'https://www.ardent-cro.com/',
             screens: [
-              { src: '/stacking/ardent-homepage-new.png', label: 'Homepage' },
-              { src: '/stacking/ardent-values.png', label: 'Our Core Values' },
-              { src: '/stacking/ardent-global-partners.png', label: 'Global Partnerships' },
+              { src: '/stacking/ardent-homepage-new.jpg', label: 'Homepage' },
+              { src: '/stacking/ardent-values.jpg', label: 'Our Core Values' },
+              { src: '/stacking/ardent-global-partners.jpg', label: 'Global Partnerships' },
             ],
           },
         ]}
@@ -242,9 +242,9 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
             description:
               'An enterprise-grade B2B site design for a data, cloud, and AI consultancy, built around credibility - case studies, partner logos, and a resource library.',
             screens: [
-              { src: '/stacking/springml-hero-crop.png', label: 'Homepage' },
-              { src: '/stacking/springml-approach-crop.png', label: 'Our Approach' },
-              { src: '/stacking/springml-solutions-crop.png', label: 'Industry Solutions' },
+              { src: '/stacking/springml-hero-crop.jpg', label: 'Homepage' },
+              { src: '/stacking/springml-approach-crop.jpg', label: 'Our Approach' },
+              { src: '/stacking/springml-solutions-crop.jpg', label: 'Industry Solutions' },
             ],
           },
         ]}

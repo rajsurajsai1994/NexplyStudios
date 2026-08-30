@@ -180,15 +180,23 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
           <span className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            © 2026 Nexply Studios. All rights reserved.
+            © {new Date().getFullYear()} Nexply Studios. All rights reserved.
           </span>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-xs transition-colors duration-300 hover:text-white" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <div className="flex items-center gap-5">
+            <Link
+              to="/privacy"
+              className="text-xs transition-colors duration-300 hover:text-white"
+              style={{ color: 'rgba(255,255,255,0.4)' }}
+            >
               Privacy Policy
-            </a>
-            <a href="#" className="text-xs transition-colors duration-300 hover:text-white" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            </Link>
+            <Link
+              to="/terms"
+              className="text-xs transition-colors duration-300 hover:text-white"
+              style={{ color: 'rgba(255,255,255,0.4)' }}
+            >
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

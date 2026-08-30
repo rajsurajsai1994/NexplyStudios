@@ -12,9 +12,11 @@ import BlogListPage from './pages/BlogListPage';
 import BlogPostPage from './pages/BlogPostPage';
 import ComingSoonPage from './pages/ComingSoonPage';
 import NotFoundPage from './pages/NotFoundPage';
+import LegalPage from './pages/LegalPage';
 import { SSRHeadContext, type SSRHeadData } from './lib/ssrHead';
 import { SERVICE_PAGES } from './lib/servicePages';
 import { BLOG_POSTS } from './lib/blogPosts';
+import { PRIVACY_POLICY, TERMS_OF_SERVICE } from './lib/legal';
 
 // Re-exported so the prerender script (plain Node, no TS/JSX loader) can
 // enumerate every real route from the same SSR build instead of keeping a
@@ -27,6 +29,8 @@ export const PRERENDER_ROUTES: string[] = [
   '/blog',
   '/products/carenext',
   '/event-management',
+  '/privacy',
+  '/terms',
   '/coming-soon',
   '/404',
   ...SERVICE_PAGES.map((s) => `/services/${s.slug}`),
@@ -49,6 +53,8 @@ function AppRoutesEager() {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/blog" element={<BlogListPage />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />
+      <Route path="/privacy" element={<LegalPage doc={PRIVACY_POLICY} />} />
+      <Route path="/terms" element={<LegalPage doc={TERMS_OF_SERVICE} />} />
       <Route path="/coming-soon" element={<ComingSoonPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

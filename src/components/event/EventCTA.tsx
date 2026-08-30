@@ -1,4 +1,5 @@
 import { ArrowRight, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import FadeIn from '../jack/FadeIn';
 import { DARK_BG_FLAT } from '../../lib/brand';
 import { EVENT_GRADIENT, eventGradientText, RAHUL } from '../../lib/eventManagement';
@@ -35,14 +36,14 @@ export default function EventCTA() {
 
         <FadeIn y={16} delay={0.2}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-2 rounded-full px-8 py-4 font-medium transition-transform duration-300 hover:scale-[1.03]"
               style={{ background: EVENT_GRADIENT, color: '#1a0b10', boxShadow: '0 12px 34px rgba(244,63,126,0.3)' }}
             >
               Book a Call
               <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </Link>
             <a
               href="tel:+917842203319"
               className="inline-flex items-center gap-2 rounded-full px-7 py-4 font-medium transition-colors duration-300 hover:bg-white/[0.06]"
@@ -57,9 +58,9 @@ export default function EventCTA() {
         <FadeIn y={14} delay={0.3}>
           <p className="mt-8 text-[13px]" style={{ color: 'rgba(255,255,255,0.4)' }}>
             An Event Industry Growth service by{' '}
-            <a href="/" className="underline decoration-1 underline-offset-2" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            <Link to="/" className="underline decoration-1 underline-offset-2" style={{ color: 'rgba(255,255,255,0.65)' }}>
               Nexply Studios
-            </a>
+            </Link>
             .
           </p>
         </FadeIn>

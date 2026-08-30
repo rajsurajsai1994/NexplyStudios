@@ -2,7 +2,7 @@ import { DARK_BG_FLAT, glassDifferentiation } from '../lib/brand';
 
 const CLIENT_LOGOS = [
   { src: '/logo-ticker-printx.png', name: 'PrintX', padding: '12px 20px' },
-  { src: '/logo-ticker-beyondbajji.png', name: 'Beyond Bajji', padding: '12px 20px' },
+  { src: '/logo-ticker-beyondbajji.jpg', name: 'Beyond Bajji', padding: '12px 20px' },
   { src: '/logo-ticker-pal.png', name: 'PAL Physiotherapy & Sports Rehab', padding: '12px 20px' },
   { src: '/logo-ticker-zestifusion.png', name: 'Zesti Fusion', padding: '12px 20px' },
   { src: '/logo-ticker-anatta.png', name: 'Anatta IT Solutions', padding: '12px 20px' },

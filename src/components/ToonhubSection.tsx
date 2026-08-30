@@ -33,10 +33,10 @@ type Role = 'center' | 'left' | 'right' | 'back';
 
 // Mapped to IMAGES by index/color: 0=orange, 1=green, 2=pink, 3=blue.
 const TEAM_BY_COLOR = [
-  { name: 'Sri Sai Paluri', role: 'Business Development Head', experience: '30+ years experience', photo: '/photo-srisai.png', focus: 'center 40%' },
-  { name: 'Sai Priya Bandi', role: 'Marketing, Lead Designer', experience: '', photo: '/photo-saipriya.png', focus: 'center top' },
-  { name: 'Hanish Sara', role: 'Development Lead', experience: '5+ years experience', photo: '/photo-hanish.png', focus: 'center 40%' },
-  { name: 'Suraj Sai Paluri', role: 'Product Design/Strategist & Creative Head', experience: '12+ years experience', photo: '/photo-suraj.png', focus: 'center 40%' },
+  { name: 'Sri Sai Paluri', role: 'Business Development Head', experience: '30+ years experience', photo: '/photo-srisai.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/sri-sai-paluri/' },
+  { name: 'Sai Priya Bandi', role: 'Marketing, Lead Designer', experience: '', photo: '/photo-saipriya.jpg', focus: 'center top', linkedin: 'https://www.linkedin.com/in/bandi-sai-priya-090421256/' },
+  { name: 'Hanish Sara', role: 'Development Lead', experience: '5+ years experience', photo: '/photo-hanish.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/hanishsara/' },
+  { name: 'Suraj Sai Paluri', role: 'Product Design/Strategist & Creative Head', experience: '12+ years experience', photo: '/photo-suraj.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/suraj-sai/' },
 ];
 
 const GRAIN_BG =
@@ -382,7 +382,14 @@ export default function ToonhubSection() {
                         className="relative flex flex-col justify-center px-4"
                         style={{ height: '42%', borderTop: '1px solid rgba(255,255,255,0.14)' }}
                       >
-                        <p className="text-white font-medium text-sm truncate">{member.name}</p>
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white font-medium text-sm truncate hover:underline decoration-1 underline-offset-2"
+                        >
+                          {member.name}
+                        </a>
                         <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
                           {member.role}
                         </p>

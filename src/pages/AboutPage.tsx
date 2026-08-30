@@ -27,8 +27,10 @@ export default function AboutPage() {
         mainEntity: { '@id': `${ORGANIZATION_SCHEMA.url}/#organization` },
       },
       ORGANIZATION_SCHEMA,
-      personSchema(TEAM.suraj),
+      personSchema(TEAM.srisai),
+      personSchema(TEAM.saipriya),
       personSchema(TEAM.hanish),
+      personSchema(TEAM.suraj),
       breadcrumbSchema([
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },

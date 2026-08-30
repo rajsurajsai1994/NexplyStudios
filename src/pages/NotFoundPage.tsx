@@ -1,4 +1,5 @@
 import { ArrowUpRight, Compass, TriangleAlert } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FadeIn from '../components/jack/FadeIn';
@@ -63,8 +64,8 @@ export default function NotFoundPage() {
 
           <FadeIn delay={0.6} y={16}>
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-8 lg:mt-10">
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="group inline-flex items-center gap-2 rounded-full px-6 sm:px-8 py-3.5 sm:py-4"
                 style={{ background: gradientA }}
               >
@@ -76,9 +77,9 @@ export default function NotFoundPage() {
                   color="white"
                   className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
-              </a>
-              <a
-                href="/portfolio"
+              </Link>
+              <Link
+                to="/portfolio"
                 className="inline-flex items-center gap-2 rounded-full border px-6 sm:px-8 py-3.5 sm:py-4 transition-colors duration-300 hover:border-white/45 hover:bg-white/[0.06]"
                 style={{ borderColor: 'rgba(255,255,255,0.3)' }}
               >
@@ -86,7 +87,7 @@ export default function NotFoundPage() {
                 <span className="text-white font-medium uppercase" style={{ fontSize: 12, letterSpacing: '0.15em' }}>
                   Browse Our Work
                 </span>
-              </a>
+              </Link>
             </div>
           </FadeIn>
         </div>

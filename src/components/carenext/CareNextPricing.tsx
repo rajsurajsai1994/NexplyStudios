@@ -1,4 +1,5 @@
 import { Check, ArrowRight, Sparkles, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import FadeIn from '../jack/FadeIn';
 import {
   CARENEXT_GRADIENT,
@@ -81,14 +82,14 @@ export default function CareNextPricing() {
                 ))}
               </div>
 
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-white text-[15px] font-medium w-full sm:w-auto transition-transform duration-300 hover:scale-[1.02]"
                 style={{ background: CARENEXT_GRADIENT, boxShadow: '0 12px 30px rgba(13,148,136,0.25)' }}
               >
                 Book a Demo
                 <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+              </Link>
               <p className="mt-3 text-[12px]" style={{ color: CARENEXT_INK_SOFT }}>
                 14-day pilot available · cancel anytime during the pilot
               </p>
@@ -107,9 +108,9 @@ export default function CareNextPricing() {
                 Multiple branches or a hospital group?
               </span>{' '}
               We&apos;ll put together custom pricing for your network -{' '}
-              <a href="/contact" className="underline underline-offset-2" style={{ color: '#0D9488' }}>
+              <Link to="/contact" className="underline underline-offset-2" style={{ color: '#0D9488' }}>
                 talk to us
-              </a>
+              </Link>
               .
             </p>
           </div>

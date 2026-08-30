@@ -47,7 +47,10 @@ function buildHead(head, url) {
     <meta property="og:title" content="${escapeHtml(fullTitle)}" />
     <meta property="og:description" content="${escapeHtml(head.description)}" />
     <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:image" content="${image}" />${articleMeta}
+    <meta property="og:image" content="${image}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />${articleMeta}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(fullTitle)}" />
@@ -86,6 +89,7 @@ function sitemapMeta(url) {
   if (url === '/404') return null; // never list the 404
   if (url === '/') return { changefreq: 'weekly', priority: '1.0' };
   if (url === '/coming-soon') return { changefreq: 'monthly', priority: '0.3' };
+  if (url === '/privacy' || url === '/terms') return { changefreq: 'yearly', priority: '0.2' };
   if (url.startsWith('/services/')) return { changefreq: 'monthly', priority: '0.9' };
   if (url.startsWith('/products/')) return { changefreq: 'monthly', priority: '0.9' };
   if (url === '/event-management') return { changefreq: 'monthly', priority: '0.8' };

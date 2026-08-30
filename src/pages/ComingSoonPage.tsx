@@ -1,4 +1,5 @@
 import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FadeIn from '../components/jack/FadeIn';
@@ -61,8 +62,8 @@ export default function ComingSoonPage() {
 
           <FadeIn delay={0.6} y={16}>
             <div className="mt-8 lg:mt-10">
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="group inline-flex items-center gap-2 rounded-full px-6 sm:px-8 py-3.5 sm:py-4"
                 style={{ background: gradientA }}
               >
@@ -74,7 +75,7 @@ export default function ComingSoonPage() {
                   color="white"
                   className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
-              </a>
+              </Link>
             </div>
           </FadeIn>
         </div>
