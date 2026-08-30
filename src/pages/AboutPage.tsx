@@ -9,6 +9,7 @@ import FinalCTABanner from '../components/FinalCTABanner';
 import Footer from '../components/Footer';
 import { useSEO } from '../hooks/useSEO';
 import { ORGANIZATION_SCHEMA, breadcrumbSchema, faqSchema } from '../lib/seo';
+import { TEAM, personSchema } from '../lib/team';
 
 export default function AboutPage() {
   useSEO({
@@ -17,7 +18,17 @@ export default function AboutPage() {
       "Meet the team behind Nexply Studios - a small, focused creative agency in Hyderabad building websites, apps, and brands that actually work.",
     path: '/about',
     jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About Nexply Studios',
+        url: `${ORGANIZATION_SCHEMA.url}/about`,
+        inLanguage: 'en-IN',
+        mainEntity: { '@id': `${ORGANIZATION_SCHEMA.url}/#organization` },
+      },
       ORGANIZATION_SCHEMA,
+      personSchema(TEAM.suraj),
+      personSchema(TEAM.hanish),
       breadcrumbSchema([
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },

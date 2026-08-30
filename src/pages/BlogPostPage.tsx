@@ -1,13 +1,20 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import FinalCTABanner from '../components/FinalCTABanner';
 import Footer from '../components/Footer';
 import ComingSoonPage from './ComingSoonPage';
 import { getBlogPostBySlug, BLOG_POSTS, CATEGORY_LABELS } from '../lib/blogPosts';
+import { TEAM, personSchema } from '../lib/team';
 import { DARK_BG_FLAT, DARK_BG_GRADIENT, glassDifferentiation, gradientTextStyle } from '../lib/brand';
 import { useSEO } from '../hooks/useSEO';
 import { ORGANIZATION_SCHEMA, breadcrumbSchema, blogPostingSchema } from '../lib/seo';
+
+const DATE_FMT = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+function formatDate(iso: string) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return DATE_FMT.format(new Date(y, m - 1, d));
+}
 
 function renderParagraph(text: string, linkText: string, linkHref: string) {
   if (!text.includes('{LINK}')) return text;
@@ -29,30 +36,49 @@ export default function BlogPostPage() {
 
   // Hooks must run unconditionally, so this is called before the early
   // return below - falls back to generic (noindex) values for a bad slug.
+  const author = post ? TEAM[post.author] : undefined;
+
   useSEO({
     title: post ? (post.seoTitle ?? post.title) : 'Nexply Studios Blog',
     description: post ? post.excerpt : 'Nexply Studios blog.',
     path: `/blog/${slug ?? ''}`,
     noindex: !post,
-    jsonLd: post
-      ? [
-          ORGANIZATION_SCHEMA,
-          blogPostingSchema({
-            title: post.title,
-            description: post.excerpt,
-            path: `/blog/${post.slug}`,
-            category: post.category,
-          }),
-          breadcrumbSchema([
-            { name: 'Home', path: '/' },
-            { name: 'Blog', path: '/blog' },
-            { name: post.title, path: `/blog/${post.slug}` },
-          ]),
-        ]
-      : undefined,
+    article:
+      post && author
+        ? {
+            publishedTime: post.datePublished,
+            modifiedTime: post.dateModified,
+            author: author.name,
+            section: CATEGORY_LABELS[post.category],
+            tags: post.keywords,
+          }
+        : undefined,
+    jsonLd:
+      post && author
+        ? [
+            ORGANIZATION_SCHEMA,
+            personSchema(author),
+            blogPostingSchema({
+              title: post.title,
+              description: post.excerpt,
+              path: `/blog/${post.slug}`,
+              category: CATEGORY_LABELS[post.category],
+              authorId: author.key,
+              authorName: author.name,
+              datePublished: post.datePublished,
+              dateModified: post.dateModified,
+              keywords: post.keywords,
+            }),
+            breadcrumbSchema([
+              { name: 'Home', path: '/' },
+              { name: 'Blog', path: '/blog' },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ]),
+          ]
+        : undefined,
   });
 
-  if (!post) return <ComingSoonPage />;
+  if (!post || !author) return <ComingSoonPage />;
 
   const related = BLOG_POSTS.filter((p) => post.relatedSlugs.includes(p.slug));
 
@@ -74,9 +100,24 @@ export default function BlogPostPage() {
           <h1 className="text-white font-medium mb-4" style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', lineHeight: 1.2 }}>
             {post.title}
           </h1>
-          <span className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            {post.readTime}
-          </span>
+          <p className="text-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            <span>
+              By{' '}
+              <a
+                href={author.linkedin}
+                target="_blank"
+                rel="noopener noreferrer author"
+                className="underline decoration-1 underline-offset-2 hover:text-white transition-colors"
+                style={{ color: 'rgba(255,255,255,0.75)' }}
+              >
+                {author.name}
+              </a>
+            </span>
+            <span aria-hidden="true">·</span>
+            <time dateTime={post.datePublished}>{formatDate(post.datePublished)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{post.readTime}</span>
+          </p>
         </div>
       </section>
 
@@ -100,6 +141,27 @@ export default function BlogPostPage() {
             Explore this service
             <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
+
+          {/* Author byline */}
+          <div
+            className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl px-5 py-4"
+            style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.03)' }}
+          >
+            <span className="text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              Written by{' '}
+              <span className="text-white font-medium">{author.name}</span> — {author.role}.
+            </span>
+            <a
+              href={author.linkedin}
+              target="_blank"
+              rel="noopener noreferrer author"
+              className="inline-flex items-center gap-1 text-sm underline decoration-1 underline-offset-2"
+              style={{ color: '#A78BFA' }}
+            >
+              Connect on LinkedIn
+              <ArrowUpRight size={13} />
+            </a>
+          </div>
         </div>
       </section>
 

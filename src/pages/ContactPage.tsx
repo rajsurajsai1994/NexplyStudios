@@ -3,7 +3,7 @@ import ServicesHeroSection from '../components/jack/ServicesHeroSection';
 import ContactFormSection from '../components/contact/ContactFormSection';
 import Footer from '../components/Footer';
 import { useSEO } from '../hooks/useSEO';
-import { ORGANIZATION_SCHEMA, breadcrumbSchema } from '../lib/seo';
+import { ORGANIZATION_SCHEMA, breadcrumbSchema, contactPageSchema } from '../lib/seo';
 
 export default function ContactPage() {
   useSEO({
@@ -12,6 +12,7 @@ export default function ContactPage() {
       'Get in touch with Nexply Studios - Hyderabad-based creative agency. Call +91 78422 03319 or email next@nexplystudio.com to start your project.',
     path: '/contact',
     jsonLd: [
+      contactPageSchema(),
       ORGANIZATION_SCHEMA,
       breadcrumbSchema([
         { name: 'Home', path: '/' },

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { SSRHeadContext } from '../lib/ssrHead';
+import { SSRHeadContext, type SSRArticleMeta } from '../lib/ssrHead';
 
 interface SEOConfig {
   title: string;
@@ -8,6 +8,8 @@ interface SEOConfig {
   ogImage?: string;
   jsonLd?: object | object[];
   noindex?: boolean;
+  // When set, the page is an article: og:type=article + article:* meta.
+  article?: SSRArticleMeta;
 }
 
 const SITE_URL = 'https://www.nexplystudio.com';
@@ -38,11 +40,11 @@ function upsertLink(rel: string, href: string) {
 // so it's picked up by crawlers that execute JavaScript - which covers
 // Googlebot and most modern search engines, but NOT every AI/answer-engine
 // crawler. See the note left in App.tsx for the honest limitation here.
-export function useSEO({ title, description, path, ogImage, jsonLd, noindex }: SEOConfig) {
+export function useSEO({ title, description, path, ogImage, jsonLd, noindex, article }: SEOConfig) {
   // Reports synchronously during render (SSR-safe) so the prerender script
   // can capture it; a no-op in the normal browser build (context is null).
   const reportToSSR = useContext(SSRHeadContext);
-  reportToSSR?.({ title, description, path, ogImage, jsonLd, noindex });
+  reportToSSR?.({ title, description, path, ogImage, jsonLd, noindex, article });
 
   useEffect(() => {
     const fullTitle = title.includes('Nexply') ? title : `${title} | Nexply Studios`;
@@ -57,9 +59,16 @@ export function useSEO({ title, description, path, ogImage, jsonLd, noindex }: S
     upsertMeta('property', 'og:title', fullTitle);
     upsertMeta('property', 'og:description', description);
     upsertMeta('property', 'og:url', url);
-    upsertMeta('property', 'og:type', 'website');
+    upsertMeta('property', 'og:type', article ? 'article' : 'website');
     upsertMeta('property', 'og:image', image);
     upsertMeta('property', 'og:site_name', 'Nexply Studios');
+
+    if (article) {
+      upsertMeta('property', 'article:published_time', article.publishedTime);
+      upsertMeta('property', 'article:modified_time', article.modifiedTime ?? article.publishedTime);
+      upsertMeta('property', 'article:author', article.author);
+      upsertMeta('property', 'article:section', article.section);
+    }
 
     upsertMeta('name', 'twitter:card', 'summary_large_image');
     upsertMeta('name', 'twitter:title', fullTitle);
@@ -76,7 +85,7 @@ export function useSEO({ title, description, path, ogImage, jsonLd, noindex }: S
       script.textContent = JSON.stringify(jsonLd);
       document.head.appendChild(script);
     }
-  }, [title, description, path, ogImage, jsonLd, noindex]);
+  }, [title, description, path, ogImage, jsonLd, noindex, article]);
 }
 
 export { SITE_URL };

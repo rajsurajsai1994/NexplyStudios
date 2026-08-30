@@ -10,7 +10,7 @@ import { NEXPLY_SERVICES } from '../lib/services';
 import { getServicePageBySlug } from '../lib/servicePages';
 import { DARK_BG_FLAT } from '../lib/brand';
 import { useSEO } from '../hooks/useSEO';
-import { ORGANIZATION_SCHEMA, breadcrumbSchema, faqSchema } from '../lib/seo';
+import { ORGANIZATION_SCHEMA, breadcrumbSchema, faqSchema, itemListSchema } from '../lib/seo';
 
 export default function PortfolioPage() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -26,7 +26,19 @@ export default function PortfolioPage() {
       "See Nexply Studios' client work across web design, app development, branding, and marketing - filterable by service.",
     path: '/portfolio',
     jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: "Nexply Studios Portfolio",
+        url: 'https://www.nexplystudio.com/portfolio',
+        inLanguage: 'en-IN',
+        about: { '@id': 'https://www.nexplystudio.com/#organization' },
+      },
       ORGANIZATION_SCHEMA,
+      itemListSchema(
+        'Client work by service',
+        NEXPLY_SERVICES.map((s) => ({ name: s.title, path: `/services/${s.slug}` })),
+      ),
       breadcrumbSchema([
         { name: 'Home', path: '/' },
         { name: 'Portfolio', path: '/portfolio' },

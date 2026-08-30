@@ -4,17 +4,19 @@ import { ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import FinalCTABanner from '../components/FinalCTABanner';
 import Footer from '../components/Footer';
-import { BLOG_POSTS, CATEGORY_LABELS, type BlogCategory } from '../lib/blogPosts';
+import { BLOG_POSTS_BY_DATE, CATEGORY_LABELS, type BlogCategory } from '../lib/blogPosts';
+import { TEAM } from '../lib/team';
 import { DARK_BG_FLAT, DARK_BG_GRADIENT, glassDifferentiation, gradientTextStyle } from '../lib/brand';
 import { useSEO } from '../hooks/useSEO';
-import { ORGANIZATION_SCHEMA, breadcrumbSchema } from '../lib/seo';
+import { ORGANIZATION_SCHEMA, breadcrumbSchema, blogListSchema } from '../lib/seo';
 
 type FilterValue = 'all' | BlogCategory;
 
 export default function BlogListPage() {
   const [filter, setFilter] = useState<FilterValue>('all');
 
-  const filtered = filter === 'all' ? BLOG_POSTS : BLOG_POSTS.filter((p) => p.category === filter);
+  const filtered =
+    filter === 'all' ? BLOG_POSTS_BY_DATE : BLOG_POSTS_BY_DATE.filter((p) => p.category === filter);
 
   useSEO({
     title: 'Blog',
@@ -23,6 +25,7 @@ export default function BlogListPage() {
     path: '/blog',
     jsonLd: [
       ORGANIZATION_SCHEMA,
+      blogListSchema(BLOG_POSTS_BY_DATE.map((p) => ({ title: p.title, path: `/blog/${p.slug}` }))),
       breadcrumbSchema([
         { name: 'Home', path: '/' },
         { name: 'Blog', path: '/blog' },
@@ -119,7 +122,7 @@ export default function BlogListPage() {
                 </p>
                 <div className="relative mt-auto flex items-center justify-between">
                   <span className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                    {post.readTime}
+                    {TEAM[post.author].name.split(' ')[0]} · {post.readTime}
                   </span>
                   <ArrowRight
                     size={16}

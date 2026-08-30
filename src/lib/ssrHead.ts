@@ -1,5 +1,13 @@
 import { createContext } from 'react';
 
+export interface SSRArticleMeta {
+  publishedTime: string;
+  modifiedTime?: string;
+  author: string;
+  section: string;
+  tags?: string[];
+}
+
 export interface SSRHeadData {
   title: string;
   description: string;
@@ -7,6 +15,7 @@ export interface SSRHeadData {
   ogImage?: string;
   jsonLd?: object | object[];
   noindex?: boolean;
+  article?: SSRArticleMeta;
 }
 
 // During the prerender build, each page's useSEO() call reports its head

@@ -8,7 +8,8 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import FinalCTABanner from '../components/FinalCTABanner';
 import Footer from '../components/Footer';
 import { useSEO } from '../hooks/useSEO';
-import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from '../lib/seo';
+import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA, itemListSchema } from '../lib/seo';
+import { NEXPLY_SERVICES } from '../lib/services';
 
 export default function HomePage() {
   useSEO({
@@ -16,7 +17,14 @@ export default function HomePage() {
     description:
       'Nexply Studios is a Hyderabad-based creative agency offering website design & development, app design, branding, UI/UX, and marketing - built to actually convert.',
     path: '/',
-    jsonLd: [ORGANIZATION_SCHEMA, WEBSITE_SCHEMA],
+    jsonLd: [
+      ORGANIZATION_SCHEMA,
+      WEBSITE_SCHEMA,
+      itemListSchema(
+        'Nexply Studios services',
+        NEXPLY_SERVICES.map((s) => ({ name: s.title, path: `/services/${s.slug}` })),
+      ),
+    ],
   });
 
   return (
