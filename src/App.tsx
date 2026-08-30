@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ServicePage = lazy(() => import('./pages/ServicePage'));
+const CareNextPage = lazy(() => import('./pages/CareNextPage'));
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const BlogListPage = lazy(() => import('./pages/BlogListPage'));
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services/:slug" element={<ServicePage />} />
+          <Route path="/products/carenext" element={<CareNextPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogListPage />} />

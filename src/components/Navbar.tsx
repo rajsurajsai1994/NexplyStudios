@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import ContactButton from './ContactButton';
 import { colors } from '../lib/brand';
 import { NEXPLY_SERVICES } from '../lib/services';
+import { NEXPLY_PRODUCTS } from '../lib/products';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -18,7 +19,10 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const productsCloseTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const location = useLocation();
 
   // Home only matches the exact root path; every other nav item also
@@ -26,6 +30,7 @@ export default function Navbar() {
   const isActive = (href: string) =>
     href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
   const isServicesActive = location.pathname.startsWith('/services/');
+  const isProductsActive = location.pathname.startsWith('/products/');
 
   // Shared active-state look for the pill nav links, desktop and mobile -
   // a tinted background plus the site's blue accent, so the current page
@@ -50,23 +55,32 @@ export default function Navbar() {
     closeTimeout.current = setTimeout(() => setServicesOpen(false), 150);
   };
 
-  // Closes both the mobile menu and its Services submenu - called whenever
-  // a link inside the mobile menu is tapped, so the panel doesn't stay
-  // open covering the page it just navigated to.
+  const openProducts = () => {
+    clearTimeout(productsCloseTimeout.current);
+    setProductsOpen(true);
+  };
+  const scheduleCloseProducts = () => {
+    productsCloseTimeout.current = setTimeout(() => setProductsOpen(false), 150);
+  };
+
+  // Closes the mobile menu and any open submenus - called whenever a link
+  // inside the mobile menu is tapped, so the panel doesn't stay open
+  // covering the page it just navigated to.
   const closeMobileMenu = () => {
     setMobileOpen(false);
     setMobileServicesOpen(false);
+    setMobileProductsOpen(false);
   };
 
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center pl-4 pr-1.5">
       <nav
         className={`relative w-full bg-white rounded-2xl shadow-lg transition-all duration-500 ease-in-out ${
-          scrolled ? 'max-w-3xl' : 'max-w-4xl'
+          scrolled ? 'max-w-4xl' : 'max-w-5xl'
         }`}
       >
         <div
-          className={`flex items-center justify-between gap-6 transition-all duration-500 ease-in-out ${
+          className={`flex items-center justify-between gap-4 transition-all duration-500 ease-in-out ${
             scrolled ? 'pl-4 pr-2 py-1.5' : 'pl-5 pr-2 py-1.5'
           }`}
         >
@@ -80,11 +94,11 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav links */}
-          <div className={`hidden md:flex items-center flex-1 ${scrolled ? 'gap-1' : 'gap-3'}`}>
+          <div className={`hidden md:flex items-center flex-1 ${scrolled ? 'gap-0.5' : 'gap-2'}`}>
             <Link
               to={NAV_LINKS[0].href}
               className={`text-sm rounded-xl hover:bg-gray-100 transition-all duration-500 ease-in-out whitespace-nowrap ${
-                scrolled ? 'px-2 py-1.5' : 'px-4 py-2'
+                scrolled ? 'px-2 py-1.5' : 'px-3.5 py-2'
               }`}
               style={navLinkStyle(isActive(NAV_LINKS[0].href))}
             >
@@ -94,7 +108,7 @@ export default function Navbar() {
             <Link
               to={NAV_LINKS[1].href}
               className={`text-sm rounded-xl hover:bg-gray-100 transition-all duration-500 ease-in-out whitespace-nowrap ${
-                scrolled ? 'px-2 py-1.5' : 'px-4 py-2'
+                scrolled ? 'px-2 py-1.5' : 'px-3.5 py-2'
               }`}
               style={navLinkStyle(isActive(NAV_LINKS[1].href))}
             >
@@ -111,7 +125,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setServicesOpen((v) => !v)}
                 className={`flex items-center gap-1 text-sm rounded-xl hover:bg-gray-100 transition-all duration-500 ease-in-out whitespace-nowrap ${
-                  scrolled ? 'px-2 py-1.5' : 'px-4 py-2'
+                  scrolled ? 'px-2 py-1.5' : 'px-3.5 py-2'
                 }`}
                 style={navLinkStyle(isServicesActive)}
               >
@@ -165,10 +179,75 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
+            {/* Our Products - dropdown trigger */}
+            <div
+              className="relative"
+              onMouseEnter={openProducts}
+              onMouseLeave={scheduleCloseProducts}
+            >
+              <button
+                type="button"
+                onClick={() => setProductsOpen((v) => !v)}
+                className={`flex items-center gap-1 text-sm rounded-xl hover:bg-gray-100 transition-all duration-500 ease-in-out whitespace-nowrap ${
+                  scrolled ? 'px-2 py-1.5' : 'px-3.5 py-2'
+                }`}
+                style={navLinkStyle(isProductsActive)}
+              >
+                Our Products
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-300 ${productsOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {productsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 rounded-2xl backdrop-blur-xl overflow-hidden"
+                    style={{
+                      width: 320,
+                      border: '1px solid rgba(255,255,255,0.14)',
+                      background: 'rgba(13,14,31,0.85)',
+                      boxShadow: '0 20px 50px rgba(0,0,0,0.45)',
+                    }}
+                  >
+                    <div
+                      className="pointer-events-none absolute inset-0"
+                      style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 30%)' }}
+                    />
+                    <div className="relative flex flex-col gap-1 p-3">
+                      {NEXPLY_PRODUCTS.map((product) => (
+                        <Link
+                          key={product.slug}
+                          to={`/products/${product.slug}`}
+                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-white/[0.06]"
+                        >
+                          <span
+                            className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 text-white"
+                            style={{ background: product.gradient }}
+                          >
+                            {product.icon}
+                          </span>
+                          <span className="flex flex-col">
+                            <span className="text-sm text-white/90 font-medium leading-snug">{product.name}</span>
+                            <span className="text-xs text-white/50 leading-snug">{product.tagline}</span>
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <Link
               to={NAV_LINKS[2].href}
               className={`text-sm rounded-xl hover:bg-gray-100 transition-all duration-500 ease-in-out whitespace-nowrap ${
-                scrolled ? 'px-2 py-1.5' : 'px-4 py-2'
+                scrolled ? 'px-2 py-1.5' : 'px-3.5 py-2'
               }`}
               style={navLinkStyle(isActive(NAV_LINKS[2].href))}
             >
@@ -178,7 +257,7 @@ export default function Navbar() {
             <Link
               to={NAV_LINKS[3].href}
               className={`text-sm rounded-xl hover:bg-gray-100 transition-all duration-500 ease-in-out whitespace-nowrap ${
-                scrolled ? 'px-2 py-1.5' : 'px-4 py-2'
+                scrolled ? 'px-2 py-1.5' : 'px-3.5 py-2'
               }`}
               style={navLinkStyle(isActive(NAV_LINKS[3].href))}
             >
@@ -253,6 +332,47 @@ export default function Navbar() {
                         <span className="text-white [&>svg]:w-3.5 [&>svg]:h-3.5">{service.icon}</span>
                       </span>
                       <span className="text-sm text-white/85">{service.title}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Our Products - collapsible on mobile */}
+            <button
+              onClick={() => setMobileProductsOpen((v) => !v)}
+              className="flex items-center justify-center gap-1 text-sm rounded-xl hover:bg-gray-100 px-4 py-2 w-full"
+              style={navLinkStyle(isProductsActive)}
+            >
+              Our Products
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-300 ${mobileProductsOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            {mobileProductsOpen && (
+              <div
+                className="mx-2 my-1 rounded-2xl overflow-hidden"
+                style={{ border: '1px solid rgba(0,0,0,0.08)', background: 'rgba(13,14,31,0.9)' }}
+              >
+                <div className="grid grid-cols-1 gap-1 p-3">
+                  {NEXPLY_PRODUCTS.map((product) => (
+                    <Link
+                      key={product.slug}
+                      to={`/products/${product.slug}`}
+                      onClick={closeMobileMenu}
+                      className="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors duration-200 hover:bg-white/[0.06]"
+                    >
+                      <span
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-white"
+                        style={{ background: product.gradient }}
+                      >
+                        {product.icon}
+                      </span>
+                      <span className="flex flex-col">
+                        <span className="text-sm text-white/90 font-medium leading-snug">{product.name}</span>
+                        <span className="text-xs text-white/50 leading-snug">{product.tagline}</span>
+                      </span>
                     </Link>
                   ))}
                 </div>

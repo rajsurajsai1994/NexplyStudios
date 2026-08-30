@@ -73,6 +73,25 @@ export function faqSchema(items: { question: string; answer: string }[]) {
   };
 }
 
+export function softwareApplicationSchema(opts: {
+  name: string;
+  description: string;
+  path: string;
+  category?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: opts.name,
+    applicationCategory: opts.category ?? 'BusinessApplication',
+    operatingSystem: 'Web',
+    description: opts.description,
+    url: `${SITE_URL}${opts.path}`,
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    provider: { '@id': `${SITE_URL}/#organization` },
+  };
+}
+
 export function blogPostingSchema(opts: {
   title: string;
   description: string;

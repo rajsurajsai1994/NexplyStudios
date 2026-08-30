@@ -4,6 +4,7 @@ import Chatbot from './components/chatbot/Chatbot';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicePage from './pages/ServicePage';
+import CareNextPage from './pages/CareNextPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import BlogListPage from './pages/BlogListPage';
@@ -23,6 +24,7 @@ export const PRERENDER_ROUTES: string[] = [
   '/portfolio',
   '/contact',
   '/blog',
+  '/products/carenext',
   '/coming-soon',
   '/404',
   ...SERVICE_PAGES.map((s) => `/services/${s.slug}`),
@@ -39,6 +41,7 @@ function AppRoutesEager() {
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/services/:slug" element={<ServicePage />} />
+      <Route path="/products/carenext" element={<CareNextPage />} />
       <Route path="/portfolio" element={<PortfolioPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/blog" element={<BlogListPage />} />

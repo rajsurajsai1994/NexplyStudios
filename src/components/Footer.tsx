@@ -5,6 +5,7 @@ import { DARK_BG_FLAT } from '../lib/brand';
 
 const COMPANY_LINKS = [
   { label: 'About Us', href: '/about' },
+  { label: 'CareNext', href: '/products/carenext' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
