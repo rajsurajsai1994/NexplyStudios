@@ -6,7 +6,7 @@ import { gradientTextStyle, gradientA } from '../lib/brand';
 import { ArrowRight } from 'lucide-react';
 import OrbitVisualization from './OrbitVisualization';
 
-const HEADLINE = "What's next for your brand? Growth that actually shows up.";
+const HEADLINE = 'Whats next for your brand? Growth that actually shows up.';
 const HIGHLIGHT_PHRASE = 'Growth that actually shows up.';
 const SPLIT_AT = HEADLINE.length - HIGHLIGHT_PHRASE.length;
 
