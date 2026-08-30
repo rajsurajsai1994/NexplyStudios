@@ -1,13 +1,9 @@
 import { createElement, type ReactNode } from 'react';
 import {
   Users,
-  CalendarCheck,
   ReceiptText,
   Stethoscope,
   Building2,
-  MessageSquare,
-  BarChart3,
-  TrendingUp,
   FolderInput,
   ClipboardList,
   Activity,
@@ -41,6 +37,24 @@ export const carenextGradientText = {
 export const carenextGlow = (tint = 'rgba(45,212,191,0.10)') => ({
   background: `radial-gradient(ellipse 70% 50% at 50% 0%, ${tint}, transparent 70%)`,
 });
+
+// Light "clinical" surface. The middle of the CareNext page runs on white so
+// it reads like a real medical SaaS product tour, with the dark Nexply-brand
+// hero / proof / CTA as bookends.
+export const CARENEXT_LIGHT_BG = '#F4F9FA';
+export const CARENEXT_INK = '#0F2E36';
+export const CARENEXT_INK_SOFT = '#4A6B73';
+export const CARENEXT_HAIRLINE = '#DCEAEC';
+
+// Teal gradient text on a light background (the hero version is tuned for
+// dark and washes out on white).
+export const carenextInkGradientText = {
+  backgroundImage: 'linear-gradient(120deg, #0EA5E9 0%, #0D9488 60%, #14B8A6 100%)',
+  backgroundClip: 'text' as const,
+  WebkitBackgroundClip: 'text' as const,
+  WebkitTextFillColor: 'transparent' as const,
+  color: 'transparent',
+};
 
 // ---------------------------------------------------------------------------
 // Content
@@ -78,56 +92,6 @@ export const CARENEXT_CHALLENGES: CareNextChallenge[] = [
     title: 'Manual, error-prone billing',
     text: "Invoices built by hand, with no clear view of what's paid, partly paid, or still pending.",
     icon: createElement(ReceiptText, { size: 20 }),
-  },
-];
-
-export interface CareNextFeature {
-  title: string;
-  text: string;
-  icon: ReactNode;
-}
-
-// "Platform at a glance" - the eight modules that make up CareNext.
-export const CARENEXT_FEATURES: CareNextFeature[] = [
-  {
-    title: 'Patient Management',
-    text: 'Unified profiles with demographics, treatment history, payments, and session tracking.',
-    icon: createElement(Users, { size: 22 }),
-  },
-  {
-    title: 'Appointments & Scheduling',
-    text: 'Day and week views, quick reschedules, and a built-in no-show / cancellation workflow.',
-    icon: createElement(CalendarCheck, { size: 22 }),
-  },
-  {
-    title: 'Billing & Invoicing',
-    text: 'Auto-generated, branded invoices with clear paid / partial / unpaid status on every one.',
-    icon: createElement(ReceiptText, { size: 22 }),
-  },
-  {
-    title: 'Doctor & Staff Management',
-    text: 'Per-branch schedules, leave balances, and approvals - no more registers or side chats.',
-    icon: createElement(Stethoscope, { size: 22 }),
-  },
-  {
-    title: 'Multi-Branch Operations',
-    text: 'One login across every clinic location, with data filterable by branch at any time.',
-    icon: createElement(Building2, { size: 22 }),
-  },
-  {
-    title: 'WhatsApp Automation',
-    text: 'Automatic appointment confirmations and reminders using branch-specific templates.',
-    icon: createElement(MessageSquare, { size: 22 }),
-  },
-  {
-    title: 'Reports & Analytics',
-    text: 'Revenue trends, attendance rate, no-shows, and appointment patterns at a glance.',
-    icon: createElement(BarChart3, { size: 22 }),
-  },
-  {
-    title: 'Expense & Profit Tracking',
-    text: 'Branch-wise income vs. expense, with a live profit margin you can actually trust.',
-    icon: createElement(TrendingUp, { size: 22 }),
   },
 ];
 
@@ -224,6 +188,23 @@ export const CARENEXT_PROOF_STATS: CareNextStat[] = [
   { value: '2 branches', label: 'Live across Madhapur & Kondapur', icon: createElement(Building2, { size: 18 }) },
   { value: 'One system', label: 'Patients, billing, staff & reminders', icon: createElement(ClipboardList, { size: 18 }) },
   { value: 'Every day', label: 'Run by clinic staff, not developers', icon: createElement(Activity, { size: 18 }) },
+];
+
+// Launch pricing shown in the hero and the pricing section.
+export const CARENEXT_PRICE = {
+  now: '₹999',
+  was: '₹4,999',
+  unit: '/month',
+  note: 'Launch offer',
+};
+
+export const CARENEXT_PLAN_INCLUDES = [
+  'All 8 modules - patients, scheduling, billing, staff, reports & more',
+  'One clinic branch, unlimited doctors & staff logins',
+  'Admin, Doctor & Receptionist roles',
+  'WhatsApp appointment reminders',
+  'Data migration & team onboarding',
+  'Email & WhatsApp support',
 ];
 
 export interface CareNextFAQ {

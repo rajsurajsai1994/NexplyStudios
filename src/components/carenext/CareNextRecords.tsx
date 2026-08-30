@@ -1,6 +1,13 @@
 import FadeIn from '../jack/FadeIn';
-import { DARK_BG_FLAT, glassDifferentiation } from '../../lib/brand';
-import { CARENEXT_RECORD_POINTS, CARENEXT_TEAL, carenextGradientText } from '../../lib/carenext';
+import {
+  CARENEXT_TEAL,
+  CARENEXT_LIGHT_BG,
+  CARENEXT_INK,
+  CARENEXT_INK_SOFT,
+  CARENEXT_HAIRLINE,
+  CARENEXT_RECORD_POINTS,
+  carenextInkGradientText,
+} from '../../lib/carenext';
 
 function PatientRecordMock() {
   return (
@@ -10,14 +17,11 @@ function PatientRecordMock() {
         borderRadius: 18,
         border: '1px solid rgba(255,255,255,0.14)',
         background: '#0b1220',
-        boxShadow: '0 30px 70px rgba(0,0,0,0.5)',
+        boxShadow: '0 30px 70px rgba(15,46,54,0.25)',
       }}
       aria-hidden="true"
     >
-      <div
-        className="h-1.5 w-full"
-        style={{ background: 'linear-gradient(90deg, #0EA5E9, #2DD4BF)' }}
-      />
+      <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #0EA5E9, #2DD4BF)' }} />
       <div className="p-5">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
@@ -42,7 +46,6 @@ function PatientRecordMock() {
           </span>
         </div>
 
-        {/* session progress */}
         <div className="mb-4">
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[10.5px]" style={{ color: 'rgba(255,255,255,0.55)' }}>
@@ -53,14 +56,10 @@ function PatientRecordMock() {
             </span>
           </div>
           <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
-            <div
-              className="h-full rounded-full"
-              style={{ width: '27%', background: 'linear-gradient(90deg, #0EA5E9, #2DD4BF)' }}
-            />
+            <div className="h-full rounded-full" style={{ width: '27%', background: 'linear-gradient(90deg, #0EA5E9, #2DD4BF)' }} />
           </div>
         </div>
 
-        {/* payment summary */}
         <div className="grid grid-cols-3 gap-2 mb-4">
           {[
             { k: 'Billed', v: '₹9,000' },
@@ -80,7 +79,6 @@ function PatientRecordMock() {
           ))}
         </div>
 
-        {/* latest note */}
         <div
           className="rounded-lg p-3"
           style={{ border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.03)' }}
@@ -105,26 +103,24 @@ function PatientRecordMock() {
 
 export default function CareNextRecords() {
   return (
-    <section className="relative" style={{ background: DARK_BG_FLAT }}>
-      <div className="absolute inset-0 pointer-events-none" style={glassDifferentiation('rgba(45,212,191,0.05)')} />
-
+    <section className="relative" style={{ background: CARENEXT_LIGHT_BG, borderTop: `1px solid ${CARENEXT_HAIRLINE}` }}>
       <div
         className="relative z-10 mx-auto grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] items-center gap-14 lg:gap-16"
-        style={{ maxWidth: 1200, padding: 'clamp(72px, 9vw, 120px) clamp(16px, 4vw, 40px)' }}
+        style={{ maxWidth: 1200, padding: 'clamp(64px, 8vw, 110px) clamp(16px, 4vw, 40px)' }}
       >
         <div>
           <FadeIn y={16}>
             <span
-              className="text-xs font-semibold uppercase tracking-[0.2em]"
-              style={{ color: 'rgba(94,234,212,0.8)' }}
+              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em]"
+              style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#fff', color: '#0D9488' }}
             >
-              Patient management &amp; records
+              Patient records
             </span>
             <h2
-              className="text-white font-medium mt-3 mb-8"
-              style={{ fontSize: 'clamp(26px, 3.4vw, 42px)', lineHeight: 1.2 }}
+              className="font-medium mt-4 mb-8"
+              style={{ color: CARENEXT_INK, fontSize: 'clamp(26px, 3.4vw, 42px)', lineHeight: 1.2 }}
             >
-              Records that tell the <span style={carenextGradientText}>whole story</span>
+              Records that tell the <span style={carenextInkGradientText}>whole story</span>
             </h2>
           </FadeIn>
 
@@ -134,13 +130,15 @@ export default function CareNextRecords() {
                 <div className="flex items-start gap-4">
                   <span
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ border: '1px solid rgba(45,212,191,0.3)', background: 'rgba(45,212,191,0.08)', color: '#5EEAD4' }}
+                    style={{ background: 'rgba(13,148,136,0.1)', color: '#0D9488' }}
                   >
                     {point.icon}
                   </span>
                   <div>
-                    <h3 className="text-white font-medium text-[16px] mb-1">{point.title}</h3>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: 1.6 }}>{point.text}</p>
+                    <h3 className="font-medium text-[16px] mb-1" style={{ color: CARENEXT_INK }}>
+                      {point.title}
+                    </h3>
+                    <p style={{ color: CARENEXT_INK_SOFT, fontSize: 14, lineHeight: 1.6 }}>{point.text}</p>
                   </div>
                 </div>
               </FadeIn>

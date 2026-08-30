@@ -1,16 +1,18 @@
-import { ArrowRight, Stethoscope } from 'lucide-react';
+import { ArrowRight, Stethoscope, Sparkles } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
-import CareNextDashboardMock from './CareNextDashboardMock';
+import CareNextSchedulingMock from './CareNextSchedulingMock';
+import PulseLine from './PulseLine';
 import { DARK_BG_GRADIENT } from '../../lib/brand';
-import { CARENEXT_GRADIENT, carenextGradientText, carenextGlow } from '../../lib/carenext';
+import { CARENEXT_GRADIENT, CARENEXT_PRICE, carenextGradientText, carenextGlow } from '../../lib/carenext';
 
 export default function CareNextHero() {
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ background: DARK_BG_GRADIENT }}
-    >
+    <section className="relative overflow-hidden" style={{ background: DARK_BG_GRADIENT }}>
       <div className="absolute inset-0 pointer-events-none" style={carenextGlow('rgba(45,212,191,0.12)')} />
+      {/* faint EKG line running behind the hero */}
+      <div className="absolute left-0 right-0 pointer-events-none opacity-[0.15]" style={{ top: '38%' }}>
+        <PulseLine color="#2DD4BF" />
+      </div>
 
       <div
         className="relative z-10 mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] items-center gap-14 lg:gap-16"
@@ -58,8 +60,31 @@ export default function CareNextHero() {
             </p>
           </FadeIn>
 
-          <FadeIn y={16} delay={0.3}>
-            <div className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+          {/* Pricing line */}
+          <FadeIn y={14} delay={0.28}>
+            <div className="mt-7 flex items-center justify-center lg:justify-start gap-3 flex-wrap">
+              <span
+                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
+                style={{ background: CARENEXT_GRADIENT, color: '#04121a' }}
+              >
+                <Sparkles size={11} />
+                {CARENEXT_PRICE.note}
+              </span>
+              <span className="text-[15px]" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                Starts at{' '}
+                <span style={{ textDecoration: 'line-through', color: 'rgba(255,255,255,0.4)' }}>
+                  {CARENEXT_PRICE.was}
+                </span>{' '}
+                <span className="font-semibold text-white" style={{ fontSize: 18 }}>
+                  {CARENEXT_PRICE.now}
+                </span>
+                <span style={{ color: 'rgba(255,255,255,0.55)' }}>{CARENEXT_PRICE.unit}</span>
+              </span>
+            </div>
+          </FadeIn>
+
+          <FadeIn y={16} delay={0.36}>
+            <div className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-4">
               <a
                 href="/contact"
                 className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-white text-[15px] font-medium transition-transform duration-300 hover:scale-[1.03]"
@@ -78,7 +103,7 @@ export default function CareNextHero() {
             </div>
           </FadeIn>
 
-          <FadeIn y={14} delay={0.4}>
+          <FadeIn y={14} delay={0.44}>
             <p className="mt-7 text-[13px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
               Already running clinics across Hyderabad - including{' '}
               <span style={{ color: 'rgba(255,255,255,0.7)' }}>PAL Physiotherapy &amp; Sports Rehab</span>.
@@ -86,7 +111,7 @@ export default function CareNextHero() {
           </FadeIn>
         </div>
 
-        {/* Right - product mock */}
+        {/* Right - product mock (appointment scheduling) */}
         <FadeIn x={24} y={0} delay={0.25} duration={0.7}>
           <div className="relative">
             <div
@@ -94,7 +119,7 @@ export default function CareNextHero() {
               style={{ background: 'radial-gradient(ellipse at 60% 40%, rgba(56,189,248,0.18), transparent 70%)' }}
             />
             <div className="relative">
-              <CareNextDashboardMock />
+              <CareNextSchedulingMock />
             </div>
           </div>
         </FadeIn>

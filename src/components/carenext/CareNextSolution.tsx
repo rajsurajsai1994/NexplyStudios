@@ -1,7 +1,13 @@
 import { ShieldCheck, Building2, LineChart } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
-import { DARK_BG_GRADIENT } from '../../lib/brand';
-import { carenextGradientText, carenextGlow } from '../../lib/carenext';
+import PulseLine from './PulseLine';
+import {
+  CARENEXT_LIGHT_BG,
+  CARENEXT_INK,
+  CARENEXT_INK_SOFT,
+  CARENEXT_HAIRLINE,
+  carenextInkGradientText,
+} from '../../lib/carenext';
 
 const PILLARS = [
   {
@@ -23,32 +29,37 @@ const PILLARS = [
 
 export default function CareNextSolution() {
   return (
-    <section className="relative" style={{ background: DARK_BG_GRADIENT }}>
-      <div className="absolute inset-0 pointer-events-none" style={carenextGlow()} />
+    <section className="relative" style={{ background: CARENEXT_LIGHT_BG }}>
+      {/* pulse-line seam from the dark section above */}
+      <div style={{ background: '#0d0e1f' }}>
+        <div style={{ transform: 'translateY(1px)' }}>
+          <PulseLine color="#2DD4BF" height={34} />
+        </div>
+      </div>
 
       <div
         className="relative z-10 mx-auto flex flex-col items-center text-center"
-        style={{ maxWidth: 1000, padding: 'clamp(72px, 9vw, 120px) clamp(16px, 4vw, 40px) clamp(48px, 6vw, 72px)' }}
+        style={{ maxWidth: 1000, padding: 'clamp(64px, 8vw, 104px) clamp(16px, 4vw, 40px) clamp(40px, 5vw, 64px)' }}
       >
         <FadeIn y={16}>
           <span
-            className="text-xs font-semibold uppercase tracking-[0.2em]"
-            style={{ color: 'rgba(94,234,212,0.8)' }}
+            className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em]"
+            style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#fff', color: '#0D9488' }}
           >
             The solution
           </span>
           <h2
-            className="text-white font-medium mt-3"
-            style={{ fontSize: 'clamp(30px, 4vw, 50px)', lineHeight: 1.15 }}
+            className="font-medium mt-4"
+            style={{ color: CARENEXT_INK, fontSize: 'clamp(30px, 4vw, 50px)', lineHeight: 1.15 }}
           >
-            Introducing <span style={carenextGradientText}>CareNext</span>
+            Introducing <span style={carenextInkGradientText}>CareNext</span>
           </h2>
         </FadeIn>
 
         <FadeIn y={16} delay={0.1}>
           <p
             className="mt-6"
-            style={{ color: 'rgb(178, 196, 205)', fontSize: 'clamp(15px, 1.2vw, 19px)', lineHeight: 1.75, maxWidth: 760 }}
+            style={{ color: CARENEXT_INK_SOFT, fontSize: 'clamp(15px, 1.2vw, 19px)', lineHeight: 1.75, maxWidth: 760 }}
           >
             A single, secure operations platform built for how Indian clinics actually run:
             patients, appointments, billing, staff, and multi-branch reporting - all connected,
@@ -58,8 +69,8 @@ export default function CareNextSolution() {
 
         <FadeIn y={16} delay={0.2}>
           <p
-            className="mt-8 font-medium"
-            style={{ ...carenextGradientText, fontSize: 'clamp(17px, 1.7vw, 24px)' }}
+            className="mt-8 font-medium italic"
+            style={{ ...carenextInkGradientText, fontSize: 'clamp(17px, 1.7vw, 24px)' }}
           >
             &ldquo;Built specifically for medical &amp; wellness practices.&rdquo;
           </p>
@@ -68,22 +79,24 @@ export default function CareNextSolution() {
 
       <div
         className="relative z-10 mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 w-full"
-        style={{ maxWidth: 1060, padding: '0 clamp(16px, 4vw, 40px) clamp(72px, 9vw, 120px)' }}
+        style={{ maxWidth: 1060, padding: '0 clamp(16px, 4vw, 40px) clamp(64px, 8vw, 104px)' }}
       >
         {PILLARS.map((p, i) => (
           <FadeIn key={p.title} delay={i * 0.08} y={20}>
             <div
-              className="relative rounded-2xl backdrop-blur-md p-6 h-full"
-              style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.03)' }}
+              className="relative rounded-2xl p-6 h-full"
+              style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#fff', boxShadow: '0 12px 34px rgba(13,148,136,0.06)' }}
             >
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                style={{ border: '1px solid rgba(45,212,191,0.3)', background: 'rgba(45,212,191,0.08)', color: '#5EEAD4' }}
+                style={{ background: 'rgba(13,148,136,0.1)', color: '#0D9488' }}
               >
                 {p.icon}
               </div>
-              <h3 className="text-white font-medium text-[17px] mb-2">{p.title}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 14, lineHeight: 1.6 }}>{p.text}</p>
+              <h3 className="font-medium text-[17px] mb-2" style={{ color: CARENEXT_INK }}>
+                {p.title}
+              </h3>
+              <p style={{ color: CARENEXT_INK_SOFT, fontSize: 14, lineHeight: 1.6 }}>{p.text}</p>
             </div>
           </FadeIn>
         ))}

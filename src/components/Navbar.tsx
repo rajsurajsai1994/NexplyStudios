@@ -6,6 +6,7 @@ import ContactButton from './ContactButton';
 import { colors } from '../lib/brand';
 import { NEXPLY_SERVICES } from '../lib/services';
 import { NEXPLY_PRODUCTS } from '../lib/products';
+import { EVENT_MANAGEMENT_NAV } from '../lib/eventManagement';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -29,7 +30,8 @@ export default function Navbar() {
   // covers its own sub-routes (e.g. Blog stays "active" on a blog post).
   const isActive = (href: string) =>
     href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
-  const isServicesActive = location.pathname.startsWith('/services/');
+  const isServicesActive =
+    location.pathname.startsWith('/services/') || location.pathname.startsWith('/event-management');
   const isProductsActive = location.pathname.startsWith('/products/');
 
   // Shared active-state look for the pill nav links, desktop and mobile -
@@ -171,6 +173,19 @@ export default function Navbar() {
                             <span className="text-white [&>svg]:w-4 [&>svg]:h-4">{service.icon}</span>
                           </span>
                           <span className="text-sm text-white/85 leading-snug">{service.title}</span>
+                        </Link>
+                      ))}
+                    </div>
+                    {/* Event Industry Growth */}
+                    <div className="relative border-t border-white/10 p-3">
+                      {EVENT_MANAGEMENT_NAV.map((em) => (
+                        <Link
+                          key={em.path}
+                          to={em.path}
+                          className="flex items-center justify-between rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-white/[0.06]"
+                        >
+                          <span className="text-sm text-white/85">{em.label}</span>
+                          <span className="text-[10px] text-white/40">{em.note}</span>
                         </Link>
                       ))}
                     </div>
@@ -332,6 +347,17 @@ export default function Navbar() {
                         <span className="text-white [&>svg]:w-3.5 [&>svg]:h-3.5">{service.icon}</span>
                       </span>
                       <span className="text-sm text-white/85">{service.title}</span>
+                    </Link>
+                  ))}
+                  <span className="mt-1 border-t border-white/10" />
+                  {EVENT_MANAGEMENT_NAV.map((em) => (
+                    <Link
+                      key={em.path}
+                      to={em.path}
+                      onClick={closeMobileMenu}
+                      className="flex items-center gap-3 rounded-xl px-3 py-2 transition-colors duration-200 hover:bg-white/[0.06]"
+                    >
+                      <span className="text-sm text-white/85">{em.label}</span>
                     </Link>
                   ))}
                 </div>

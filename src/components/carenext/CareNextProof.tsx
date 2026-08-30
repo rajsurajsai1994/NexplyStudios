@@ -1,11 +1,18 @@
 import { Quote } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
+import PulseLine from './PulseLine';
 import { DARK_BG_GRADIENT } from '../../lib/brand';
 import { CARENEXT_PROOF_STATS, carenextGradientText, carenextGlow } from '../../lib/carenext';
 
 export default function CareNextProof() {
   return (
     <section className="relative" style={{ background: DARK_BG_GRADIENT }}>
+      {/* seam back to the dark brand sections */}
+      <div style={{ background: '#F4F9FA' }}>
+        <div style={{ transform: 'translateY(1px)' }}>
+          <PulseLine color="#0D9488" height={30} />
+        </div>
+      </div>
       <div className="absolute inset-0 pointer-events-none" style={carenextGlow('rgba(56,189,248,0.08)')} />
 
       <div

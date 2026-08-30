@@ -7,6 +7,8 @@ import CareNextSolution from '../components/carenext/CareNextSolution';
 import CareNextFeatures from '../components/carenext/CareNextFeatures';
 import CareNextRoles from '../components/carenext/CareNextRoles';
 import CareNextRecords from '../components/carenext/CareNextRecords';
+import CareNextSecurity from '../components/carenext/CareNextSecurity';
+import CareNextPricing from '../components/carenext/CareNextPricing';
 import CareNextProof from '../components/carenext/CareNextProof';
 import CareNextCTA from '../components/carenext/CareNextCTA';
 import { CARENEXT_FAQS } from '../lib/carenext';
@@ -19,7 +21,7 @@ import {
 } from '../lib/seo';
 
 const CARENEXT_DESCRIPTION =
-  'CareNext is a clinic management system by Nexply Studios - patients, appointments, billing, staff, and multi-branch reporting in one secure platform, built for medical and wellness practices.';
+  'CareNext is a clinic management system by Nexply Studios - patients, appointments, billing, staff, and multi-branch reporting in one secure platform, built for medical and wellness practices. Launch pricing from ₹999/month.';
 
 export default function CareNextPage() {
   useSEO({
@@ -51,6 +53,8 @@ export default function CareNextPage() {
       <CareNextFeatures />
       <CareNextRoles />
       <CareNextRecords />
+      <CareNextSecurity />
+      <CareNextPricing />
       <CareNextProof />
       <FAQSection items={CARENEXT_FAQS} />
       <CareNextCTA />

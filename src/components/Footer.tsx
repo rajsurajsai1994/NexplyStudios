@@ -67,8 +67,8 @@ export default function Footer() {
               alt="Nexply Studios"
               loading="lazy"
               decoding="async"
-              className="block"
-              style={{ height: 80, width: 'auto' }}
+              className="block max-w-full"
+              style={{ height: 52, width: 'auto' }}
             />
             <p className="text-sm max-w-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
               Design, development, and marketing - under one roof, moving at startup speed.
