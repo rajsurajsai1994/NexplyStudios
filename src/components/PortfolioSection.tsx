@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
@@ -66,6 +66,23 @@ export default function PortfolioSection() {
     setActive((prev) => (prev + dir + PROJECTS.length) % PROJECTS.length);
   };
 
+  // Touch/pointer swipe - mirrors the arrow buttons so the cards can be
+  // dragged left/right on mobile, not just advanced by tapping the arrows.
+  const swipeStartX = useRef<number | null>(null);
+
+  const handleSwipeStart = (e: React.PointerEvent<HTMLDivElement>) => {
+    swipeStartX.current = e.clientX;
+  };
+
+  const handleSwipeEnd = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (swipeStartX.current === null) return;
+    const dx = e.clientX - swipeStartX.current;
+    swipeStartX.current = null;
+    // Ignore taps and tiny drags; only a deliberate horizontal swipe navigates.
+    if (Math.abs(dx) < 40) return;
+    go(dx < 0 ? 1 : -1);
+  };
+
   return (
     <section className="relative" style={{ background: DARK_BG_FLAT }}>
       <div className="absolute inset-0 pointer-events-none" style={glassDifferentiation('rgba(124,108,255,0.05)')} />
@@ -118,8 +135,14 @@ export default function PortfolioSection() {
         {/* Carousel - full viewport width, edges fading into the background */}
         <div
           className="relative w-full flex items-center justify-center overflow-hidden"
+          onPointerDown={handleSwipeStart}
+          onPointerUp={handleSwipeEnd}
+          onPointerCancel={() => {
+            swipeStartX.current = null;
+          }}
           style={{
             height: 420,
+            touchAction: 'pan-y pinch-zoom',
             maskImage: 'linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%)',
             WebkitMaskImage:
               'linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%)',

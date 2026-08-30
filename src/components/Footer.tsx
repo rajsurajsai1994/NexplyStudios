@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Camera, Briefcase, Play, ThumbsUp, MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { NEXPLY_SERVICES } from '../lib/services';
 import { DARK_BG_FLAT } from '../lib/brand';
 
@@ -9,15 +9,39 @@ const COMPANY_LINKS = [
   { label: 'Contact', href: '/contact' },
 ];
 
-// This version of lucide-react ships no brand/social icons (Facebook,
-// Instagram, LinkedIn, YouTube aren't exported) - using the closest
-// generic equivalents as stand-ins, each clearly labeled.
+// This version of lucide-react ships no brand/social icons, so these are
+// inline SVG brand glyphs. Only the profiles Nexply actively maintains.
 const SOCIALS = [
-  { icon: ThumbsUp, label: 'Facebook' },
-  { icon: Camera, label: 'Instagram' },
-  { icon: Briefcase, label: 'LinkedIn' },
-  { icon: Play, label: 'YouTube' },
-  { icon: MapPin, label: 'Google Business Profile' },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/nexplystudio/',
+    icon: (
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/nexplystudio/',
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+      </svg>
+    ),
+  },
 ];
 
 const SERVICES_COL_1 = NEXPLY_SERVICES.slice(0, 6);
@@ -85,15 +109,17 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-3 mt-1">
-              {SOCIALS.map(({ icon: Icon, label }) => (
+              {SOCIALS.map(({ icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-300 hover:border-white/40 hover:bg-white/[0.06]"
-                  style={{ border: '1px solid rgba(255,255,255,0.15)' }}
+                  style={{ border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)' }}
                 >
-                  <Icon size={15} color="rgba(255,255,255,0.7)" />
+                  {icon}
                 </a>
               ))}
             </div>
