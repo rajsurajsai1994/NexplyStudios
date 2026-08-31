@@ -1,30 +1,35 @@
 import { ArrowRight } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
-import { DARK_BG_FLAT, glassDifferentiation } from '../../lib/brand';
-import { CARENEXT_CHALLENGES, CARENEXT_GRADIENT, carenextGradientText } from '../../lib/carenext';
+import {
+  CARENEXT_CHALLENGES,
+  CARENEXT_GRADIENT,
+  CARENEXT_LIGHT_BG,
+  CARENEXT_INK,
+  CARENEXT_INK_SOFT,
+  CARENEXT_HAIRLINE,
+  carenextInkGradientText,
+} from '../../lib/carenext';
 
 export default function CareNextChallenges() {
   return (
-    <section className="relative" style={{ background: DARK_BG_FLAT }}>
-      <div className="absolute inset-0 pointer-events-none" style={glassDifferentiation('rgba(45,212,191,0.05)')} />
-
+    <section className="relative" style={{ background: CARENEXT_LIGHT_BG, borderTop: `1px solid ${CARENEXT_HAIRLINE}` }}>
       <div
         className="relative z-10 flex flex-col items-center"
-        style={{ padding: 'clamp(72px, 9vw, 120px) clamp(16px, 4vw, 40px)' }}
+        style={{ padding: 'clamp(64px, 8vw, 110px) clamp(16px, 4vw, 40px)' }}
       >
         <FadeIn className="flex flex-col items-center text-center gap-3 mb-14" y={16}>
           <span
-            className="text-xs font-semibold uppercase tracking-[0.2em]"
-            style={{ color: 'rgba(94,234,212,0.8)' }}
+            className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em]"
+            style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#fff', color: '#0D9488' }}
           >
             The reality today
           </span>
-          <h2 className="text-white font-medium" style={{ fontSize: 'clamp(28px, 3.6vw, 46px)', lineHeight: 1.2, maxWidth: 800 }}>
-            The everyday challenges <span style={carenextGradientText}>holding clinics back</span>
+          <h2 className="font-medium" style={{ color: CARENEXT_INK, fontSize: 'clamp(28px, 3.6vw, 46px)', lineHeight: 1.2, maxWidth: 800 }}>
+            The everyday challenges <span style={carenextInkGradientText}>holding clinics back</span>
           </h2>
-          <p className="max-w-xl" style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)' }}>
+          <p className="max-w-xl" style={{ color: CARENEXT_INK_SOFT, fontSize: 'clamp(14px, 1.1vw, 17px)' }}>
             Every growing practice hits the same walls. None of them are about clinical skill -
-            they're about operations.
+            they&apos;re about operations.
           </p>
         </FadeIn>
 
@@ -32,23 +37,19 @@ export default function CareNextChallenges() {
           {CARENEXT_CHALLENGES.map((c, i) => (
             <FadeIn key={c.title} delay={i * 0.06} y={20}>
               <div
-                className="relative rounded-2xl backdrop-blur-md p-6 h-full"
-                style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.03)' }}
+                className="relative rounded-2xl p-6 h-full"
+                style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#fff', boxShadow: '0 10px 30px rgba(13,148,136,0.05)' }}
               >
                 <div
-                  className="pointer-events-none absolute inset-0 rounded-2xl"
-                  style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 30%)' }}
-                />
-                <div
-                  className="relative w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                  style={{ border: '1px solid rgba(45,212,191,0.3)', background: 'rgba(45,212,191,0.08)', color: '#5EEAD4' }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: 'rgba(13,148,136,0.1)', color: '#0D9488' }}
                 >
                   {c.icon}
                 </div>
-                <h3 className="relative text-white font-medium text-[17px] mb-2">{c.title}</h3>
-                <p className="relative" style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: 1.6 }}>
-                  {c.text}
-                </p>
+                <h3 className="font-medium text-[17px] mb-2" style={{ color: CARENEXT_INK }}>
+                  {c.title}
+                </h3>
+                <p style={{ color: CARENEXT_INK_SOFT, fontSize: 14, lineHeight: 1.6 }}>{c.text}</p>
               </div>
             </FadeIn>
           ))}
@@ -57,7 +58,7 @@ export default function CareNextChallenges() {
           <FadeIn delay={CARENEXT_CHALLENGES.length * 0.06} y={20}>
             <div
               className="relative rounded-2xl p-6 h-full flex flex-col justify-center"
-              style={{ background: CARENEXT_GRADIENT }}
+              style={{ background: CARENEXT_GRADIENT, boxShadow: '0 18px 44px rgba(13,148,136,0.22)' }}
             >
               <p className="text-white font-medium" style={{ fontSize: 16, lineHeight: 1.5 }}>
                 CareNext brings your patients, staff, and operations into one place.

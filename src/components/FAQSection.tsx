@@ -14,22 +14,59 @@ interface FAQSectionProps {
   // (used on Home/About/Portfolio) when not provided, so existing callers
   // don't need to change.
   items?: FAQItem[];
+  // 'dark' (default) matches the main site. 'light' matches the CareNext
+  // clinical surface.
+  theme?: 'dark' | 'light';
 }
 
-export default function FAQSection({ items = FAQS }: FAQSectionProps) {
+const THEMES = {
+  dark: {
+    sectionBg: DARK_BG_GRADIENT,
+    heading: '#fff',
+    highlight: gradientTextStyle,
+    sub: 'rgb(169, 151, 206)',
+    cardBorder: 'rgba(255,255,255,0.12)',
+    cardBg: 'rgba(255,255,255,0.03)',
+    hover: 'hover:bg-white/[0.03]',
+    question: '#fff',
+    chevron: 'rgba(255,255,255,0.6)',
+    answer: 'rgba(255,255,255,0.65)',
+  },
+  light: {
+    sectionBg: '#F4F9FA',
+    heading: '#0F2E36',
+    highlight: {
+      backgroundImage: 'linear-gradient(120deg, #0EA5E9 0%, #0D9488 60%, #14B8A6 100%)',
+      backgroundClip: 'text' as const,
+      WebkitBackgroundClip: 'text' as const,
+      WebkitTextFillColor: 'transparent' as const,
+      color: 'transparent',
+    },
+    sub: '#4A6B73',
+    cardBorder: '#DCEAEC',
+    cardBg: '#ffffff',
+    hover: 'hover:bg-black/[0.02]',
+    question: '#0F2E36',
+    chevron: '#4A6B73',
+    answer: '#4A6B73',
+  },
+} as const;
+
+export default function FAQSection({ items = FAQS, theme = 'dark' }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const t = THEMES[theme];
 
   return (
-    <section className="relative" style={{ background: DARK_BG_GRADIENT }}>
+    <section className="relative" style={{ background: t.sectionBg, borderTop: theme === 'light' ? '1px solid #DCEAEC' : undefined }}>
       <div
         className="relative z-10 flex flex-col items-center"
         style={{ padding: 'clamp(64px, 8vw, 100px) clamp(16px, 4vw, 40px)' }}
       >
         <div className="flex flex-col items-center text-center gap-3 mb-14">
-          <h2 className="text-white font-medium" style={{ fontSize: 'clamp(28px, 3.6vw, 44px)' }}>
-            Frequently asked <span style={gradientTextStyle}>questions</span>
+          <h2 className="font-medium" style={{ color: t.heading, fontSize: 'clamp(28px, 3.6vw, 44px)' }}>
+            Frequently asked <span style={t.highlight}>questions</span>
           </h2>
-          <p className="max-w-2xl" style={{ color: 'rgb(169, 151, 206)', fontSize: 'clamp(14px, 1.1vw, 17px)' }}>
+          <p className="max-w-2xl" style={{ color: t.sub, fontSize: 'clamp(14px, 1.1vw, 17px)' }}>
             Answers to the things people usually ask before reaching out.
           </p>
         </div>
@@ -41,21 +78,18 @@ export default function FAQSection({ items = FAQS }: FAQSectionProps) {
               <div
                 key={item.q}
                 className="rounded-2xl backdrop-blur-md overflow-hidden"
-                style={{
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  background: 'rgba(255,255,255,0.03)',
-                }}
+                style={{ border: `1px solid ${t.cardBorder}`, background: t.cardBg }}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 transition-colors duration-300 hover:bg-white/[0.03]"
+                  className={`w-full flex items-center justify-between gap-4 text-left px-6 py-5 transition-colors duration-300 ${t.hover}`}
                 >
-                  <span className="text-white font-medium" style={{ fontSize: 16 }}>
+                  <span className="font-medium" style={{ color: t.question, fontSize: 16 }}>
                     {item.q}
                   </span>
                   <ChevronDown
                     size={18}
-                    color="rgba(255,255,255,0.6)"
+                    color={t.chevron}
                     className="shrink-0 transition-transform duration-300"
                     style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
                   />
@@ -69,10 +103,7 @@ export default function FAQSection({ items = FAQS }: FAQSectionProps) {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                       style={{ overflow: 'hidden' }}
                     >
-                      <p
-                        className="px-6 pb-5"
-                        style={{ color: 'rgba(255,255,255,0.65)', fontSize: 14, lineHeight: 1.6 }}
-                      >
+                      <p className="px-6 pb-5" style={{ color: t.answer, fontSize: 14, lineHeight: 1.6 }}>
                         {item.a}
                       </p>
                     </motion.div>

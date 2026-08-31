@@ -31,6 +31,7 @@ export default function AboutPage() {
       personSchema(TEAM.saipriya),
       personSchema(TEAM.hanish),
       personSchema(TEAM.suraj),
+      personSchema(TEAM.pramod),
       breadcrumbSchema([
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },

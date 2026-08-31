@@ -31,12 +31,19 @@ const DURATION = 650;
 
 type Role = 'center' | 'left' | 'right' | 'back';
 
-// Mapped to IMAGES by index/color: 0=orange, 1=green, 2=pink, 3=blue.
+// The playful carousel maps 1:1 to IMAGES by index/color (0=orange, 1=green,
+// 2=pink, 3=blue) - keep this at exactly four.
 const TEAM_BY_COLOR = [
   { name: 'Sri Sai Paluri', role: 'Business Development Head', experience: '30+ years experience', photo: '/photo-srisai.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/sri-sai-paluri/' },
   { name: 'Sai Priya Bandi', role: 'Marketing, Lead Designer', experience: '', photo: '/photo-saipriya.jpg', focus: 'center top', linkedin: 'https://www.linkedin.com/in/bandi-sai-priya-090421256/' },
   { name: 'Hanish Sara', role: 'Head of Development and Co-Founder', experience: '5+ years experience', photo: '/photo-hanish.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/hanishsara/' },
   { name: 'Suraj Sai Paluri', role: 'Product Design/Strategist & Creative Head and Founder', experience: '12+ years experience', photo: '/photo-suraj.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/suraj-sai/' },
+];
+
+// The professional grid can include people who aren't in the playful carousel.
+const GRID_TEAM = [
+  ...TEAM_BY_COLOR,
+  { name: 'Pramod Darma', role: 'Regional Business Development Head, Canada', experience: 'Canada', photo: '/photo-pramod.jpg', focus: 'center 30%', linkedin: 'https://www.linkedin.com/in/pramod-darma' },
 ];
 
 const GRAIN_BG =
@@ -343,15 +350,15 @@ export default function ToonhubSection() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 w-full max-w-[1160px]">
-                  {TEAM_BY_COLOR.map((member) => (
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 w-full max-w-[1160px] justify-items-center">
+                  {GRID_TEAM.map((member) => (
                     <div
                       key={member.name}
-                      className="relative rounded-2xl overflow-hidden backdrop-blur-xl mx-auto"
+                      className="relative rounded-2xl overflow-hidden backdrop-blur-xl mx-auto flex flex-col h-full"
                       style={{
                         width: '100%',
                         maxWidth: 260,
-                        height: isMobile ? 250 : 300,
+                        minHeight: isMobile ? 250 : 300,
                         border: '1px solid rgba(255,255,255,0.16)',
                         background: 'rgba(255,255,255,0.05)',
                         boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 12px 28px rgba(0,0,0,0.25)',
@@ -363,7 +370,7 @@ export default function ToonhubSection() {
                       />
                       <div
                         className="relative flex items-center justify-center shrink-0 overflow-hidden"
-                        style={{ height: '58%', background: 'rgba(255,255,255,0.04)' }}
+                        style={{ height: isMobile ? 150 : 176, background: 'rgba(255,255,255,0.04)' }}
                       >
                         {member.photo ? (
                           <img
@@ -379,8 +386,8 @@ export default function ToonhubSection() {
                         )}
                       </div>
                       <div
-                        className="relative flex flex-col justify-center px-4"
-                        style={{ height: '42%', borderTop: '1px solid rgba(255,255,255,0.14)' }}
+                        className="relative flex-1 flex flex-col justify-center px-4 py-4"
+                        style={{ borderTop: '1px solid rgba(255,255,255,0.14)' }}
                       >
                         <a
                           href={member.linkedin}
@@ -390,7 +397,7 @@ export default function ToonhubSection() {
                         >
                           {member.name}
                         </a>
-                        <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                        <p className="text-xs mt-1 leading-snug" style={{ color: 'rgba(255,255,255,0.6)' }}>
                           {member.role}
                         </p>
                         <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>

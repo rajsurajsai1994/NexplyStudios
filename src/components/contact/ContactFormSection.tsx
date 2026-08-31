@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { Phone, Mail, MapPin, Send, Check } from 'lucide-react';
 import { DARK_BG_GRADIENT, gradientA, gradientTextStyle } from '../../lib/brand';
 import { NEXPLY_SERVICES } from '../../lib/services';
+import { OFFICES } from '../../lib/offices';
 
 const CONTACT_EMAIL = 'next@nexplystudio.com';
 
@@ -152,18 +153,22 @@ export default function ContactFormSection() {
               <span className="text-sm group-hover:text-white transition-colors">{CONTACT_EMAIL}</span>
             </a>
 
-            <div className="flex items-start gap-3" style={{ color: 'rgba(255,255,255,0.85)' }}>
-              <span
-                className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style={{ border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.03)' }}
-              >
-                <MapPin size={16} />
-              </span>
-              <span className="text-sm leading-relaxed pt-2">
-                8th Floor, Suite 30, Jayabheri Silicon Towers, Hitech City Rd, Kothaguda,
-                Hyderabad, Telangana 500084.
-              </span>
-            </div>
+            {OFFICES.map((office) => (
+              <div key={office.label} className="flex items-start gap-3" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                <span
+                  className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                  style={{ border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.03)' }}
+                >
+                  <MapPin size={16} />
+                </span>
+                <span className="text-sm leading-relaxed pt-1.5">
+                  <span className="block text-xs font-semibold uppercase tracking-[0.12em]" style={labelStyle}>
+                    {office.label}
+                  </span>
+                  {office.lines.join(' ')}
+                </span>
+              </div>
+            ))}
           </div>
 
           {/* Form */}

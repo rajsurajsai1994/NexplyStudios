@@ -1,6 +1,6 @@
+import { Lock } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
 import {
-  CARENEXT_TEAL,
   CARENEXT_LIGHT_BG,
   CARENEXT_INK,
   CARENEXT_INK_SOFT,
@@ -9,15 +9,17 @@ import {
   carenextInkGradientText,
 } from '../../lib/carenext';
 
+const TEAL = '#0D9488';
+
 function PatientRecordMock() {
   return (
     <div
       className="relative w-full overflow-hidden"
       style={{
         borderRadius: 18,
-        border: '1px solid rgba(255,255,255,0.14)',
-        background: '#0b1220',
-        boxShadow: '0 30px 70px rgba(15,46,54,0.25)',
+        border: `1px solid ${CARENEXT_HAIRLINE}`,
+        background: '#fff',
+        boxShadow: '0 30px 70px rgba(15,46,54,0.14)',
       }}
       aria-hidden="true"
     >
@@ -32,15 +34,17 @@ function PatientRecordMock() {
               RT
             </span>
             <div>
-              <p className="text-white text-[13px] font-medium">Ravi Teja</p>
-              <p className="text-[10.5px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
+              <p className="text-[13px] font-medium" style={{ color: CARENEXT_INK }}>
+                Ravi Teja
+              </p>
+              <p className="text-[10.5px]" style={{ color: CARENEXT_INK_SOFT }}>
                 Rotator cuff rehab · Dr. Yagnesh · Madhapur
               </p>
             </div>
           </div>
           <span
             className="text-[9.5px] rounded-full px-2.5 py-1"
-            style={{ background: 'rgba(45,212,191,0.16)', color: '#5EEAD4' }}
+            style={{ background: 'rgba(13,148,136,0.12)', color: TEAL }}
           >
             Active
           </span>
@@ -48,14 +52,14 @@ function PatientRecordMock() {
 
         <div className="mb-4">
           <div className="flex items-center justify-between mb-1.5">
-            <span className="text-[10.5px]" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <span className="text-[10.5px]" style={{ color: CARENEXT_INK_SOFT }}>
               Treatment progress
             </span>
-            <span className="text-[10.5px]" style={{ color: CARENEXT_TEAL }}>
+            <span className="text-[10.5px]" style={{ color: TEAL }}>
               Session 4 of 15
             </span>
           </div>
-          <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+          <div className="h-2 rounded-full overflow-hidden" style={{ background: '#E2EEF0' }}>
             <div className="h-full rounded-full" style={{ width: '27%', background: 'linear-gradient(90deg, #0EA5E9, #2DD4BF)' }} />
           </div>
         </div>
@@ -69,31 +73,49 @@ function PatientRecordMock() {
             <div
               key={row.k}
               className="rounded-lg p-2.5"
-              style={{ border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.03)' }}
+              style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#F8FBFC' }}
             >
-              <p className="text-[9px] uppercase tracking-wide" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              <p className="text-[9px] uppercase tracking-wide" style={{ color: CARENEXT_INK_SOFT }}>
                 {row.k}
               </p>
-              <p className="text-white text-[12.5px] font-medium mt-0.5">{row.v}</p>
+              <p className="text-[12.5px] font-medium mt-0.5" style={{ color: CARENEXT_INK }}>
+                {row.v}
+              </p>
             </div>
           ))}
         </div>
 
         <div
-          className="rounded-lg p-3"
-          style={{ border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.03)' }}
+          className="rounded-lg p-3 mb-2.5"
+          style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#F8FBFC' }}
         >
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            <span className="text-[10px] font-medium" style={{ color: CARENEXT_INK }}>
               Clinical note · Dr. Yagnesh
             </span>
-            <span className="text-[9px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            <span className="text-[9px]" style={{ color: CARENEXT_INK_SOFT }}>
               28 Aug 2026
             </span>
           </div>
-          <p className="text-[11px]" style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.55 }}>
+          <p className="text-[11px]" style={{ color: CARENEXT_INK_SOFT, lineHeight: 1.55 }}>
             ROM improving, pain down to 3/10. Progressed to resistance band work. Continue home
             exercises 2x daily.
+          </p>
+        </div>
+
+        <div
+          className="rounded-lg p-3"
+          style={{ border: '1px dashed rgba(13,148,136,0.4)', background: 'rgba(13,148,136,0.06)' }}
+        >
+          <div className="flex items-center gap-1.5 mb-1">
+            <Lock size={10} style={{ color: TEAL }} />
+            <span className="text-[10px] font-medium" style={{ color: TEAL }}>
+              Private note · doctors &amp; admins only
+            </span>
+          </div>
+          <p className="text-[11px]" style={{ color: CARENEXT_INK_SOFT, lineHeight: 1.55 }}>
+            Patient anxious about surgery talk from previous clinic - keep messaging reassuring,
+            avoid worst-case framing.
           </p>
         </div>
       </div>
@@ -112,7 +134,7 @@ export default function CareNextRecords() {
           <FadeIn y={16}>
             <span
               className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em]"
-              style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#fff', color: '#0D9488' }}
+              style={{ border: `1px solid ${CARENEXT_HAIRLINE}`, background: '#fff', color: TEAL }}
             >
               Patient records
             </span>
@@ -130,7 +152,7 @@ export default function CareNextRecords() {
                 <div className="flex items-start gap-4">
                   <span
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: 'rgba(13,148,136,0.1)', color: '#0D9488' }}
+                    style={{ background: 'rgba(13,148,136,0.1)', color: TEAL }}
                   >
                     {point.icon}
                   </span>

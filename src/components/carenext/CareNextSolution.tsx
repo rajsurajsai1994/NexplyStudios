@@ -1,6 +1,5 @@
 import { ShieldCheck, Building2, LineChart } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
-import PulseLine from './PulseLine';
 import {
   CARENEXT_LIGHT_BG,
   CARENEXT_INK,
@@ -29,14 +28,7 @@ const PILLARS = [
 
 export default function CareNextSolution() {
   return (
-    <section className="relative" style={{ background: CARENEXT_LIGHT_BG }}>
-      {/* pulse-line seam from the dark section above */}
-      <div style={{ background: '#0d0e1f' }}>
-        <div style={{ transform: 'translateY(1px)' }}>
-          <PulseLine color="#2DD4BF" height={34} />
-        </div>
-      </div>
-
+    <section className="relative" style={{ background: CARENEXT_LIGHT_BG, borderTop: `1px solid ${CARENEXT_HAIRLINE}` }}>
       <div
         className="relative z-10 mx-auto flex flex-col items-center text-center"
         style={{ maxWidth: 1000, padding: 'clamp(64px, 8vw, 104px) clamp(16px, 4vw, 40px) clamp(40px, 5vw, 64px)' }}

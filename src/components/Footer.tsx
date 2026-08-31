@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { NEXPLY_SERVICES } from '../lib/services';
+import { OFFICES } from '../lib/offices';
 import { DARK_BG_FLAT } from '../lib/brand';
 
 const COMPANY_LINKS = [
@@ -99,14 +100,21 @@ export default function Footer() {
                 <Mail size={14} />
                 next@nexplystudio.com
               </a>
-              <span
-                className="flex items-start gap-2.5 text-sm leading-relaxed"
-                style={{ color: 'rgba(255,255,255,0.6)' }}
-              >
-                <MapPin size={14} className="shrink-0 mt-0.5" />
-                8th Floor, Suite 30, Jayabheri Silicon Towers, Hitech City Rd, Kothaguda,
-                Hyderabad, Telangana 500084.
-              </span>
+              {OFFICES.map((office) => (
+                <span
+                  key={office.label}
+                  className="flex items-start gap-2.5 text-sm leading-relaxed"
+                  style={{ color: 'rgba(255,255,255,0.6)' }}
+                >
+                  <MapPin size={14} className="shrink-0 mt-0.5" />
+                  <span>
+                    <span className="block text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                      {office.label}
+                    </span>
+                    {office.lines.join(' ')}
+                  </span>
+                </span>
+              ))}
             </div>
 
             <div className="flex items-center gap-3 mt-1">
