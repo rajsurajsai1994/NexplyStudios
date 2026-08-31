@@ -45,12 +45,12 @@ export default function EventCTA() {
               <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <a
-              href="tel:+917842203319"
+              href="tel:+917640050505"
               className="inline-flex items-center gap-2 rounded-full px-7 py-4 font-medium transition-colors duration-300 hover:bg-white/[0.06]"
               style={{ border: '1px solid rgba(255,255,255,0.22)', color: 'rgba(255,255,255,0.85)' }}
             >
               <Phone size={16} />
-              +91 78422 03319
+              +91 76400 50505
             </a>
           </div>
         </FadeIn>

@@ -77,11 +77,8 @@ export default function EventRahul() {
         {/* bio */}
         <div>
           <FadeIn y={16}>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: 'rgba(245,184,65,0.85)' }}>
-              Who runs this
-            </span>
             <h2
-              className="text-white font-medium mt-3"
+              className="text-white font-medium"
               style={{ fontSize: 'clamp(26px, 3.4vw, 42px)', lineHeight: 1.2 }}
             >
               Meet <span style={eventGradientText}>{RAHUL.name}</span>

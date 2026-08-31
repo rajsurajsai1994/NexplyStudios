@@ -15,6 +15,11 @@ import {
   Search,
   Globe,
   Target,
+  Waves,
+  UserX,
+  ArrowUpToLine,
+  MonitorX,
+  Hourglass,
 } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
@@ -85,28 +90,34 @@ export const EVENT_AUDIENCES: EventAudience[] = [
 export interface EventChallenge {
   title: string;
   text: string;
+  icon: ReactNode;
 }
 
 export const EVENT_CHALLENGES: EventChallenge[] = [
   {
     title: 'Feast-or-famine enquiries',
     text: 'A flood of leads in wedding season, then silence. Cash flow and planning swing wildly all year.',
+    icon: createElement(Waves, { size: 19 }),
   },
   {
     title: 'The wrong kind of leads',
     text: 'Price-shoppers and no-shows eat your time. The clients who actually value your work never find you.',
+    icon: createElement(UserX, { size: 19 }),
   },
   {
     title: 'Word-of-mouth has a ceiling',
     text: 'Referrals are great until they plateau. There is no system bringing in new clients on their own.',
+    icon: createElement(ArrowUpToLine, { size: 19 }),
   },
   {
     title: 'A weak digital presence',
     text: 'An outdated site, an inconsistent Instagram, no reviews strategy - so you lose the client before the first call.',
+    icon: createElement(MonitorX, { size: 19 }),
   },
   {
     title: 'No time to market',
     text: 'You are on-site running events. Marketing gets whatever is left over, which is usually nothing.',
+    icon: createElement(Hourglass, { size: 19 }),
   },
 ];
 

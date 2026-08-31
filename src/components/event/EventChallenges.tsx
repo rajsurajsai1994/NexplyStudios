@@ -1,7 +1,6 @@
-import { AlertTriangle } from 'lucide-react';
 import FadeIn from '../jack/FadeIn';
 import { DARK_BG_FLAT, glassDifferentiation } from '../../lib/brand';
-import { EVENT_CHALLENGES, eventGradientText } from '../../lib/eventManagement';
+import { EVENT_CHALLENGES, EVENT_GRADIENT, eventGradientText } from '../../lib/eventManagement';
 
 export default function EventChallenges() {
   return (
@@ -32,7 +31,7 @@ export default function EventChallenges() {
                   className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
                   style={{ border: '1px solid rgba(245,184,65,0.3)', background: 'rgba(245,184,65,0.08)', color: '#F5B841' }}
                 >
-                  <AlertTriangle size={19} />
+                  {c.icon}
                 </div>
                 <h3 className="text-white font-medium text-[17px] mb-2">{c.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: 1.6 }}>{c.text}</p>
@@ -42,12 +41,17 @@ export default function EventChallenges() {
 
           <FadeIn delay={EVENT_CHALLENGES.length * 0.06} y={20}>
             <div
-              className="relative rounded-2xl p-6 h-full flex flex-col justify-center"
-              style={{ background: 'linear-gradient(120deg, #F5B841 0%, #F43F7E 55%, #A855F7 100%)' }}
+              className="relative rounded-2xl p-6 h-full flex flex-col justify-center backdrop-blur-md"
+              style={{
+                border: '1px solid transparent',
+                background:
+                  'linear-gradient(rgba(255,255,255,0.03), rgba(255,255,255,0.03)) padding-box, ' +
+                  `${EVENT_GRADIENT} border-box`,
+              }}
             >
-              <p className="font-medium" style={{ color: '#1a0b10', fontSize: 16, lineHeight: 1.5 }}>
+              <p className="font-medium" style={{ color: 'rgba(255,255,255,0.9)', fontSize: 16, lineHeight: 1.55 }}>
                 The fix isn&apos;t more hustle. It&apos;s a system that brings the right clients to
-                you - on repeat.
+                you - <span style={eventGradientText}>on repeat.</span>
               </p>
             </div>
           </FadeIn>

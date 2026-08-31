@@ -1,10 +1,10 @@
-import { ArrowRight, TrendingUp, CalendarCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FadeIn from '../jack/FadeIn';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import { useInView } from '../../hooks/useInView';
 import { DARK_BG_GRADIENT } from '../../lib/brand';
-import { EVENT_GRADIENT, eventGradientText, RAHUL } from '../../lib/eventManagement';
+import { EVENT_GRADIENT, eventGradientText } from '../../lib/eventManagement';
 
 const HERO_VIDEO = '/videos/event-wedding-hero.mp4';
 const HERO_VIDEO_POSTER = '/videos/event-wedding-hero-poster.jpg';
@@ -46,20 +46,11 @@ export default function EventHero() {
 
       <div
         className="relative z-10 mx-auto flex flex-col items-center text-center"
-        style={{ maxWidth: 900, padding: 'clamp(150px, 18vw, 220px) clamp(16px, 4vw, 40px) clamp(80px, 10vw, 130px)' }}
+        style={{ maxWidth: 1080, padding: 'clamp(150px, 18vw, 220px) clamp(16px, 4vw, 40px) clamp(80px, 10vw, 130px)' }}
       >
-        <FadeIn y={14} duration={0.5}>
-          <span
-            className="text-[11px] font-semibold uppercase tracking-[0.16em]"
-            style={{ color: 'rgba(245,184,65,0.9)' }}
-          >
-            Event Industry Growth · {RAHUL.name} · at Nexply Studios
-          </span>
-        </FadeIn>
-
-        <FadeIn y={18} delay={0.1}>
+        <FadeIn y={18}>
           <h1
-            className="text-white font-medium mt-5"
+            className="text-white font-medium"
             style={{ fontSize: 'clamp(34px, 5vw, 62px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}
           >
             From inconsistent enquiries to a{' '}
@@ -67,10 +58,10 @@ export default function EventHero() {
           </h1>
         </FadeIn>
 
-        <FadeIn y={16} delay={0.2}>
+        <FadeIn y={16} delay={0.1}>
           <p
             className="mt-6 mx-auto"
-            style={{ color: 'rgb(206, 197, 224)', fontSize: 'clamp(15px, 1.2vw, 18px)', lineHeight: 1.7, maxWidth: 620 }}
+            style={{ color: 'rgb(206, 197, 224)', fontSize: 'clamp(15px, 1.2vw, 18px)', lineHeight: 1.7, maxWidth: 860 }}
           >
             A growth partner built only for the event industry - wedding and corporate planners,
             venues, photographers, decorators, caterers and vendors. Led by Rahul Munigala,
@@ -78,7 +69,7 @@ export default function EventHero() {
           </p>
         </FadeIn>
 
-        <FadeIn y={16} delay={0.3}>
+        <FadeIn y={16} delay={0.2}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/contact"
@@ -95,19 +86,6 @@ export default function EventHero() {
             >
               See who this is for
             </a>
-          </div>
-        </FadeIn>
-
-        <FadeIn y={14} delay={0.4}>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-[13px]" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            <span className="flex items-center gap-2">
-              <TrendingUp size={14} style={{ color: '#F5B841' }} />
-              A steady pipeline, season after season
-            </span>
-            <span className="flex items-center gap-2">
-              <CalendarCheck size={14} style={{ color: '#F43F7E' }} />
-              Calendar-blocked calls, not just clicks
-            </span>
           </div>
         </FadeIn>
       </div>

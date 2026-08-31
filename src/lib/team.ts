@@ -14,13 +14,13 @@ export const TEAM: Record<string, TeamMember> = {
   suraj: {
     key: 'suraj',
     name: 'Suraj Sai Paluri',
-    role: 'Product Design & Strategy, Creative Head at Nexply Studios',
+    role: 'Product Design/Strategist & Creative Head and Founder at Nexply Studios',
     linkedin: 'https://www.linkedin.com/in/suraj-sai/',
   },
   hanish: {
     key: 'hanish',
     name: 'Hanish Sara',
-    role: 'Development Lead at Nexply Studios',
+    role: 'Head of Development and Co-Founder at Nexply Studios',
     linkedin: 'https://www.linkedin.com/in/hanishsara/',
   },
   srisai: {

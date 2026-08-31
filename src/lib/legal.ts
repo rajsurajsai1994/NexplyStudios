@@ -35,7 +35,7 @@ export const PRIVACY_POLICY: LegalDoc = {
     {
       heading: 'Information we collect',
       body: [
-        'Information you give us. When you use the contact form or email us, we receive your name, email address, phone number (if you provide it), and whatever you write in your message. We use this only to respond to your enquiry and, if you become a client, to deliver the work.',
+        'Information you give us. When you use the contact form or email us, we receive your name, email address, phone number (if you provide it), and whatever you write in your message. The contact form is delivered to our inbox by a third-party form service, Web3Forms (Softwidentity DOO); your submission passes through their servers on the way to us. We use this information only to respond to your enquiry and, if you become a client, to deliver the work.',
         'Information collected automatically. Like most websites, our hosting provider records basic technical data such as your IP address, browser type, device type, referring page, and the pages you visit. This is used to keep the site running, secure, and to understand roughly how it is used.',
         'Cookies and embedded content. The site itself does not set advertising or tracking cookies. Some pages embed third-party content - for example a Google Maps frame on the contact page - and that provider may set its own cookies when the content loads. If we add website analytics in future, we will update this policy and, where required, ask for your consent.',
         'We do not knowingly collect information from children, and we do not ask for sensitive personal data through this website.',
@@ -54,7 +54,7 @@ export const PRIVACY_POLICY: LegalDoc = {
     {
       heading: 'Who we share it with',
       body: [
-        'We share information only with service providers who help us run our business - for example our website host, email provider, and, for clients, tools used to deliver and invoice the work. These providers are only permitted to use the information to provide their service to us.',
+        'We share information only with service providers who help us run our business - for example our website host, our contact-form provider (Web3Forms), our email provider, and, for clients, tools used to deliver and invoice the work. These providers are only permitted to use the information to provide their service to us.',
         'We may also disclose information if required by law, or to protect our rights, safety, or property.',
       ],
     },

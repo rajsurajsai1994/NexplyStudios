@@ -35,8 +35,8 @@ type Role = 'center' | 'left' | 'right' | 'back';
 const TEAM_BY_COLOR = [
   { name: 'Sri Sai Paluri', role: 'Business Development Head', experience: '30+ years experience', photo: '/photo-srisai.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/sri-sai-paluri/' },
   { name: 'Sai Priya Bandi', role: 'Marketing, Lead Designer', experience: '', photo: '/photo-saipriya.jpg', focus: 'center top', linkedin: 'https://www.linkedin.com/in/bandi-sai-priya-090421256/' },
-  { name: 'Hanish Sara', role: 'Development Lead', experience: '5+ years experience', photo: '/photo-hanish.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/hanishsara/' },
-  { name: 'Suraj Sai Paluri', role: 'Product Design/Strategist & Creative Head', experience: '12+ years experience', photo: '/photo-suraj.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/suraj-sai/' },
+  { name: 'Hanish Sara', role: 'Head of Development and Co-Founder', experience: '5+ years experience', photo: '/photo-hanish.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/hanishsara/' },
+  { name: 'Suraj Sai Paluri', role: 'Product Design/Strategist & Creative Head and Founder', experience: '12+ years experience', photo: '/photo-suraj.jpg', focus: 'center 40%', linkedin: 'https://www.linkedin.com/in/suraj-sai/' },
 ];
 
 const GRAIN_BG =
