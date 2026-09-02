@@ -75,23 +75,7 @@ export default function Footer() {
               Design, development, and marketing - under one roof, moving at startup speed.
             </p>
 
-            <div className="flex flex-col gap-2.5 mt-1">
-              <a
-                href="tel:+917842203319"
-                className="flex items-center gap-2.5 text-sm transition-colors duration-300 hover:text-white"
-                style={{ color: 'rgba(255,255,255,0.6)' }}
-              >
-                <Phone size={14} />
-                +91 78422 03319
-              </a>
-              <a
-                href="tel:+918790941280"
-                className="flex items-center gap-2.5 text-sm transition-colors duration-300 hover:text-white"
-                style={{ color: 'rgba(255,255,255,0.6)' }}
-              >
-                <Phone size={14} />
-                +91 87909 41280
-              </a>
+            <div className="flex flex-col gap-3 mt-1">
               <a
                 href="mailto:next@nexplystudio.com"
                 className="flex items-center gap-2.5 text-sm transition-colors duration-300 hover:text-white"
@@ -101,19 +85,28 @@ export default function Footer() {
                 next@nexplystudio.com
               </a>
               {OFFICES.map((office) => (
-                <span
+                <div
                   key={office.label}
                   className="flex items-start gap-2.5 text-sm leading-relaxed"
                   style={{ color: 'rgba(255,255,255,0.6)' }}
                 >
                   <MapPin size={14} className="shrink-0 mt-0.5" />
-                  <span>
-                    <span className="block text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                  <span className="flex flex-col gap-0.5">
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: 'rgba(255,255,255,0.4)' }}>
                       {office.label}
                     </span>
-                    {office.lines.join(' ')}
+                    <span>{office.lines.join(' ')}</span>
+                    {office.phone && (
+                      <a
+                        href={office.phoneHref}
+                        className="inline-flex items-center gap-1.5 transition-colors duration-300 hover:text-white"
+                      >
+                        <Phone size={12} />
+                        {office.phone}
+                      </a>
+                    )}
                   </span>
-                </span>
+                </div>
               ))}
             </div>
 

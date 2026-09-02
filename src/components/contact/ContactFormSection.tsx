@@ -124,22 +124,6 @@ export default function ContactFormSection() {
 
           <div className="flex flex-col gap-5">
             <a
-              href="tel:+917842203319"
-              className="flex items-center gap-3 group"
-              style={{ color: 'rgba(255,255,255,0.85)' }}
-            >
-              <span
-                className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style={{ border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.03)' }}
-              >
-                <Phone size={16} />
-              </span>
-              <span className="text-sm group-hover:text-white transition-colors">
-                +91 78422 03319 · +91 87909 41280
-              </span>
-            </a>
-
-            <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="flex items-center gap-3 group"
               style={{ color: 'rgba(255,255,255,0.85)' }}
@@ -161,11 +145,20 @@ export default function ContactFormSection() {
                 >
                   <MapPin size={16} />
                 </span>
-                <span className="text-sm leading-relaxed pt-1.5">
-                  <span className="block text-xs font-semibold uppercase tracking-[0.12em]" style={labelStyle}>
+                <span className="text-sm leading-relaxed pt-1.5 flex flex-col gap-1">
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em]" style={labelStyle}>
                     {office.label}
                   </span>
-                  {office.lines.join(' ')}
+                  <span>{office.lines.join(' ')}</span>
+                  {office.phone && (
+                    <a
+                      href={office.phoneHref}
+                      className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
+                    >
+                      <Phone size={13} />
+                      {office.phone}
+                    </a>
+                  )}
                 </span>
               </div>
             ))}
