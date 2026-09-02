@@ -21,6 +21,9 @@ export interface BlogPost {
   linkText: string;
   linkHref: string;
   relatedSlugs: string[];
+  // Optional link to a case study that proves the point of the post - shown
+  // as a "see it in practice" callout and added to the article schema.
+  caseStudySlug?: string;
 }
 
 export const CATEGORY_LABELS: Record<BlogCategory, string> = {
@@ -73,6 +76,7 @@ export const BLOG_POSTS: BlogPost[] = [
     linkText: 'website design and development',
     linkHref: '/services/website-design-development',
     relatedSlugs: ['why-your-logo-isnt-the-problem', 'what-fast-website-actually-means'],
+    caseStudySlug: 'pal-physiotherapy',
   },
   {
     slug: 'nobody-cares-about-google-business-until-they-do',
@@ -93,9 +97,10 @@ export const BLOG_POSTS: BlogPost[] = [
       "If your listing hasn't been touched in a while, that's usually the first thing worth fixing before spending a rupee on ads. It's also just about the entire idea behind our {LINK} - not glamorous, just genuinely useful.",
     ],
     linkParagraphIndex: 4,
-    linkText: 'Google My Business work',
+    linkText: 'Google Business Profile work',
     linkHref: '/services/google-my-business',
     relatedSlugs: ['why-most-rebrands-fail-before-launch', 'hyderabad-one-shop-get-found-online'],
+    caseStudySlug: 'pal-physiotherapy',
   },
   {
     slug: 'why-most-rebrands-fail-before-launch',
@@ -140,6 +145,7 @@ export const BLOG_POSTS: BlogPost[] = [
     linkText: 'website design and development',
     linkHref: '/services/website-design-development',
     relatedSlugs: ['app-nobody-asked-for-vs-one-people-need', 'what-seo-geo-aeo-change-in-code'],
+    caseStudySlug: 'pal-physiotherapy',
   },
   {
     slug: 'app-nobody-asked-for-vs-one-people-need',
@@ -235,6 +241,7 @@ export const BLOG_POSTS: BlogPost[] = [
     linkText: 'social media marketing',
     linkHref: '/services/social-media-marketing',
     relatedSlugs: ['nobody-cares-about-google-business-until-they-do', 'hyderabad-one-shop-get-found-online'],
+    caseStudySlug: 'pal-physiotherapy',
   },
   {
     slug: 'hyderabad-one-shop-get-found-online',
@@ -255,9 +262,10 @@ export const BLOG_POSTS: BlogPost[] = [
       "The practical version of all this: fix and maintain the Google listing first, build a handful of specific pages that answer specific local searches, keep your name, address and phone number identical everywhere they appear, and write like you're answering a question rather than impressing a design jury. It's slow and it's not thrilling, but for a local business it's the highest-return work there is. It's exactly what our {LINK} focuses on.",
     ],
     linkParagraphIndex: 4,
-    linkText: 'Google My Business and local SEO work',
+    linkText: 'Google Business Profile and local SEO work',
     linkHref: '/services/google-my-business',
     relatedSlugs: ['nobody-cares-about-google-business-until-they-do', 'what-seo-geo-aeo-change-in-code'],
+    caseStudySlug: 'printx-design',
   },
   {
     slug: 'why-we-still-pick-wordpress-2026',
@@ -281,6 +289,7 @@ export const BLOG_POSTS: BlogPost[] = [
     linkText: 'website design and development',
     linkHref: '/services/website-design-development',
     relatedSlugs: ['what-fast-website-actually-means', 'what-seo-geo-aeo-change-in-code'],
+    caseStudySlug: 'printx-design',
   },
   {
     slug: 'what-seo-geo-aeo-change-in-code',
@@ -305,6 +314,7 @@ export const BLOG_POSTS: BlogPost[] = [
     linkText: 'website design and development',
     linkHref: '/services/website-design-development',
     relatedSlugs: ['what-fast-website-actually-means', 'hyderabad-one-shop-get-found-online'],
+    caseStudySlug: 'pal-physiotherapy',
   },
 ];
 

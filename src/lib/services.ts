@@ -77,10 +77,10 @@ export const NEXPLY_SERVICES = [
     gradient: SERVICE_ACCENT,
   },
   {
-    title: 'Google My Business',
+    title: 'Google Business Profile',
     slug: 'google-my-business',
     description:
-      'Local SEO and maps optimization that gets your business found first when nearby customers search.',
+      'Local SEO and Google Maps optimization that gets your business found first when nearby customers search.',
     icon: createElement(MapPin, iconProps),
     gradient: SERVICE_ACCENT,
   },

@@ -108,7 +108,7 @@ export const CHAT_KNOWLEDGE: ChatEntry[] = [
   {
     keywords: ['single service', 'one service', 'just a logo', 'just need', 'only need', 'one thing'],
     answer:
-      "That's completely fine - you can hire us for a single service like just a logo, or just Google My Business, or bundle a few services together. Whatever fits what you need. " +
+      "That's completely fine - you can hire us for a single service like just a logo, or just Google Business Profile management, or bundle a few services together. Whatever fits what you need. " +
       PHONE_LINE,
   },
 
@@ -292,9 +292,9 @@ export const CHAT_KNOWLEDGE: ChatEntry[] = [
       PHONE_LINE,
   },
   {
-    keywords: ['seo', 'google my business', 'gmb', 'local search', 'google maps', 'found on google'],
+    keywords: ['seo', 'google my business', 'gmb', 'google business profile', 'local search', 'google maps', 'found on google'],
     answer:
-      "We handle Google My Business and local SEO so you show up first when nearby customers search for what you do. " +
+      "We handle Google Business Profile management and local SEO so you show up first when nearby customers search for what you do. " +
       PHONE_LINE,
   },
   {
@@ -368,7 +368,7 @@ export const CHAT_KNOWLEDGE: ChatEntry[] = [
   {
     keywords: ['what do you do', 'what do you offer', 'what can you help', 'offerings', 'what all do you do', 'what services do you offer', 'list of services'],
     answer:
-      "We do website design & development, app design & development, product design (UI/UX), logo & brand identity, ad graphics, video/motion design, social media marketing, Google My Business, brand guidelines, packaging design, and print design. " +
+      "We do website design & development, app design & development, product design (UI/UX), logo & brand identity, ad graphics, video/motion design, social media marketing, Google Business Profile management, brand guidelines, packaging design, and print design. " +
       PHONE_LINE,
   },
 

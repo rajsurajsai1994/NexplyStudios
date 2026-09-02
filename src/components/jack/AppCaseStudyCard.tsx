@@ -23,7 +23,7 @@ export interface AppCaseStudy {
   screens: AppScreen[];
 }
 
-// Same glassmorphism card language as the featured GMB case studies
+// Same glassmorphism card language as the featured local-search case studies
 // (ClientWorksGridSection) - blurred glass panel, soft purple glow, brand
 // gradient accents - so an app case study reads as part of the same
 // design system rather than a one-off laptop mockup.

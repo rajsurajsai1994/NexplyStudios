@@ -17,7 +17,7 @@ export const FAQS = [
   },
   {
     q: 'What if I only need one service, not the full package?',
-    a: "That's completely fine - you can hire us for a single service, like just a logo or just Google My Business management, or bundle multiple services together.",
+    a: "That's completely fine - you can hire us for a single service, like just a logo or just Google Business Profile management, or bundle multiple services together.",
   },
   {
     q: 'How do we get started?',

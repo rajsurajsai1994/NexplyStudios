@@ -163,7 +163,16 @@ export function blogPostingSchema(opts: {
   datePublished: string;
   dateModified?: string;
   keywords?: string[];
+  /** Absolute or root-relative path to the post's own share image. */
+  image?: string;
+  /** Root-relative path to a case study the post links to. */
+  caseStudyPath?: string;
 }) {
+  const image = opts.image
+    ? opts.image.startsWith('http')
+      ? opts.image
+      : `${SITE_URL}${opts.image}`
+    : `${SITE_URL}/og-default.png`;
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -173,13 +182,16 @@ export function blogPostingSchema(opts: {
     mainEntityOfPage: `${SITE_URL}${opts.path}`,
     inLanguage: 'en-IN',
     isAccessibleForFree: true,
-    image: `${SITE_URL}/og-default.png`,
+    image,
     author: { '@id': `${SITE_URL}/#person-${opts.authorId}`, name: opts.authorName },
     publisher: { '@id': `${SITE_URL}/#organization` },
     articleSection: opts.category,
     datePublished: opts.datePublished,
     dateModified: opts.dateModified ?? opts.datePublished,
     ...(opts.keywords && opts.keywords.length ? { keywords: opts.keywords.join(', ') } : {}),
+    ...(opts.caseStudyPath
+      ? { citation: { '@type': 'CreativeWork', url: `${SITE_URL}${opts.caseStudyPath}` } }
+      : {}),
   };
 }
 

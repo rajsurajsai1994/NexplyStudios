@@ -96,14 +96,23 @@ export default function BlogListPage() {
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="group relative rounded-2xl overflow-hidden backdrop-blur-md flex flex-col p-6"
+                className="group relative rounded-2xl overflow-hidden backdrop-blur-md flex flex-col"
                 style={{
                   border: '1px solid rgba(255,255,255,0.12)',
                   background: 'rgba(255,255,255,0.03)',
                 }}
               >
+                <img
+                  src={`/og/blog-${post.slug}.png`}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full"
+                  style={{ aspectRatio: '1200 / 630', objectFit: 'cover', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                />
+                <div className="relative flex flex-col p-6 flex-1">
                 <div
-                  className="pointer-events-none absolute inset-0 rounded-2xl"
+                  className="pointer-events-none absolute inset-0"
                   style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 30%)' }}
                 />
                 <span
@@ -129,6 +138,7 @@ export default function BlogListPage() {
                     className="transition-transform duration-300 group-hover:translate-x-1"
                     style={{ color: 'rgba(255,255,255,0.6)' }}
                   />
+                </div>
                 </div>
               </Link>
             ))}

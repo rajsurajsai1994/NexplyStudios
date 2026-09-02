@@ -7,6 +7,10 @@ import ServicePage from './pages/ServicePage';
 import CareNextPage from './pages/CareNextPage';
 import EventManagementPage from './pages/EventManagementPage';
 import PortfolioPage from './pages/PortfolioPage';
+import CaseStudiesListPage from './pages/CaseStudiesListPage';
+import CaseStudyPage from './pages/CaseStudyPage';
+import GlossaryPage from './pages/GlossaryPage';
+import LocalPage from './pages/LocalPage';
 import ContactPage from './pages/ContactPage';
 import BlogListPage from './pages/BlogListPage';
 import BlogPostPage from './pages/BlogPostPage';
@@ -16,6 +20,8 @@ import LegalPage from './pages/LegalPage';
 import { SSRHeadContext, type SSRHeadData } from './lib/ssrHead';
 import { SERVICE_PAGES } from './lib/servicePages';
 import { BLOG_POSTS } from './lib/blogPosts';
+import { CASE_STUDIES } from './lib/caseStudies';
+import { LOCAL_PAGES } from './lib/localPages';
 import { PRIVACY_POLICY, TERMS_OF_SERVICE } from './lib/legal';
 
 // Re-exported so the prerender script (plain Node, no TS/JSX loader) can
@@ -27,6 +33,8 @@ export const PRERENDER_ROUTES: string[] = [
   '/portfolio',
   '/contact',
   '/blog',
+  '/case-studies',
+  '/glossary',
   '/products/carenext',
   '/event-management',
   '/privacy',
@@ -35,6 +43,8 @@ export const PRERENDER_ROUTES: string[] = [
   '/404',
   ...SERVICE_PAGES.map((s) => `/services/${s.slug}`),
   ...BLOG_POSTS.map((p) => `/blog/${p.slug}`),
+  ...CASE_STUDIES.map((c) => `/case-studies/${c.slug}`),
+  ...LOCAL_PAGES.map((l) => `/hyderabad/${l.slug}`),
 ];
 
 // Mirrors the route list in App.tsx, but with eager (non-lazy) imports -
@@ -50,6 +60,10 @@ function AppRoutesEager() {
       <Route path="/products/carenext" element={<CareNextPage />} />
       <Route path="/event-management" element={<EventManagementPage />} />
       <Route path="/portfolio" element={<PortfolioPage />} />
+      <Route path="/case-studies" element={<CaseStudiesListPage />} />
+      <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
+      <Route path="/glossary" element={<GlossaryPage />} />
+      <Route path="/hyderabad/:slug" element={<LocalPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/blog" element={<BlogListPage />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />

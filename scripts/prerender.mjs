@@ -90,8 +90,12 @@ function sitemapMeta(url) {
   if (url === '/') return { changefreq: 'weekly', priority: '1.0' };
   if (url === '/coming-soon') return { changefreq: 'monthly', priority: '0.3' };
   if (url === '/privacy' || url === '/terms') return { changefreq: 'yearly', priority: '0.2' };
+  if (url === '/glossary') return { changefreq: 'yearly', priority: '0.4' };
   if (url.startsWith('/services/')) return { changefreq: 'monthly', priority: '0.9' };
   if (url.startsWith('/products/')) return { changefreq: 'monthly', priority: '0.9' };
+  if (url.startsWith('/hyderabad/')) return { changefreq: 'monthly', priority: '0.85' };
+  if (url === '/case-studies') return { changefreq: 'weekly', priority: '0.8' };
+  if (url.startsWith('/case-studies/')) return { changefreq: 'monthly', priority: '0.8' };
   if (url === '/event-management') return { changefreq: 'monthly', priority: '0.8' };
   if (url.startsWith('/blog/')) return { changefreq: 'monthly', priority: '0.6' };
   if (url === '/blog') return { changefreq: 'weekly', priority: '0.7' };

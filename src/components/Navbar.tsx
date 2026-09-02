@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Case Studies', href: '/case-studies' },
 ];
 
 export default function Navbar() {
@@ -278,6 +279,16 @@ export default function Navbar() {
             >
               {NAV_LINKS[3].label}
             </Link>
+
+            <Link
+              to={NAV_LINKS[4].href}
+              className={`text-sm rounded-xl hover:bg-gray-100 transition-all duration-500 ease-in-out whitespace-nowrap ${
+                scrolled ? 'px-2 py-1.5' : 'px-3.5 py-2'
+              }`}
+              style={navLinkStyle(isActive(NAV_LINKS[4].href))}
+            >
+              {NAV_LINKS[4].label}
+            </Link>
           </div>
 
           {/* Right cluster - desktop */}
@@ -421,6 +432,15 @@ export default function Navbar() {
               style={navLinkStyle(isActive(NAV_LINKS[3].href))}
             >
               {NAV_LINKS[3].label}
+            </Link>
+
+            <Link
+              to={NAV_LINKS[4].href}
+              onClick={closeMobileMenu}
+              className="text-sm rounded-xl hover:bg-gray-100 px-4 py-2 w-full text-center"
+              style={navLinkStyle(isActive(NAV_LINKS[4].href))}
+            >
+              {NAV_LINKS[4].label}
             </Link>
 
             <div className="flex items-center gap-2 w-full mt-2">

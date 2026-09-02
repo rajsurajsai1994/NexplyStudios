@@ -509,7 +509,7 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
       },
       {
         q: 'What platforms do you manage?',
-        a: 'Primarily Instagram and Facebook (Meta), since that covers most of our clients\' audiences. We also support LinkedIn for B2B-focused brands and Google My Business posting as part of local visibility.',
+        a: 'Primarily Instagram and Facebook (Meta), since that covers most of our clients\' audiences. We also support LinkedIn for B2B-focused brands and Google Business Profile posting as part of local visibility.',
       },
       {
         q: 'How is this different from just running Meta ads?',
@@ -548,15 +548,15 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
   },
   {
     slug: 'google-my-business',
-    title: 'Google My Business',
+    title: 'Google Business Profile',
     heroLine1: 'Found First,',
     heroLine2: 'Every Search',
-    heroSubtext: 'Local SEO and maps optimization that gets your business found before your competitors.',
+    heroSubtext: 'Local SEO and Google Maps optimization that gets your business found before your competitors.',
     layout: 'grid',
     body: {
-      heading: 'What our Google My Business (GMB) service covers',
+      heading: 'What our Google Business Profile service covers',
       intro:
-        "This is entirely about local search - making sure that when someone nearby searches for what you offer, your business shows up in the Google Maps pack and local results, not a competitor two streets away. We set up, optimize, and actively manage your GMB profile on an ongoing basis, since an untouched listing quietly loses ranking over time.",
+        "Google Business Profile (still widely called Google My Business, or GMB) is about local search - making sure that when someone nearby searches for what you offer, your business shows up in the Google Maps pack and local results, not a competitor two streets away. We set up, optimize, and actively manage your profile on an ongoing basis, since an untouched listing quietly loses ranking over time.",
       points: [
         {
           title: 'Full profile optimization',
@@ -564,7 +564,7 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         },
         {
           title: 'Regular posts & updates',
-          text: 'We post updates, offers, and photos on a regular schedule, since active listings consistently rank higher than dormant ones.',
+          text: 'We post updates, offers, and photos on a regular schedule, since active profiles consistently rank higher than dormant ones.',
         },
         {
           title: 'Review management',
@@ -574,12 +574,12 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
     },
     faqs: [
       {
-        q: 'Is Google My Business the same as SEO for my website?',
-        a: "They're related but different. GMB specifically controls how you show up in Google Maps and local map-pack results. Website SEO affects your ranking in general search results. Most local businesses need both, but GMB usually has faster, more visible impact for foot traffic.",
+        q: 'Is a Google Business Profile the same as SEO for my website?',
+        a: "They're related but different. Your Google Business Profile controls how you show up in Google Maps and local map-pack results. Website SEO affects your ranking in general search results. Most local businesses need both, but the profile usually has faster, more visible impact for calls and foot traffic.",
       },
       {
-        q: 'I already have a GMB listing - can you just optimize the existing one?',
-        a: "Yes, most of our GMB clients already have a listing that's underperforming. We audit what's there, fix categories/info/photos, and take over ongoing management rather than starting from scratch.",
+        q: 'I already have a listing - can you just optimize the existing one?',
+        a: "Yes, most of our local-search clients already have a profile that's underperforming. We audit what's there, fix categories, info, and photos, and take over ongoing management rather than starting from scratch.",
       },
       {
         q: 'How long before I see better local search rankings?',
@@ -604,7 +604,7 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
           { label: 'Business profile interactions / month', before: 'Before: 50-70', after: 'Now: 350-400' },
           { label: 'Calls / month', before: 'Before: 20-30', after: 'Now: 130-150' },
         ],
-        disclaimer: 'No paid ads - organic growth from GMB optimization alone.',
+        disclaimer: 'No paid ads - organic growth from Google Business Profile optimization alone.',
       },
       {
         title: 'Square Designs',
@@ -619,7 +619,7 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
           { label: 'Business profile views (30 days)', before: '4,193 views', after: '+17.7% vs last month' },
           { label: 'Search impressions (30 days)', before: '563 searches', after: '+33.7% vs last month' },
         ],
-        disclaimer: 'Organic growth from GMB optimization - no paid ads.',
+        disclaimer: 'Organic growth from Google Business Profile optimization - no paid ads.',
         badge: false,
       },
       {
@@ -634,7 +634,7 @@ export const SERVICE_PAGES: ServicePageConfig[] = [
         stats: [
           { label: 'Direction requests (Apr - Jul 2026)', before: 'Apr 2026: ~25/month', after: '214 total, still climbing' },
         ],
-        disclaimer: 'Organic growth from GMB optimization - no paid ads.',
+        disclaimer: 'Organic growth from Google Business Profile optimization - no paid ads.',
         badge: false,
       },
       {

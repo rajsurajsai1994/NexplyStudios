@@ -5,9 +5,10 @@ import FinalCTABanner from '../components/FinalCTABanner';
 import Footer from '../components/Footer';
 import ComingSoonPage from './ComingSoonPage';
 import { getBlogPostBySlug, BLOG_POSTS, CATEGORY_LABELS } from '../lib/blogPosts';
+import { getCaseStudyBySlug } from '../lib/caseStudies';
 import { TEAM, personSchema } from '../lib/team';
 import { DARK_BG_FLAT, DARK_BG_GRADIENT, glassDifferentiation, gradientTextStyle } from '../lib/brand';
-import { useSEO } from '../hooks/useSEO';
+import { useSEO, SITE_URL } from '../hooks/useSEO';
 import { ORGANIZATION_SCHEMA, breadcrumbSchema, blogPostingSchema } from '../lib/seo';
 
 const DATE_FMT = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -38,10 +39,13 @@ export default function BlogPostPage() {
   // return below - falls back to generic (noindex) values for a bad slug.
   const author = post ? TEAM[post.author] : undefined;
 
+  const ogImage = post ? `${SITE_URL}/og/blog-${post.slug}.png` : undefined;
+
   useSEO({
     title: post ? (post.seoTitle ?? post.title) : 'Nexply Studios Blog',
     description: post ? post.excerpt : 'Nexply Studios blog.',
     path: `/blog/${slug ?? ''}`,
+    ogImage,
     noindex: !post,
     article:
       post && author
@@ -68,6 +72,8 @@ export default function BlogPostPage() {
               datePublished: post.datePublished,
               dateModified: post.dateModified,
               keywords: post.keywords,
+              image: ogImage,
+              caseStudyPath: post.caseStudySlug ? `/case-studies/${post.caseStudySlug}` : undefined,
             }),
             breadcrumbSchema([
               { name: 'Home', path: '/' },
@@ -81,6 +87,7 @@ export default function BlogPostPage() {
   if (!post || !author) return <ComingSoonPage />;
 
   const related = BLOG_POSTS.filter((p) => post.relatedSlugs.includes(p.slug));
+  const caseStudy = getCaseStudyBySlug(post.caseStudySlug);
 
   return (
     <main>
@@ -118,6 +125,15 @@ export default function BlogPostPage() {
             <span aria-hidden="true">·</span>
             <span>{post.readTime}</span>
           </p>
+
+          <img
+            src={`/og/blog-${post.slug}.png`}
+            alt={post.title}
+            loading="eager"
+            decoding="async"
+            className="w-full rounded-2xl mt-10"
+            style={{ aspectRatio: '1200 / 630', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.12)' }}
+          />
         </div>
       </section>
 
@@ -133,14 +149,26 @@ export default function BlogPostPage() {
             </p>
           ))}
 
-          <Link
-            to={post.linkHref}
-            className="group inline-flex items-center gap-2 self-start rounded-full px-6 py-3 text-sm font-medium mt-4 transition-all duration-300 hover:border-white/40 hover:bg-white/[0.06]"
-            style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.85)' }}
-          >
-            Explore this service
-            <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          <div className="flex flex-wrap gap-3 mt-4">
+            <Link
+              to={post.linkHref}
+              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 hover:border-white/40 hover:bg-white/[0.06]"
+              style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.85)' }}
+            >
+              Explore this service
+              <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+            {caseStudy && (
+              <Link
+                to={`/case-studies/${caseStudy.slug}`}
+                className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 hover:border-white/40 hover:bg-white/[0.06]"
+                style={{ border: '1px solid rgba(167,139,250,0.4)', background: 'rgba(124,108,255,0.08)', color: 'rgba(255,255,255,0.9)' }}
+              >
+                See it in practice: {caseStudy.client} case study
+                <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            )}
+          </div>
 
           {/* Author byline */}
           <div
