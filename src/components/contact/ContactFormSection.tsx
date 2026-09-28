@@ -324,14 +324,18 @@ export default function ContactFormSection() {
           </form>
         </div>
 
-        {/* Right: map */}
+        {/* Right: map - pinned to Nexply Studios' actual Google Business
+            Profile listing (cid = the feature ID behind
+            https://share.google/FcjfELLG3eWgAxvXd), not a plain address
+            text search, so this always points at the real, reviewable
+            listing rather than whatever Google guesses from the address. */}
         <div
           className="rounded-2xl overflow-hidden backdrop-blur-md min-h-[400px] lg:min-h-full"
           style={{ border: '1px solid rgba(255,255,255,0.12)' }}
         >
           <iframe
             title="Nexply Studios location"
-            src="https://www.google.com/maps?q=Jayabheri+Silicon+Towers,+Hitech+City+Rd,+Kothaguda,+Hyderabad,+Telangana+500084&output=embed"
+            src="https://www.google.com/maps?cid=2913821289879787661&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0, minHeight: 400, filter: 'grayscale(0.3) invert(0.9) contrast(0.9)' }}
