@@ -97,15 +97,25 @@ export default function ServiceWorksSection({ service }: ServiceWorksSectionProp
   if (service.slug === 'brand-guidelines-identity') {
     return (
       <LargeDeckShowcase
-        subtext="A real brand book we designed - browse it the same way a client would in the room."
-        deck={{
-          id: 'beyond-bajji',
-          name: 'Beyond Bajji',
-          industry: 'Food & Beverage - Branding',
-          description:
-            "An 11-slide brand identity book for Beyond Bajji - logo construction, the mascot character, color and pattern systems, and real-world lockups, all documented in one reference file.",
-          slides: Array.from({ length: 11 }, (_, i) => `/decks/beyondbajji-slide-${i + 1}.jpg`),
-        }}
+        subtext="Real brand books we designed - browsed side by side like a client review in the room."
+        decks={[
+          {
+            id: 'beyond-bajji',
+            name: 'Beyond Bajji',
+            industry: 'Food & Beverage - Branding',
+            description:
+              "An 11-slide brand identity book for Beyond Bajji - logo construction, the mascot character, color and pattern systems, and real-world lockups, all documented in one reference file.",
+            slides: Array.from({ length: 11 }, (_, i) => `/decks/beyondbajji-slide-${i + 1}.jpg`),
+          },
+          {
+            id: 'sb-prime',
+            name: 'SB Prime',
+            industry: 'Turnkey Design & Build - Branding',
+            description:
+              'A 25-slide brand guidelines document for SB Prime, a turnkey design-and-build contractor - logo construction and clear space, the primary colour palette, typography, graphic language, iconography, and real-world applications across stationery and decks.',
+            slides: Array.from({ length: 25 }, (_, i) => `/decks/sbprime-brand-slide-${i + 1}.jpg`),
+          },
+        ]}
       />
     );
   }

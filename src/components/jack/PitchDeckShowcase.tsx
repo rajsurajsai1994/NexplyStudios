@@ -47,6 +47,13 @@ const DECKS: Deck[] = [
     description: 'An 8-slide company overview deck for a boutique Workday consulting firm - built to open client and partner conversations.',
     slides: Array.from({ length: 8 }, (_, i) => `/decks/agile-slide-${i + 1}.jpg`),
   },
+  {
+    id: 'sb-prime-profile',
+    name: 'SB Prime',
+    industry: 'Turnkey Design & Build - Company Profile',
+    description: 'A 12-slide company profile for SB Prime - a turnkey design-and-build contractor covering architecture, interiors, MEP engineering, and project management from concept to commissioning, backed by 20+ years of experience.',
+    slides: Array.from({ length: 12 }, (_, i) => `/decks/sbprime-profile-slide-${i + 1}.jpg`),
+  },
 ];
 
 function DeckCard({ deck, size = 'normal' }: { deck: Deck; size?: 'normal' | 'large' }) {

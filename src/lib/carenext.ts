@@ -17,13 +17,17 @@ import {
   BarChart3,
   TrendingUp,
   Calculator,
+  Tablet,
+  Package,
 } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
-// CareNext - product tokens
+// CareSync - product tokens
+// (internal file/identifier names kept as "carenext"/"CARENEXT_*" - only the
+// public-facing product name changed. See lib/products.ts for the note.)
 // ---------------------------------------------------------------------------
-// CareNext runs entirely on a light "clinical" surface - the same palette as
-// the "Introducing CareNext" section - so the whole page reads like a real
+// CareSync runs entirely on a light "clinical" surface - the same palette as
+// the "Introducing CareSync" section - so the whole page reads like a real
 // medical SaaS product tour. No dark bookends, no ECG motif.
 export const CARENEXT_TEAL = '#0D9488';
 export const CARENEXT_SKY = '#0EA5E9';
@@ -64,7 +68,7 @@ export interface CareNextChallenge {
   icon: ReactNode;
 }
 
-// "The reality today" - the manual, fragmented status quo CareNext replaces.
+// "The reality today" - the manual, fragmented status quo CareSync replaces.
 export const CARENEXT_CHALLENGES: CareNextChallenge[] = [
   {
     title: 'Scattered patient records',
@@ -143,7 +147,7 @@ export const CARENEXT_AI_FEATURE = {
   eyebrow: 'New',
   title: 'An AI assistant trained on your specialization',
   text:
-    "CareNext includes an AI assistant tuned to your field - physiotherapy, dermatology, dental, or whatever you practise. Doctors can ask it for clinical references, standard protocols, drug and exercise information, and plain-language explanations to share with patients. It is there to help your team keep learning, not to replace clinical judgement.",
+    "CareSync includes an AI assistant tuned to your field - physiotherapy, dermatology, dental, or whatever you practise. Doctors can ask it for clinical references, standard protocols, drug and exercise information, and plain-language explanations to share with patients. It is there to help your team keep learning, not to replace clinical judgement.",
   points: [
     'Answers grounded in your specialty, not generic medical search',
     'Draft patient-education notes and home-care instructions in seconds',
@@ -159,7 +163,7 @@ export interface CareNextRole {
   featured?: boolean;
 }
 
-// "Built for every role" - four dedicated logins, each scoped to what that
+// "Built for every role" - six dedicated logins, each scoped to what that
 // person actually needs to see and do.
 export const CARENEXT_ROLES: CareNextRole[] = [
   {
@@ -197,6 +201,28 @@ export const CARENEXT_ROLES: CareNextRole[] = [
     icon: createElement(ClipboardList, { size: 20 }),
   },
   {
+    name: 'Self Check-in',
+    summary: 'A tablet at reception - patients fill in their own details.',
+    points: [
+      'Walk-in and appointment patients enter their own details on a tablet',
+      'Details go straight into the patient database - no manual entry',
+      'Cuts front-desk queue time and data-entry mistakes',
+      'Receptionist reviews and confirms before the record is finalised',
+    ],
+    icon: createElement(Tablet, { size: 20 }),
+  },
+  {
+    name: 'Office Boy',
+    summary: 'A simple login to track consumables - nothing else.',
+    points: [
+      'Logs stock in and out - gloves, masks, gel bottles & other consumables',
+      'Low-stock alerts before a branch runs out mid-session',
+      'A running count per item, per branch, visible to admins',
+      'No access to patients, billing, or clinical data',
+    ],
+    icon: createElement(Package, { size: 20 }),
+  },
+  {
     name: 'Accounts / CA',
     summary: 'Your accountant or CA - the numbers, not the patients.',
     points: [
@@ -215,7 +241,7 @@ export interface CareNextRecordPoint {
   icon: ReactNode;
 }
 
-// Deep-dive: what a single patient record holds in CareNext.
+// Deep-dive: what a single patient record holds in CareSync.
 export const CARENEXT_RECORD_POINTS: CareNextRecordPoint[] = [
   {
     title: 'One centralized profile',
@@ -284,7 +310,7 @@ export const CARENEXT_FEATURE_GROUPS: CareNextFeatureGroup[] = [
     items: [
       { icon: createElement(Stethoscope, { size: 18 }), title: 'Doctor & Staff Management', text: 'Per-branch schedules, leave balances, and approvals - no more registers or side chats.' },
       { icon: createElement(NotebookPen, { size: 18 }), title: 'Private Doctor Notes', text: 'Doctors can leave notes on a patient that only other doctors and admins can see - never the front desk, never the patient.' },
-      { icon: createElement(FileText, { size: 18 }), title: 'Prescription Generator', text: 'Prescribe exercises or medication inside CareNext. It saves to the patient record and is sent straight to their WhatsApp.' },
+      { icon: createElement(FileText, { size: 18 }), title: 'Prescription Generator', text: 'Prescribe exercises or medication inside CareSync. It saves to the patient record and is sent straight to their WhatsApp.' },
       { icon: createElement(MessageSquare, { size: 18 }), title: 'WhatsApp Automation', text: 'Automatic appointment confirmations and reminders using branch-specific templates.' },
     ],
   },
@@ -306,7 +332,7 @@ export interface CareNextFAQ {
 
 export const CARENEXT_FAQS: CareNextFAQ[] = [
   {
-    q: 'Is CareNext only for physiotherapy clinics?',
+    q: 'Is CareSync only for physiotherapy clinics?',
     a: "No. It's built for medical and wellness practices in general - physiotherapy, dental, dermatology, multi-specialty clinics, and wellness centres. Roles, templates, and workflows are configured to how your practice runs.",
   },
   {
@@ -315,7 +341,7 @@ export const CARENEXT_FAQS: CareNextFAQ[] = [
   },
   {
     q: 'How does the WhatsApp automation work?',
-    a: 'CareNext sends automatic appointment confirmations and reminders using branch-specific message templates, so patients get a nudge before every session without anyone on your team following up manually. This is what brings no-show rates down.',
+    a: 'CareSync sends automatic appointment confirmations and reminders using branch-specific message templates, so patients get a nudge before every session without anyone on your team following up manually. This is what brings no-show rates down.',
   },
   {
     q: 'Can doctors keep private notes about a patient?',
@@ -323,19 +349,27 @@ export const CARENEXT_FAQS: CareNextFAQ[] = [
   },
   {
     q: 'How does the prescription generator work?',
-    a: 'From the patient profile, a doctor can prescribe exercises or medication directly in CareNext. The prescription is saved to the patient record and can be sent straight to the patient on WhatsApp, so they leave with clear instructions and you keep a copy.',
+    a: 'From the patient profile, a doctor can prescribe exercises or medication directly in CareSync. The prescription is saved to the patient record and can be sent straight to the patient on WhatsApp, so they leave with clear instructions and you keep a copy.',
   },
   {
     q: 'What is the specialty-trained AI assistant?',
-    a: "CareNext includes an AI assistant tuned to your specialization. Doctors can ask it for clinical references, standard protocols, drug and exercise information, and plain-language explanations to share with patients. It's there to help your team keep learning and save time - it doesn't replace clinical judgement.",
+    a: "CareSync includes an AI assistant tuned to your specialization. Doctors can ask it for clinical references, standard protocols, drug and exercise information, and plain-language explanations to share with patients. It's there to help your team keep learning and save time - it doesn't replace clinical judgement.",
   },
   {
     q: 'Is there a login for our accountant or CA?',
     a: 'Yes. The Accounts / CA role is a read-only, finance-only login - branch-wise revenue, expenses, profit, invoices, payments, and tax-ready exports. It has no access to patient records or clinical notes.',
   },
   {
+    q: 'Can patients fill in their own details at reception?',
+    a: 'Yes, with a tablet on the Self Check-in role. A walk-in or arriving patient enters their own details, which go straight into the patient database - your receptionist just reviews and confirms rather than typing everything by hand.',
+  },
+  {
+    q: 'Can we track clinic supplies like gloves and masks?',
+    a: 'Yes, with the Office Boy role. It is a stripped-down login for logging consumable stock in and out - gloves, masks, gel bottles, and anything else you track - with low-stock alerts and a running count per branch. It has no access to patients, billing, or clinical data.',
+  },
+  {
     q: 'Can we add our own custom roles?',
-    a: "Yes. Admin, Doctor, Receptionist, and Accounts / CA cover most clinics, but any role can be added and scoped to match your hospital or clinic's structure - a branch manager, a head of department, a billing-only desk, whatever you need.",
+    a: "Yes. Admin, Doctor, Receptionist, Self Check-in, Office Boy, and Accounts / CA cover most clinics, but any role can be added and scoped to match your hospital or clinic's structure - a branch manager, a head of department, a billing-only desk, whatever you need.",
   },
   {
     q: 'Is our patient data secure?',
@@ -346,7 +380,7 @@ export const CARENEXT_FAQS: CareNextFAQ[] = [
     a: "Yes. During onboarding we help bring across your existing patient list and history so you're not starting from an empty system on day one.",
   },
   {
-    q: 'How is CareNext priced?',
+    q: 'How is CareSync priced?',
     a: 'Pricing depends on your number of branches and the size of your team. Book a demo and we’ll walk through your workflow and share a plan that fits your practice.',
   },
   {

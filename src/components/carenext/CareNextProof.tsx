@@ -61,7 +61,7 @@ export default function CareNextProof() {
               </div>
 
               <p style={{ color: CARENEXT_INK_SOFT, fontSize: 'clamp(15px, 1.2vw, 17px)', lineHeight: 1.75 }}>
-                CareNext grew out of the clinic system Nexply Studios built for PAL - now running
+                CareSync grew out of the clinic system Nexply Studios built for PAL - now running
                 live across both branches, handling patients, scheduling, billing, expense
                 tracking, and WhatsApp reminders every single day.
               </p>
@@ -76,7 +76,7 @@ export default function CareNextProof() {
                     &ldquo;Honestly, whatever I ask them, Nexply builds it and shows it to me in a
                     day or two. If I say I need expense tracking, or a different kind of reminder,
                     or a change in how the invoice looks - it&apos;s just done, and done properly.
-                    It&apos;s very comfortable working with them. CareNext today is basically our
+                    It&apos;s very comfortable working with them. CareSync today is basically our
                     whole clinic in one place - patient engagement, scheduling, expenses,
                     reminders - and it keeps getting better because they actually listen.&rdquo;
                   </p>

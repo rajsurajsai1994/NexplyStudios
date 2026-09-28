@@ -30,12 +30,13 @@ export default function CareNextRoles() {
             Built for every role, <span style={carenextInkGradientText}>and every specialty</span>
           </h2>
           <p className="max-w-2xl" style={{ color: CARENEXT_INK_SOFT, fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.7 }}>
-            Four dedicated logins - Admin, Doctor, Receptionist, and Accounts / CA. Each one shows
-            exactly what that person needs to see and do, and nothing more.
+            Six dedicated logins - Admin, Doctor, Receptionist, Self Check-in, Office Boy, and
+            Accounts / CA. Each one shows exactly what that person needs to see and do, and nothing
+            more.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full max-w-[1160px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-[1040px]">
           {CARENEXT_ROLES.map((role, i) => {
             const featured = role.featured;
             return (

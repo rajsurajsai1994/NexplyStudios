@@ -64,10 +64,10 @@ export const CASE_STUDIES: CaseStudy[] = [
       'SEO, GEO, AEO & AIO',
       'Google Business Profile creation & optimization',
       'Social media management',
-      'CareNext clinic management system',
+      'CareSync clinic management system',
     ],
     summary:
-      'Nexply Studios built PAL Physiotherapy & Sports Rehab a new website, set up and optimised their Google Business Profile for both branches, ran their SEO and social media, and rolled out the CareNext clinic management system. Monthly calls from Google grew from roughly 20-30 to 130-150, entirely without paid ads, and the clinic now runs scheduling, billing, reminders and patient records in one system.',
+      'Nexply Studios built PAL Physiotherapy & Sports Rehab a new website, set up and optimised their Google Business Profile for both branches, ran their SEO and social media, and rolled out the CareSync clinic management system. Monthly calls from Google grew from roughly 20-30 to 130-150, entirely without paid ads, and the clinic now runs scheduling, billing, reminders and patient records in one system.',
     outcomes: [
       {
         label: 'Calls per month from Google',
@@ -91,7 +91,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Clinic operations',
-        value: 'Registers → CareNext',
+        value: 'Registers → CareSync',
         detail: 'Scheduling, billing, WhatsApp reminders and patient records now run in one system across both branches.',
       },
     ],
@@ -108,7 +108,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         body: [
           'We started with the website - a fast, plain-spoken site with a dedicated page for each treatment and each branch, so a search like "sports rehab in Kondapur" has a real page to land on instead of a generic homepage. The content is written as straight answers to the questions patients actually ask, with structured data behind it, so it holds up in Google, in AI Overviews, and when someone asks ChatGPT or Perplexity for a physio in Madhapur.',
           'Then the Google Business Profile for both branches: correct primary category, a description that says exactly what they do and where, real photos added regularly, accurate hours including festival days, and a steady habit of requesting reviews and replying to every one. No one-time push - a routine.',
-          'Alongside that we run their SEO and social media, and we implemented CareNext, our clinic management system. CareNext replaced the registers: day-and-week scheduling per therapist, one-click branded invoices, automatic WhatsApp appointment reminders, patient records with private clinical notes, and a single owner view across both branches.',
+          'Alongside that we run their SEO and social media, and we implemented CareSync, our clinic management system. CareSync replaced the registers: day-and-week scheduling per therapist, one-click branded invoices, automatic WhatsApp appointment reminders, patient records with private clinical notes, and a single owner view across both branches.',
         ],
       },
       {
@@ -129,13 +129,13 @@ export const CASE_STUDIES: CaseStudy[] = [
         a: 'Profile and website fixes showed visibility improvements within the first few weeks. The steady climb in calls and rankings built over the following two to three months and has held since.',
       },
       {
-        q: 'Is CareNext part of every engagement like this?',
-        a: 'Only for clinics and practices where it fits. CareNext is our own clinic management system - for PAL it replaced their registers and spreadsheets. For a business that is not a clinic, that part of the work would be different.',
+        q: 'Is CareSync part of every engagement like this?',
+        a: 'Only for clinics and practices where it fits. CareSync is our own clinic management system - for PAL it replaced their registers and spreadsheets. For a business that is not a clinic, that part of the work would be different.',
       },
     ],
     quote: {
       text:
-        'When we started with Nexply, most new patients found us by word of mouth. Now the Google Business Profile brings a steady stream of calls every week, and CareNext runs the clinic end to end - scheduling, billing, reminders, records - across both branches. Whatever we ask them for, they build it and show it to us within a day or two. It has been very comfortable working with them.',
+        'When we started with Nexply, most new patients found us by word of mouth. Now the Google Business Profile brings a steady stream of calls every week, and CareSync runs the clinic end to end - scheduling, billing, reminders, records - across both branches. Whatever we ask them for, they build it and show it to us within a day or two. It has been very comfortable working with them.',
       name: 'Dr. Bhuvana',
       role: 'Founder, PAL Physiotherapy & Sports Rehab',
     },
@@ -209,7 +209,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         q: 'How is this different from the PAL Physiotherapy engagement?',
-        a: 'Scope. PrintX was a focused website plus Google Business Profile build. PAL was a broader engagement - website, SEO, social media and our CareNext clinic system across two branches.',
+        a: 'Scope. PrintX was a focused website plus Google Business Profile build. PAL was a broader engagement - website, SEO, social media and our CareSync clinic system across two branches.',
       },
     ],
     quote: {

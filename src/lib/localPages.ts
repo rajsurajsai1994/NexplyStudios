@@ -247,7 +247,7 @@ export const LOCAL_PAGES: LocalPageConfig[] = [
         work: 'Simplified a large, complex website into something users can navigate without losing any important content.',
       },
       {
-        client: 'CareNext (Nexply product)',
+        client: 'CareSync (Nexply product)',
         area: 'Hyderabad',
         work: 'Our own clinic management system - role-based interfaces designed so each person sees only what their job needs.',
       },

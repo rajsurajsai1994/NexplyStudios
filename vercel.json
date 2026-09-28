@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/products/carenext",
+      "destination": "/products/caresync",
+      "permanent": true
+    }
+  ]
+}

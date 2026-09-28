@@ -13,6 +13,7 @@ const CLIENT_LOGOS = [
   { src: '/logo-ticker-ardent.png', name: 'Ardent Clinical Research Services', padding: '12px 20px' },
   { src: '/logo-ticker-ayurgum.png', name: 'Ayur Gum', padding: '10px 18px' },
   { src: '/logo-ticker-assessedge.png', name: 'assessEdge', padding: '12px 18px' },
+  { src: '/logo-ticker-sbprime.png', name: 'SB Prime', padding: '16px 14px' },
 ];
 // Duplicated so the loop can wrap seamlessly.
 const TRACK = [...CLIENT_LOGOS, ...CLIENT_LOGOS];

@@ -21,24 +21,24 @@ import {
 } from '../lib/seo';
 
 const CARENEXT_DESCRIPTION =
-  'CareNext is a clinic management system by Nexply Studios - patients, appointments, billing, staff, private doctor notes, a prescription generator, a specialty-trained AI assistant, and multi-branch reporting in one secure platform, built for medical and wellness practices.';
+  'CareSync is a clinic management system by Nexply Studios - patients, appointments, billing, staff, private doctor notes, a prescription generator, a specialty-trained AI assistant, and multi-branch reporting in one secure platform, built for medical and wellness practices.';
 
 export default function CareNextPage() {
   useSEO({
-    title: 'CareNext - Clinic Management System',
+    title: 'CareSync - Clinic Management System',
     description: CARENEXT_DESCRIPTION,
-    path: '/products/carenext',
+    path: '/products/caresync',
     jsonLd: [
       ORGANIZATION_SCHEMA,
       softwareApplicationSchema({
-        name: 'CareNext',
+        name: 'CareSync',
         description: CARENEXT_DESCRIPTION,
-        path: '/products/carenext',
+        path: '/products/caresync',
         category: 'HealthApplication',
       }),
       breadcrumbSchema([
         { name: 'Home', path: '/' },
-        { name: 'CareNext', path: '/products/carenext' },
+        { name: 'CareSync', path: '/products/caresync' },
       ]),
       faqSchema(CARENEXT_FAQS.map((f) => ({ question: f.q, answer: f.a }))),
     ],

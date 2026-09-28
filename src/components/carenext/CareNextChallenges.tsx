@@ -61,7 +61,7 @@ export default function CareNextChallenges() {
               style={{ background: CARENEXT_GRADIENT, boxShadow: '0 18px 44px rgba(13,148,136,0.22)' }}
             >
               <p className="text-white font-medium" style={{ fontSize: 16, lineHeight: 1.5 }}>
-                CareNext brings your patients, staff, and operations into one place.
+                CareSync brings your patients, staff, and operations into one place.
               </p>
               <a
                 href="#carenext-platform"

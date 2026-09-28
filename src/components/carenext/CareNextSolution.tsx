@@ -44,7 +44,7 @@ export default function CareNextSolution() {
             className="font-medium mt-4"
             style={{ color: CARENEXT_INK, fontSize: 'clamp(30px, 4vw, 50px)', lineHeight: 1.15 }}
           >
-            Introducing <span style={carenextInkGradientText}>CareNext</span>
+            Introducing <span style={carenextInkGradientText}>CareSync</span>
           </h2>
         </FadeIn>
 

@@ -42,7 +42,7 @@ export default function CareNextCTA() {
             style={{ color: CARENEXT_INK_SOFT, fontSize: 'clamp(15px, 1.2vw, 18px)', lineHeight: 1.7 }}
           >
             Book a demo and we&apos;ll walk through your clinic&apos;s workflow, set up your
-            branches and roles, and tailor CareNext to how your practice actually works.
+            branches and roles, and tailor CareSync to how your practice actually works.
           </p>
         </FadeIn>
 
@@ -68,7 +68,7 @@ export default function CareNextCTA() {
 
         <FadeIn y={14} delay={0.3}>
           <p className="mt-8 text-[13px]" style={{ color: CARENEXT_INK_SOFT }}>
-            CareNext is designed, built, and maintained by{' '}
+            CareSync is designed, built, and maintained by{' '}
             <Link to="/" className="underline decoration-1 underline-offset-2" style={{ color: TEAL }}>
               Nexply Studios
             </Link>

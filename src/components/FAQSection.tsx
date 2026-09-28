@@ -14,7 +14,7 @@ interface FAQSectionProps {
   // (used on Home/About/Portfolio) when not provided, so existing callers
   // don't need to change.
   items?: FAQItem[];
-  // 'dark' (default) matches the main site. 'light' matches the CareNext
+  // 'dark' (default) matches the main site. 'light' matches the CareSync
   // clinical surface.
   theme?: 'dark' | 'light';
 }
