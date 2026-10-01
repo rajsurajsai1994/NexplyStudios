@@ -2,7 +2,19 @@
 <html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
+    <!-- ICO first, then SVG, then a sized PNG - in that order, deliberately.
+         Google's favicon crawler (and various older browsers/bots) checks
+         the first <link rel="icon"> it understands and has historically
+         been unreliable with SVG-only favicons, falling back to a generated
+         "first letter in a circle" placeholder when it can't fetch a valid
+         one - which is exactly what was showing up in Google search results
+         instead of the real Nexply mark. A real favicon.ico (48x48 multiple
+         sizes baked in, matching Google's own size guidance) plus an
+         explicit PNG fallback fixes that; the SVG stays for crisp modern
+         browser tabs. -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
